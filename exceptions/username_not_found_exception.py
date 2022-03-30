@@ -1,0 +1,2 @@
+class UsernameNotFoundException(Exception):
+    pass
