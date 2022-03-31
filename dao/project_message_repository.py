@@ -8,5 +8,5 @@ class ProjectMessageRepository(BaseRepository):
         return result
 
     def find_all_username_messages(self, username: str) -> list[ProjectMessage]:
-        result = [prjmsg for prjmsg in self.find_all() if username == prjmsg.employee.username]
+        result = [prjmsg for prjmsg in self.find_all() if username == prjmsg.username]
         return result

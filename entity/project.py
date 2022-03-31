@@ -1,7 +1,10 @@
 from datetime import datetime
 
+from dao.project_message_repository import ProjectMessageRepository
+from dao.task_repository import TaskRepository
 from entity.employee import Employee
 from entity.task import Task
+from helpers.id_generator_uuid import IdGeneratorUuid
 from helpers.validators.project_validators import validate_project_time_estimation, validate_project_name_length, \
     validate_due_date
 
@@ -13,6 +16,7 @@ class Project:
                  client: str = None,
                  time_estimation: int = None,
                  due_date: str = None,
+                 idGenerator=IdGeneratorUuid,
                  ) -> None:
         self._obj_id = project_id
         self.name = project_name
@@ -20,8 +24,9 @@ class Project:
         self.time_estimation = time_estimation
         self.due_date = due_date
         self._employees: list[Employee] = []
-        self._tasks: list[Task] = []
         self._is_finished: bool = False
+        self.tasks_repo = TaskRepository(IdGeneratorUuid)
+        self.project_message_repo = ProjectMessageRepository(idGenerator)
 
     @property
     def obj_id(self):
@@ -68,16 +73,12 @@ class Project:
         return self._employees
 
     @property
-    def tasks(self):
-        return self._tasks
-
-    @property
     def is_finished(self):
         return self._is_finished
 
     @is_finished.setter
     def is_finished(self, value):
-        if value and len(self.tasks) == 0:
+        if value and len(self.tasks_repo) == 0:
             self._is_finished = True
 
     def __repr__(self) -> str:
@@ -87,5 +88,5 @@ class Project:
         return f"Project name: {self._project_name:<10.15s} " \
                f"| Client {self._client:<10.15s} " \
                f"| Employees assigned: {', '.join([str(e) for e in self._employees]) if self._employees else 'None':<30.40s} " \
-               f"| Number of tasks: {len(self._tasks):<3}" \
+               f"| Number of tasks: {len(self.tasks_repo):<3}" \
                f"| Project status:{'Archived' if self._is_finished else 'In progress':<10.11s}"

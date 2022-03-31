@@ -1,17 +1,17 @@
 from datetime import datetime
 
-from entity.employee import Employee
-
 
 class ProjectMessage:
     def __init__(self,
                  project_message_id: str = None,
                  message: str = None,
-                 employee: Employee = None,
+                 username: str = None,
+                 project_name: str = None
                  ) -> None:
         self.obj_id = project_message_id
         self._comment = message
-        self._employee = employee
+        self._username = username
+        self._project = project_name
         self._sent_on = datetime.now()
 
     @property
@@ -27,17 +27,21 @@ class ProjectMessage:
         return self._comment
 
     @property
-    def employee(self):
-        return self._employee
+    def username(self):
+        return self._username
+
+    @property
+    def project(self):
+        return self._project
 
     @property
     def sent_on(self):
         return self._sent_on
 
     def __repr__(self) -> str:
-        return f"{self._comment} by {self._employee.username}"
+        return f"{self._comment} by {self._username}"
 
     def get_info(self) -> str:
         return f"Message: {self._comment} " \
-               f"by {self._employee.username} " \
+               f"by {self._username} " \
                f"sent on {self._sent_on.strftime('%H:%M:%S, %Y-%m-%d')}"

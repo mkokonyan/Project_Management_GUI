@@ -1,5 +1,4 @@
 from dao.employee_repository import EmployeeRepository
-from dao.project_message_repository import ProjectMessageRepository
 from dao.task_repository import TaskRepository
 from entity.project_message import ProjectMessage
 from entity.task import Task
@@ -71,7 +70,7 @@ if __name__ == '__main__':
     print(prj1.time_estimation)
     print(prj1.due_date)
     print(prj1.employees)
-    print(prj1.tasks)
+    print(prj1.tasks_repo)
     print(prj1.is_finished)
     prj2 = Project(None, "House", "IvanovStroy", 400, "2022-04-03")
     prj3 = Project(None, "Bridge", "Stoyanov", 500, "2023-01-05")
@@ -108,7 +107,6 @@ if __name__ == '__main__':
 
 
     # Task CRUD operations:
-    tsk_repo = TaskRepository(IdGeneratorUuid)
         # Create entity instances:
     tsk1 = Task(None, "Lower Rebar", a, "Calculations and make drawing", 6)
     print(tsk1.name)
@@ -119,39 +117,39 @@ if __name__ == '__main__':
     tsk2 = Task(None, "Upper Rebar", a, "Calculations and make drawing", 12)
     tsk3 = Task(None, "3D Model", e1, "Make model of building", 14)
         # Create
-    tsk_repo.create(tsk1)
-    tsk_repo.create(tsk2)
-    tsk_repo.create(tsk3)
+    prj1.tasks_repo.create(tsk1)
+    prj1.tasks_repo.create(tsk2)
+    prj1.tasks_repo.create(tsk3)
         # Read
-    [print(tsk.get_info()) for tsk in tsk_repo.find_all()]
-    print(tsk_repo.find_by_name("Rebar"))
-    print(tsk_repo.find_by_description("drawing"))
+    [print(tsk.get_info()) for tsk in prj1.tasks_repo.find_all()]
+    print(prj1.tasks_repo.find_by_name("Rebar"))
+    print(prj1.tasks_repo.find_by_description("drawing"))
     tsk1.is_finished = True
-    print(tsk_repo.find_by_finished_status())
+    print(prj1.tasks_repo.find_by_finished_status())
 
         # Update
     tsk3.description = "Make model of building and calculations"
-    tsk_repo.update(tsk3)
+    prj1.tasks_repo.update(tsk3)
     print(tsk3.description)
 
         # Delete
-    tsk_repo.delete_by_id(tsk3.obj_id)
-    [print(tsk.get_info()) for tsk in tsk_repo.find_all()]
+    prj1.tasks_repo.delete_by_id(tsk3.obj_id)
+    [print(tsk.get_info()) for tsk in prj1.tasks_repo.find_all()]
 
     # Project Messages CRUD operations:
-    msg_repo = ProjectMessageRepository(IdGeneratorUuid)
     # Create entity instances:
-    msg1 = ProjectMessage(None, "You should check first drawing", a)
-    msg2 = ProjectMessage(None, "You should make new drawing", a)
+    msg1 = ProjectMessage(None, "You should check first drawing", e1.username, prj1.name)
+    msg2 = ProjectMessage(None, "You should make new drawing", e1.username, prj2.name)
     print(msg1.message)
-    print(msg1.employee)
+    print(msg1.username)
     print(msg1.sent_on)
 
     # Create
-    msg_repo.create(msg1)
-    msg_repo.create(msg2)
+    e1.project_message_repo.create(msg1)
+    e1.project_message_repo.create(msg2)
 
     # Read
-    [print(msg.get_info()) for msg in msg_repo.find_all()]
-    print(msg_repo.find_by_name("You should"))
-    print(msg_repo.find_all_username_messages("mkk"))
+    [print(msg.get_info()) for msg in e1.project_message_repo.find_all()]
+    print(e1.project_message_repo.find_by_name("new"))
+    print(e1.project_message_repo.find_all_username_messages("idm"))
+

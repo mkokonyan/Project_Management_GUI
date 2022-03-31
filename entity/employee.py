@@ -1,4 +1,7 @@
-from helpers.validators.employee_validators import validate_username_length, validate_password, validate_email, validate_name_length
+from dao.project_message_repository import ProjectMessageRepository
+from helpers.id_generator_uuid import IdGeneratorUuid
+from helpers.validators.employee_validators import validate_username_length, validate_password, \
+    validate_email, validate_name_length
 
 
 class Employee:
@@ -9,6 +12,7 @@ class Employee:
                  last_name: str = None,
                  email: str = None,
                  role: str = "Employee",
+                 idGenerator=IdGeneratorUuid,
                  ) -> None:
         self.username = username
         self.password = password
@@ -16,6 +20,7 @@ class Employee:
         self.last_name = last_name
         self.email = email
         self._role = role
+        self.project_message_repo = ProjectMessageRepository(idGenerator)
 
     @property
     def username(self):
@@ -65,6 +70,7 @@ class Employee:
     @property
     def role(self):
         return self._role
+
 
     def __repr__(self) -> str:
         return f"{self.first_name} {self.last_name}"
