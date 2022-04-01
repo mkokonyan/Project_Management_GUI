@@ -1,7 +1,4 @@
-from dao.project_message_repository import ProjectMessageRepository
-from helpers.id_generator_uuid import IdGeneratorUuid
-from helpers.validators.employee_validators import validate_username_length, validate_password, \
-    validate_email, validate_name_length
+from entity.project_message import ProjectMessage
 
 
 class Employee:
@@ -12,15 +9,14 @@ class Employee:
                  last_name: str = None,
                  email: str = None,
                  role: str = "Employee",
-                 idGenerator=IdGeneratorUuid,
                  ) -> None:
-        self.username = username
-        self.password = password
-        self.first_name = first_name
-        self.last_name = last_name
-        self.email = email
+        self._username = username
+        self._password = password
+        self._first_name = first_name
+        self._last_name = last_name
+        self._email = email
         self._role = role
-        self.project_message_repo = ProjectMessageRepository(idGenerator)
+        self._project_messages: list[ProjectMessage] = []
 
     @property
     def username(self):
@@ -28,7 +24,6 @@ class Employee:
 
     @username.setter
     def username(self, value):
-        validate_username_length(value)
         self._username = value
 
     @property
@@ -37,7 +32,6 @@ class Employee:
 
     @password.setter
     def password(self, value):
-        validate_password(value)
         self._password = value
 
     @property
@@ -46,7 +40,6 @@ class Employee:
 
     @first_name.setter
     def first_name(self, value):
-        validate_name_length(value)
         self._first_name = value
 
     @property
@@ -55,7 +48,6 @@ class Employee:
 
     @last_name.setter
     def last_name(self, value):
-        validate_name_length(value)
         self._last_name = value
 
     @property
@@ -64,13 +56,23 @@ class Employee:
 
     @email.setter
     def email(self, value):
-        validate_email(value)
         self._email = value
 
     @property
     def role(self):
         return self._role
 
+    @role.setter
+    def role(self, value):
+        self._role = value
+
+    @property
+    def project_messages(self):
+        return self._project_messages
+
+    @project_messages.setter
+    def project_messages(self, value):
+        self._project_messages = value
 
     def __repr__(self) -> str:
         return f"{self.first_name} {self.last_name}"

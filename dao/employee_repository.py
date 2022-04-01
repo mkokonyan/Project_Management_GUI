@@ -1,12 +1,12 @@
-from dao.base_repository import BaseRepository
+from dao.json_repository import JsonRepository
 from entity.employee import Employee
 from exceptions.existing_username_exception import ExistingUsernameException
 from exceptions.username_not_found_exception import UsernameNotFoundException
 
 
-class EmployeeRepository(BaseRepository):
-    def __init__(self) -> None:
-        super().__init__(idGenerator=None)
+class EmployeeRepository(JsonRepository):
+    DB_FILENAME = "employees.json"
+    ENTITY_CLASS = Employee
 
     def create(self, entity: Employee) -> Employee:
         if entity.username in self._entities:
@@ -25,3 +25,4 @@ class EmployeeRepository(BaseRepository):
         self.find_by_id(entity.username)
         self._entities[entity.username] = entity
         return entity
+

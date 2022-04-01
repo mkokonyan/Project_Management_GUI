@@ -1,10 +1,13 @@
 from datetime import datetime, timedelta
 
-from dao.base_repository import BaseRepository
+from dao.json_repository import JsonRepository
 from entity.project import Project
 
 
-class ProjectRepository(BaseRepository):
+class ProjectRepository(JsonRepository):
+    DB_FILENAME = "projects.json"
+    ENTITY_CLASS = Project
+
     def find_by_name(self, name_part: str) -> list[Project]:
         result = [prj for prj in self.find_all() if name_part.lower() in prj.name.lower()]
         return result
@@ -14,10 +17,10 @@ class ProjectRepository(BaseRepository):
         return result
 
     def find_by_due_date_approaching(self) -> list[Project]:
-        result = [prj for prj in self.find_all() if prj.due_date - timedelta(days=10) <= datetime.today()]
+        result = [prj for prj in self.find_all() if
+                  datetime.strptime(prj.due_date, "%Y-%m-%d") - timedelta(days=10) <= datetime.today()]
         return result
 
     def find_by_finished_status(self) -> list[Project]:
         result = [prj for prj in self.find_all() if prj.is_finished]
         return result
-

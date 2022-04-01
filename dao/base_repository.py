@@ -1,10 +1,12 @@
+
 from exceptions.entity_not_found_exception import EntityNotFoundException
+from helpers.id_generator_uuid import IdGeneratorUuid
 
 
 class BaseRepository:
-    def __init__(self, idGenerator) -> None:
+    def __init__(self) -> None:
         self._entities = {}
-        self._idGenerator = idGenerator
+        self._id_gen = IdGeneratorUuid()
 
     def __len__(self) -> int:
         return len(self._entities)
@@ -14,7 +16,7 @@ class BaseRepository:
             yield entity
 
     def create(self, entity):
-        entity.obj_id = self._idGenerator.get_next_id()
+        entity.obj_id = self._id_gen.get_next_id() if entity.obj_id is None else entity.obj_id
         self._entities[entity.obj_id] = entity
         return entity
 
@@ -36,3 +38,6 @@ class BaseRepository:
         entity_to_del = self.find_by_id(entity_id)
         del self._entities[entity_id]
         return entity_to_del
+
+    def clear(self):
+        self._entities.clear()

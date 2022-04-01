@@ -3,15 +3,13 @@ from datetime import datetime
 
 class ProjectMessage:
     def __init__(self,
-                 project_message_id: str = None,
+                 obj_id: str = None,
                  message: str = None,
                  username: str = None,
-                 project_name: str = None
                  ) -> None:
-        self.obj_id = project_message_id
-        self._comment = message
+        self._obj_id = obj_id
+        self._message = message
         self._username = username
-        self._project = project_name
         self._sent_on = datetime.now()
 
     @property
@@ -24,24 +22,34 @@ class ProjectMessage:
 
     @property
     def message(self):
-        return self._comment
+        return self._message
+
+    @message.setter
+    def message(self, value):
+        self._message = value
 
     @property
     def username(self):
         return self._username
 
-    @property
-    def project(self):
-        return self._project
+    @username.setter
+    def username(self, value):
+        self._username = value
+
 
     @property
     def sent_on(self):
         return self._sent_on
 
+    @sent_on.setter
+    def sent_on(self, value):
+        self._sent_on = value
+
     def __repr__(self) -> str:
-        return f"{self._comment} by {self._username}"
+        return f"{self._message} (by {self._username})"
 
     def get_info(self) -> str:
-        return f"Message: {self._comment} " \
+        return f"Message: {self._message} " \
                f"by {self._username} " \
                f"sent on {self._sent_on.strftime('%H:%M:%S, %Y-%m-%d')}"
+

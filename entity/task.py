@@ -1,21 +1,19 @@
 from entity.employee import Employee
-from helpers.validators.task_validators import validate_task_name_length, validate_description_length, \
-    validate_task_time_estimation
 
 
 class Task:
     def __init__(self,
-                 task_id: str = None,
-                 task_name: str = None,
+                 obj_id: str = None,
+                 name: str = None,
                  employee: Employee = None,
                  description: str = None,
                  time_estimation: int = None,
                  ) -> None:
-        self.obj_id = task_id
-        self.name = task_name
-        self._employee = employee
-        self.description = description
-        self.time_estimation = time_estimation
+        self._obj_id = obj_id
+        self._name = name
+        self._employee: Employee = employee
+        self._description = description
+        self._time_estimation = time_estimation
         self._is_finished: bool = False
 
     @property
@@ -28,16 +26,19 @@ class Task:
 
     @property
     def name(self):
-        return self._task_name
+        return self._name
 
     @name.setter
     def name(self, value):
-        validate_task_name_length(value)
-        self._task_name = value
+        self._name = value
 
     @property
     def employee(self):
         return self._employee
+
+    @employee.setter
+    def employee(self, value):
+        self._employee = value
 
     @property
     def description(self):
@@ -45,7 +46,6 @@ class Task:
 
     @description.setter
     def description(self, value):
-        validate_description_length(value)
         self._description = value
 
     @property
@@ -54,7 +54,6 @@ class Task:
 
     @time_estimation.setter
     def time_estimation(self, value):
-        validate_task_time_estimation(value)
         self._time_estimation = value
 
     @property
@@ -63,15 +62,14 @@ class Task:
 
     @is_finished.setter
     def is_finished(self, value):
-        if value:
-            self._is_finished = True
+        self._is_finished = value
 
     def __repr__(self) -> str:
-        return f"{self._task_name}"
+        return f"{self.name}"
 
     def get_info(self) -> str:
-        return f"Task name: {self._task_name:<15.15s} " \
+        return f"Task name: {self.name:<15.15s} " \
                f"| Assigned to: {str(self.employee):<15.15s} " \
                f"| Description: {self.description:<40.40s}" \
-               f"| Time estimation: {self._time_estimation:<3}" \
-               f"| Task status: {'Archived' if self._is_finished else 'In progress':<10.11s}"
+               f"| Time estimation: {self.time_estimation:<3}" \
+               f"| Task status: {'Archived' if self.is_finished else 'In progress':<10.11s}"

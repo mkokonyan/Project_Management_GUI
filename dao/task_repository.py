@@ -1,9 +1,11 @@
-
-from dao.base_repository import BaseRepository
+from dao.json_repository import JsonRepository
 from entity.task import Task
 
 
-class TaskRepository(BaseRepository):
+class TaskRepository(JsonRepository):
+    DB_FILENAME = "tasks.json"
+    ENTITY_CLASS = Task
+
     def find_by_name(self, name_part: str) -> list[Task]:
         result = [tsk for tsk in self.find_all() if name_part.lower() in tsk.name.lower()]
         return result
@@ -15,4 +17,3 @@ class TaskRepository(BaseRepository):
     def find_by_finished_status(self) -> list[Task]:
         result = [tsk for tsk in self.find_all() if tsk.is_finished]
         return result
-
