@@ -1,6 +1,3 @@
-from entity.project_message import ProjectMessage
-
-
 class Employee:
     def __init__(self,
                  username: str = None,
@@ -16,7 +13,9 @@ class Employee:
         self._last_name = last_name
         self._email = email
         self._role = role
-        self._project_messages: list[ProjectMessage] = []
+        self._projects: list[str] = []
+        self._tasks: list[str] = []
+        self._project_messages: list[str] = []
 
     @property
     def username(self):
@@ -65,6 +64,22 @@ class Employee:
     @role.setter
     def role(self, value):
         self._role = value
+
+    @property
+    def projects(self):
+        return self._projects
+
+    @projects.setter
+    def projects(self, value):
+        self._projects = value
+
+    @property
+    def tasks(self):
+        return self._tasks
+
+    @tasks.setter
+    def tasks(self, value):
+        self._tasks = value
 
     @property
     def project_messages(self):

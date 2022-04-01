@@ -1,9 +1,5 @@
 from datetime import datetime
 
-from entity.employee import Employee
-from entity.project_message import ProjectMessage
-from entity.task import Task
-
 
 class Project:
     def __init__(self,
@@ -18,9 +14,8 @@ class Project:
         self._client = client
         self._time_estimation = time_estimation
         self._due_date = due_date
-        self._employees: list[Employee] = []
-        self._tasks: list[Task] = []
-        self._project_messages: list[ProjectMessage] = []
+        self._employees: list[str] = []
+        self._tasks: list[str] = []
         self._is_finished: bool = False
 
     @property
@@ -80,14 +75,6 @@ class Project:
         self._tasks = value
 
     @property
-    def project_messages(self):
-        return self._project_messages
-
-    @project_messages.setter
-    def project_messages(self, value):
-        self._project_messages = value
-
-    @property
     def is_finished(self):
         return self._is_finished
 
@@ -101,6 +88,6 @@ class Project:
     def get_info(self) -> str:
         return f"Project name: {self.name:<10.15s} " \
                f"| Client {self.client:<10.15s} " \
-               f"| Employees assigned: {', '.join([str(e) for e in self.employees]) if self.employees else 'None':<30.40s} " \
+               f"| Employees assigned: {', '.join([e for e in self.employees]) if self.employees else 'None':<30.40s} " \
                f"| Number of tasks: {len(self.tasks):<3}" \
                f"| Project status:{'Archived' if self.is_finished else 'In progress':<10.11s}"

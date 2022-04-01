@@ -49,5 +49,5 @@ class ProjectMessage:
 
     def get_info(self) -> str:
         return f"Message: {self._message} " \
-               f"by {self._username} " \
+               f"(by {self._username}) " \
                f"sent on {self._sent_on}"

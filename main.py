@@ -108,14 +108,14 @@ if __name__ == '__main__':
     # Task CRUD operations:
     tsks_repo = TaskRepository()
     # Create entity instances:
-    tsk1 = Task(None, "Lower Rebar", a, "Calculations and make drawing", 6)
+    tsk1 = Task(None, "Lower Rebar", a.username, prj1.name, "Calculations and make drawing", 6)
     print(tsk1.name)
     print(tsk1.employee)
     print(tsk1.description)
     print(tsk1.time_estimation)
     print(tsk1.is_finished)
-    tsk2 = Task(None, "Upper Rebar", a, "Calculations and make drawing", 12)
-    tsk3 = Task(None, "3D Model", e1, "Make model of building", 14)
+    tsk2 = Task(None, "Upper Rebar", a.username, prj1.name, "Calculations and make drawing", 12)
+    tsk3 = Task(None, "3D Model", e1.username, prj2.name, "Make model of building", 14)
     # Create
     tsks_repo.create(tsk1)
     tsks_repo.create(tsk2)
