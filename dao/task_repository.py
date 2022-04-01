@@ -3,7 +3,7 @@ from entity.task import Task
 
 
 class TaskRepository(JsonRepository):
-    DB_FILENAME = "tasks.json"
+    DB_FILENAME = "db/tasks.json"
     ENTITY_CLASS = Task
 
     def find_by_name(self, name_part: str) -> list[Task]:

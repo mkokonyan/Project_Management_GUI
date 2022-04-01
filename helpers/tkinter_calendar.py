@@ -21,8 +21,6 @@ def grad_date():
     print(cal.get_date())
 
 
-
-
 # Add Button and Label
 Button(root, text="Get Date",
        command=grad_date).pack(pady=20)

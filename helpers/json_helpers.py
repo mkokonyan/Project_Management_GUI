@@ -6,7 +6,7 @@ def dumper(obj):
         return obj.to_json()
     except AttributeError:
         if isinstance(obj, datetime):
-            return obj.strftime('%Y-%m-%d')
+            return obj.strftime('%H:%M:%S, %Y-%m-%d')
         return obj.__dict__
 
 

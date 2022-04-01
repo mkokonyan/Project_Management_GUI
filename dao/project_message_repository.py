@@ -3,7 +3,7 @@ from entity.project_message import ProjectMessage
 
 
 class ProjectMessageRepository(JsonRepository):
-    DB_FILENAME = "project_messages.json"
+    DB_FILENAME = "db/project_messages.json"
     ENTITY_CLASS = ProjectMessage
 
     def find_by_content(self, message_part: str) -> list[ProjectMessage]:

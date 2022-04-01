@@ -5,7 +5,7 @@ from exceptions.username_not_found_exception import UsernameNotFoundException
 
 
 class EmployeeRepository(JsonRepository):
-    DB_FILENAME = "employees.json"
+    DB_FILENAME = "db/employees.json"
     ENTITY_CLASS = Employee
 
     def create(self, entity: Employee) -> Employee:
@@ -25,4 +25,3 @@ class EmployeeRepository(JsonRepository):
         self.find_by_id(entity.username)
         self._entities[entity.username] = entity
         return entity
-

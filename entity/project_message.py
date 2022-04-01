@@ -36,7 +36,6 @@ class ProjectMessage:
     def username(self, value):
         self._username = value
 
-
     @property
     def sent_on(self):
         return self._sent_on
@@ -51,5 +50,4 @@ class ProjectMessage:
     def get_info(self) -> str:
         return f"Message: {self._message} " \
                f"by {self._username} " \
-               f"sent on {self._sent_on.strftime('%H:%M:%S, %Y-%m-%d')}"
-
+               f"sent on {self._sent_on}"

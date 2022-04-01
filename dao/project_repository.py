@@ -5,7 +5,7 @@ from entity.project import Project
 
 
 class ProjectRepository(JsonRepository):
-    DB_FILENAME = "projects.json"
+    DB_FILENAME = "db/projects.json"
     ENTITY_CLASS = Project
 
     def find_by_name(self, name_part: str) -> list[Project]:

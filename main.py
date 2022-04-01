@@ -149,19 +149,21 @@ if __name__ == '__main__':
     prj_msg_repo.create(msg1)
     prj_msg_repo.create(msg2)
 
-
     # Read
     [print(msg.get_info()) for msg in prj_msg_repo.find_all()]
     print(prj_msg_repo.find_by_content("new"))
     print(prj_msg_repo.find_all_username_messages("idm"))
-
-
-
-
-
 
     e_repo.save()
     prj_repo.save()
     tsks_repo.save()
     prj_msg_repo.save()
 
+    e_repo.load()
+    prj_repo.load()
+    tsks_repo.load()
+    prj_msg_repo.load()
+    [print(obj.get_info()) for obj in e_repo]
+    [print(obj.get_info()) for obj in prj_repo]
+    [print(obj.get_info()) for obj in tsks_repo]
+    [print(obj.get_info()) for obj in prj_msg_repo]

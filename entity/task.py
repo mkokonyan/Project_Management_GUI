@@ -68,8 +68,8 @@ class Task:
         return f"{self.name}"
 
     def get_info(self) -> str:
-        return f"Task name: {self.name:<15.15s} " \
-               f"| Assigned to: {str(self.employee):<15.15s} " \
+        return f"Task name: {self.name} " \
+               f"| Assigned to: {str(self.employee._username):<15.15s} " \
                f"| Description: {self.description:<40.40s}" \
                f"| Time estimation: {self.time_estimation:<3}" \
                f"| Task status: {'Archived' if self.is_finished else 'In progress':<10.11s}"
