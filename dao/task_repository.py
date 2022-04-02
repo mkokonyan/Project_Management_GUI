@@ -6,7 +6,12 @@ class TaskRepository(JsonRepository):
     DB_FILENAME = "db/tasks.json"
     ENTITY_CLASS = Task
 
-    def find_by_name(self, name_part: str) -> list[Task]:
+    def find_by_full_name(self, full_name: str) -> Task:
+        result = [tsk for tsk in self.find_all() if full_name.lower() == tsk.name.lower()]
+        if result:
+            return result[0]
+
+    def find_by_name_part(self, name_part: str) -> list[Task]:
         result = [tsk for tsk in self.find_all() if name_part.lower() in tsk.name.lower()]
         return result
 

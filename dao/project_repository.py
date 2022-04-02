@@ -8,7 +8,12 @@ class ProjectRepository(JsonRepository):
     DB_FILENAME = "db/projects.json"
     ENTITY_CLASS = Project
 
-    def find_by_name(self, name_part: str) -> list[Project]:
+    def find_by_full_name(self, full_name: str) -> Project:
+        result = [prj for prj in self.find_all() if full_name.lower() == prj.name.lower()]
+        if result:
+            return result[0]
+
+    def find_by_name_part(self, name_part: str) -> list[Project]:
         result = [prj for prj in self.find_all() if name_part.lower() in prj.name.lower()]
         return result
 

@@ -1,6 +1,5 @@
 class Task:
 
-
     def __init__(self,
                  obj_id: str = None,
                  name: str = None,

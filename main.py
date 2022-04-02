@@ -9,6 +9,7 @@ from entity.task import Task
 from exceptions.entity_not_found_exception import EntityNotFoundException
 from exceptions.username_not_found_exception import UsernameNotFoundException
 from services.login_service import LoginService
+from services.project_service import ProjectService
 
 if __name__ == '__main__':
     # # Employee CRUD operations:
@@ -179,22 +180,37 @@ if __name__ == '__main__':
 
     e4 = Employee("NewUser", "12345qwe", "New", "User", "newueser@const.com")
 
-    service = LoginService(e_repo)
-    print([obj.username for obj in service.employee_repository])
-    print(service.logged_user)
+    e_service = LoginService(e_repo)
+    print([obj.username for obj in e_service.employee_repository])
+    print(e_service.logged_user)
 
-    print(service.login("mkk", "12345qwe"))
-    print(service.logged_user)
-    service.logout()
-    print(service.logged_user)
-    print(service.register("NewUser", "12345678a", "12345678a", "New", "User", "mkk@const.com"))
-    print(service.login("NewUser", "12345678a"))
-    print(service.logged_user)
+    print(e_service.login("mkk", "12345qwe"))
+    print(e_service.logged_user)
+    e_service.logout()
+    print(e_service.logged_user)
+    print(e_service.register("NewUser", "12345678a", "12345678a", "New", "User", "mkk@const.com"))
+    print(e_service.login("NewUser", "12345678a"))
+    print(e_service.logged_user)
     e_repo.load()
-    print(service.edit_profile(
+    print(e_service.edit_profile(
         username="NewUser",
         password="12345678a",
         confirm_password="12345678a",
         first_name="Real",
         last_name="Name",
         email="mkk@const.com"))
+    print(e_service.register("AnotherUser", "12345678a", "12345678a", "Another", "User", "anuser@const.com"))
+    e_repo.load()
+    print([obj.username for obj in e_service.employee_repository])
+
+    prj_repo = ProjectRepository()
+    prj1 = Project(None, "Parking", "InjStroy", 200, "2022-05-24")
+    prj2 = Project(None, "House", "IvanovStroy", 400, "2022-04-03")
+    prj3 = Project(None, "Bridge", "Stoyanov", 500, "2023-01-05")
+    prj_repo.create(prj1)
+    prj_repo.create(prj2)
+    prj_repo.create(prj3)
+    prj_repo.save()
+    prj_repo.load()
+
+    prj_service = ProjectService(prj_repo)
