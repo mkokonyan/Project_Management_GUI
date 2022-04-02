@@ -166,21 +166,25 @@ if __name__ == '__main__':
     # [print(obj.get_info()) for obj in tsks_repo]
     # [print(obj.get_info()) for obj in prj_msg_repo]
 
-    e_repo = EmployeeRepository()
+    emp_repo = EmployeeRepository()
+    prj_repo = ProjectRepository()
+    tsk_repo = TaskRepository()
+    prj_msg_repo = ProjectMessageRepository()
+
     a = Admin("mkk", "12345qwe", "Martin", "Kokonyan", "mkk@const.com")
     e1 = Employee("idm", "12345qwe", "Ivan", "Dimitrov", "idm@const.com")
     e2 = Employee("spt", "12345qwe", "Simona", "Petrova", "spt@const.com")
     e3 = Employee("giv", "12345qwe", "Georgi", "Ivanov", "giv@const.com")
-    e_repo.create(a)
-    e_repo.create(e1)
-    e_repo.create(e2)
-    e_repo.create(e3)
-    e_repo.save()
-    e_repo.load()
+    emp_repo.create(a)
+    emp_repo.create(e1)
+    emp_repo.create(e2)
+    emp_repo.create(e3)
+    emp_repo.save()
+    emp_repo.load()
 
     e4 = Employee("NewUser", "12345qwe", "New", "User", "newueser@const.com")
 
-    e_service = LoginService(e_repo)
+    e_service = LoginService(emp_repo)
     print([obj.username for obj in e_service.employee_repository])
     print(e_service.logged_user)
 
@@ -191,7 +195,7 @@ if __name__ == '__main__':
     print(e_service.register("NewUser", "12345678a", "12345678a", "New", "User", "mkk@const.com"))
     print(e_service.login("NewUser", "12345678a"))
     print(e_service.logged_user)
-    e_repo.load()
+    emp_repo.load()
     print(e_service.edit_profile(
         username="NewUser",
         password="12345678a",
@@ -200,17 +204,25 @@ if __name__ == '__main__':
         last_name="Name",
         email="mkk@const.com"))
     print(e_service.register("AnotherUser", "12345678a", "12345678a", "Another", "User", "anuser@const.com"))
-    e_repo.load()
+    emp_repo.load()
     print([obj.username for obj in e_service.employee_repository])
 
-    prj_repo = ProjectRepository()
     prj1 = Project(None, "Parking", "InjStroy", 200, "2022-05-24")
     prj2 = Project(None, "House", "IvanovStroy", 400, "2022-04-03")
     prj3 = Project(None, "Bridge", "Stoyanov", 500, "2023-01-05")
     prj_repo.create(prj1)
     prj_repo.create(prj2)
     prj_repo.create(prj3)
-    prj_repo.save()
-    prj_repo.load()
+    # prj_repo.save()
 
-    prj_service = ProjectService(prj_repo)
+
+
+    prj_service = ProjectService(prj_repo, emp_repo, tsk_repo)
+
+    # prj_service.add_new_project(name="Skyscraper", client="SofiaStroy", time_estimation=21, due_date="2022-05-20")
+
+    # prj_service.add_new_project(name="Warehouse", client="Techstroy", time_estimation=211, due_date="2023-05-20")
+    prj_repo.load()
+    prj_service.set_current_project("Skyscraper-Sofia")
+    # prj_service.edit_project(name="Skyscraper-Sofia", client="SofiaStroyInfo", time_estimation=750, due_date="2022-12-20")
+    prj_service.assign_employee(e1.username)

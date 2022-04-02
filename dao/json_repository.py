@@ -1,4 +1,5 @@
 import json
+from json import JSONDecodeError
 
 from dao.base_repository import BaseRepository
 from helpers.json_helpers import dumper, object_hook
@@ -14,7 +15,11 @@ class JsonRepository(BaseRepository):
 
     def load(self):
         self.clear()
-        with open(self.DB_FILENAME, "rt", encoding="UTF-8") as f:
-            objects = json.load(f, object_hook=object_hook(self.ENTITY_CLASS))
-            for obj in objects:
-                self.create(obj)
+        try:
+            with open(self.DB_FILENAME, "rt", encoding="UTF-8") as f:
+                objects = json.load(f, object_hook=object_hook(self.ENTITY_CLASS))
+                for obj in objects:
+                    self.create(obj)
+        except JSONDecodeError:
+            with open(self.DB_FILENAME, "wt", encoding="UTF-8") as f:
+                json.dump([], f)

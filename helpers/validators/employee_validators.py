@@ -6,7 +6,7 @@ from exceptions.existing_username_exception import ExistingUsernameException
 from exceptions.username_not_found_exception import UsernameNotFoundException
 
 
-def validate_username_match(user: str, password: str, repo: EmployeeRepository):
+def validate_credentials_match(user: str, password: str, repo: EmployeeRepository):
     user = repo.find_by_id(user)
     if user is None:
         raise UsernameNotFoundException(f"Username not found. Please try again")

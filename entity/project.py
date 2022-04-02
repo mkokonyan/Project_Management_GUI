@@ -14,8 +14,8 @@ class Project:
         self._client = client
         self._time_estimation = time_estimation
         self._due_date = due_date
-        self._employees: list[str] = []
-        self._tasks: list[str] = []
+        self._employees = []
+        self._tasks = []
         self._is_finished: bool = False
 
     @property
@@ -64,7 +64,7 @@ class Project:
 
     @employees.setter
     def employees(self, value):
-        self._employees = value
+        self._employees.append(value)
 
     @property
     def tasks(self):
@@ -91,3 +91,4 @@ class Project:
                f"| Employees assigned: {', '.join([e for e in self.employees]) if self.employees else 'None':<30.40s} " \
                f"| Number of tasks: {len(self.tasks):<3}" \
                f"| Project status:{'Archived' if self.is_finished else 'In progress':<10.11s}"
+

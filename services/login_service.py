@@ -1,7 +1,7 @@
 from dao.employee_repository import EmployeeRepository
 from entity.employee import Employee
 from helpers.validators.employee_validators import \
-    validate_password, validate_name_length, validate_email, validate_username_match, validate_username, \
+    validate_password, validate_name_length, validate_email, validate_credentials_match, validate_username, \
     validate_username_change
 
 
@@ -22,7 +22,7 @@ class LoginService:
               username: str,
               password: str
               ) -> Employee:
-        validate_username_match(username, password, self._employee_repository)
+        validate_credentials_match(username, password, self._employee_repository)
         user = self._employee_repository.find_by_id(username)
         self._logged_user = user
         return user
@@ -38,6 +38,7 @@ class LoginService:
                  last_name: str,
                  email: str
                  ) -> Employee:
+
         validate_username(username, self._employee_repository)
         validate_password(password, confirm_password)
         validate_name_length(first_name, last_name)

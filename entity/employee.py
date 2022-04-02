@@ -13,9 +13,9 @@ class Employee:
         self._last_name = last_name
         self._email = email
         self._role = role
-        self._projects: list[str] = []
-        self._tasks: list[str] = []
-        self._project_messages: list[str] = []
+        self._projects = []
+        self._tasks = []
+        self._project_messages = []
 
     @property
     def username(self):
@@ -71,7 +71,7 @@ class Employee:
 
     @projects.setter
     def projects(self, value):
-        self._projects = value
+        self._projects.append(value)
 
     @property
     def tasks(self):
