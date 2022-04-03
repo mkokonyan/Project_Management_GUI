@@ -13,9 +13,9 @@ class Employee:
         self._last_name = last_name
         self._email = email
         self._role = role
-        self._projects = []
-        self._tasks = []
-        self._project_messages = []
+        self._projects_id: list[str] = []
+        self._tasks_id: list[str] = []
+        self._project_messages_id: list[str] = []
 
     @property
     def username(self):
@@ -66,28 +66,28 @@ class Employee:
         self._role = value
 
     @property
-    def projects(self):
-        return self._projects
+    def projects_id(self):
+        return self._projects_id
 
-    @projects.setter
-    def projects(self, value):
-        self._projects.append(value)
+    @projects_id.setter
+    def projects_id(self, value):
+        self._projects_id = value
 
     @property
     def tasks(self):
-        return self._tasks
+        return self._tasks_id
 
     @tasks.setter
     def tasks(self, value):
-        self._tasks = value
+        self._tasks_id = value
 
     @property
     def project_messages(self):
-        return self._project_messages
+        return self._project_messages_id
 
     @project_messages.setter
     def project_messages(self, value):
-        self._project_messages = value
+        self._project_messages_id = value
 
     def __repr__(self) -> str:
         return f"{self.first_name} {self.last_name}"

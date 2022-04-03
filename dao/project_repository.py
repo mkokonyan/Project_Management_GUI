@@ -11,9 +11,7 @@ class ProjectRepository(JsonRepository):
 
     def find_by_full_name(self, full_name: str) -> Project:
         result = [prj for prj in self.find_all() if full_name.lower() == prj.name.lower()]
-        if not result:
-            raise EntityNotFoundException(f"Project with name:{full_name} not found")
-        return result[0]
+        return result[0] if result else None
 
     def find_by_name_part(self, name_part: str) -> list[Project]:
         result = [prj for prj in self.find_all() if name_part.lower() in prj.name.lower()]

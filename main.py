@@ -175,36 +175,39 @@ if __name__ == '__main__':
     e1 = Employee("idm", "12345qwe", "Ivan", "Dimitrov", "idm@const.com")
     e2 = Employee("spt", "12345qwe", "Simona", "Petrova", "spt@const.com")
     e3 = Employee("giv", "12345qwe", "Georgi", "Ivanov", "giv@const.com")
-    emp_repo.create(a)
-    emp_repo.create(e1)
-    emp_repo.create(e2)
-    emp_repo.create(e3)
-    emp_repo.save()
+    # emp_repo.create(a)
+    # emp_repo.create(e1)
+    # emp_repo.create(e2)
+    # emp_repo.create(e3)
+    # emp_repo.save()
+
     emp_repo.load()
+    print(emp_repo.find_all())
 
+    #
     e4 = Employee("NewUser", "12345qwe", "New", "User", "newueser@const.com")
-
+    #
     e_service = LoginService(emp_repo)
     print([obj.username for obj in e_service.employee_repository])
-    print(e_service.logged_user)
+
 
     print(e_service.login("mkk", "12345qwe"))
-    print(e_service.logged_user)
+
     e_service.logout()
     print(e_service.logged_user)
-    print(e_service.register("NewUser", "12345678a", "12345678a", "New", "User", "mkk@const.com"))
+    # print(e_service.register("NewUser", "12345678a", "12345678a", "New", "User", "mkk@const.com"))
     print(e_service.login("NewUser", "12345678a"))
     print(e_service.logged_user)
-    emp_repo.load()
-    print(e_service.edit_profile(
-        username="NewUser",
-        password="12345678a",
-        confirm_password="12345678a",
-        first_name="Real",
-        last_name="Name",
-        email="mkk@const.com"))
-    print(e_service.register("AnotherUser", "12345678a", "12345678a", "Another", "User", "anuser@const.com"))
-    emp_repo.load()
+    # emp_repo.load()
+    # print(e_service.edit_profile(
+    #     username="NewUser",
+    #     password="12345678a",
+    #     confirm_password="12345678a",
+    #     first_name="Real",
+    #     last_name="Name",
+    #     email="mkk@const.com"))
+    # print(e_service.register("AnotherUser", "12345678a", "12345678a", "Another", "User", "anuser@const.com"))
+    # emp_repo.load()
     print([obj.username for obj in e_service.employee_repository])
 
     prj1 = Project(None, "Parking", "InjStroy", 200, "2022-05-24")
@@ -213,16 +216,19 @@ if __name__ == '__main__':
     prj_repo.create(prj1)
     prj_repo.create(prj2)
     prj_repo.create(prj3)
+    # prj_repo.load()
     # prj_repo.save()
-
-
 
     prj_service = ProjectService(prj_repo, emp_repo, tsk_repo)
 
     # prj_service.add_new_project(name="Skyscraper", client="SofiaStroy", time_estimation=21, due_date="2022-05-20")
 
     # prj_service.add_new_project(name="Warehouse", client="Techstroy", time_estimation=211, due_date="2023-05-20")
-    prj_repo.load()
-    prj_service.set_current_project("Skyscraper-Sofia")
+
+    # print(prj_service.set_current_project("Skyscraper"))
     # prj_service.edit_project(name="Skyscraper-Sofia", client="SofiaStroyInfo", time_estimation=750, due_date="2022-12-20")
-    prj_service.assign_employee(e1.username)
+    # print(prj_service.set_current_project("Skyscraper"))
+    # prj_service.edit_project(name="SkyscraperSofia", client="SofiaStroy", time_estimation=750, due_date="2022-12-20")
+    # prj_service.edit_project(name="SkyscraperLast", client="SofiaStroy", time_estimation=750, due_date="2023-12-20")
+
+

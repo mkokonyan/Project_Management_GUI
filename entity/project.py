@@ -1,6 +1,3 @@
-from datetime import datetime
-
-
 class Project:
     def __init__(self,
                  obj_id: str = None,
@@ -56,7 +53,7 @@ class Project:
 
     @due_date.setter
     def due_date(self, value):
-        self._due_date = datetime.strptime(value, "%Y-%m-%d")
+        self._due_date = value
 
     @property
     def employees(self):
@@ -64,7 +61,7 @@ class Project:
 
     @employees.setter
     def employees(self, value):
-        self._employees.append(value)
+        self._employees = value
 
     @property
     def tasks(self):
