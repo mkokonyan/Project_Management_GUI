@@ -5,8 +5,6 @@ from dao.project_repository import ProjectRepository
 from dao.task_repository import TaskRepository
 from entity.employee import Employee
 from entity.project import Project
-from exceptions.entity_not_found_exception import EntityNotFoundException
-from exceptions.username_not_found_exception import UsernameNotFoundException
 from helpers.validators.project_validators import validate_project_name_length, validate_project_time_estimation, \
     validate_due_date, validate_username_existence, check_current_project_is_set, check_employee_is_not_assigned, \
     validate_project_name_dublication
@@ -61,7 +59,8 @@ class ProjectService:
         check_current_project_is_set(self._current_project)
         updated_prj = self._current_project
 
-        validate_project_name_dublication(kwargs["name"], self._project_repository)
+        if not updated_prj.name == kwargs["name"]:
+            validate_project_name_dublication(kwargs["name"], self._project_repository)
         validate_project_name_length(kwargs["name"])
         validate_project_time_estimation(kwargs["time_estimation"])
         validate_due_date(datetime.strptime(kwargs["due_date"], "%Y-%m-%d"))
@@ -94,6 +93,7 @@ class ProjectService:
         check_current_project_is_set(self._current_project)
 
         employee_to_add = self._employee_repository.find_by_id(username)
+
         validate_username_existence(employee_to_add)
         check_employee_is_not_assigned(employee_to_add, self._current_project)
 
