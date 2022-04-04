@@ -214,10 +214,10 @@ if __name__ == '__main__':
     # prj_service.add_new_project(name="Skyscraper", client="SofiaStroy", time_estimation=21, due_date="2022-05-20")
     # prj_service.add_new_project(name="Warehouse-Varna", client="Techstroy", time_estimation=211, due_date="2023-05-20")
 
-    # print(prj_service.set_current_project("Skyscraper"))
+    print(prj_service.set_current_project("Warehouse"))
     # prj_service.edit_project(name="Skyscraper-Sofia", client="SofiaStroyInfo", time_estimation=750, due_date="2022-12-20")
     # prj_service.edit_project(name="SkyscraperSofia", client="SofiaStroy", time_estimation=750, due_date="2022-12-20")
-    # prj_service.edit_project(name="SkyscraperLast", client="SofiaStroy", time_estimation=750, due_date="2023-12-20")
+    # prj_service.edit_project(name="Warehouse-Varna", client="SofiaStroy", time_estimation=750, due_date="2023-12-20")
 
     # print(prj_service.set_current_project("House"))
     # prj_service.edit_project(name="Warehouse", client="Sofia", time_estimation=750, due_date="2023-12-20")
@@ -241,7 +241,7 @@ if __name__ == '__main__':
     # tsk_service.add_new_task(name="3D Model", employee="mkk", project="Parking",
     #                          description="Make model of building", time_estimation=14)
 
-    print(prj_service.set_current_project("SkyscraperLast"))
+    # print(prj_service.set_current_project("SkyscraperLast"))
     # prj_service.assign_employee("mkk")
     # tsk_service.add_new_task(name="Lower Rebar", employee="mkk", project="SkyscraperLast",
     #                          description="Calculations and make drawing", time_estimation=6)
@@ -253,6 +253,6 @@ if __name__ == '__main__':
     #                          description="Make model of building", time_estimation=14)
     # prj_service.unassign_employee("mkk")
     # tsk_service.set_new_employee("adb5ec0b-b409-11ec-992e-001a7dda7113", "idm")
-    # tsk_service.edit_task("cdb57a54-b41b-11ec-8deb-001a7dda7113",
-    #                       name="Add quantities", employee="mkk", project="SkyscraperLast",
-    #                       description="Calculations and make drawing", time_estimation=142, status="TO DO")
+    tsk_service.edit_task("cdb57a54-b41b-11ec-8deb-001a7dda7113",
+                          name="NOTES", employee="spt", project="SkyscraperLast",
+                          description="Calculations and make drawing", time_estimation=42, status="TO DO")

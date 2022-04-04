@@ -73,7 +73,7 @@ class ProjectService:
 
         validate_project_name_length(kwargs.get("name"))
         validate_project_time_estimation(kwargs.get("time_estimation"))
-        validate_due_date(datetime.strptime(kwargs.get("name"), "%Y-%m-%d"))
+        validate_due_date(datetime.strptime(kwargs.get("due_date"), "%Y-%m-%d"))
 
         setattr(updated_prj, "name", kwargs.get("name") if kwargs.get("name") else updated_prj.name)
         setattr(updated_prj, "client", kwargs.get("client") if kwargs.get("client") else updated_prj.client)
