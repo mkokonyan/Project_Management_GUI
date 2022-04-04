@@ -93,7 +93,6 @@ class TaskService:
         validate_description_length(kwargs.get("description"))
         validate_task_time_estimation(kwargs.get("time_estimation"))
 
-
         setattr(task_to_edit, "employee", kwargs.get("employee") if kwargs.get("employee") else task_to_edit.employee)
         setattr(task_to_edit, "description",
                 kwargs.get("description") if kwargs.get("description") else task_to_edit.description)
@@ -110,6 +109,21 @@ class TaskService:
         self.repos_save(self._task_repository, self._project_repository, self._employee_repository)
 
         return task_to_edit
+
+    def delete_task(self, task_id) -> Task:
+        task_to_delete = self._task_repository.find_by_id(task_id)
+        project_to_edit = self._project_repository.find_by_full_name(task_to_delete.project)
+        employee_to_edit = self._employee_repository.find_by_id(task_to_delete.employee)
+
+        if task_to_delete.obj_id in employee_to_edit.tasks_id:
+            employee_to_edit.remove_task(task_id)
+        if task_to_delete.obj_id in project_to_edit.tasks_id:
+            project_to_edit.remove_task(task_id)
+
+        self._task_repository.delete_by_id(task_id)
+
+        self.repos_save(self._task_repository, self._project_repository, self._employee_repository)
+        return task_to_delete
 
     def set_new_employee(self, task_id: str, username: str) -> Employee:
         task_to_set = self._task_repository.find_by_id(task_id)

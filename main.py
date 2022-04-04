@@ -253,6 +253,8 @@ if __name__ == '__main__':
     #                          description="Make model of building", time_estimation=14)
     # prj_service.unassign_employee("mkk")
     # tsk_service.set_new_employee("adb5ec0b-b409-11ec-992e-001a7dda7113", "idm")
-    tsk_service.edit_task("cdb57a54-b41b-11ec-8deb-001a7dda7113",
-                          name="NOTES", employee="spt", project="SkyscraperLast",
-                          description="Calculations and make drawing", time_estimation=42, status="TO DO")
+    # tsk_service.edit_task("cdb57a54-b41b-11ec-8deb-001a7dda7113",
+    #                       name="NOTES", employee="spt", project="SkyscraperLast",
+    #                       description="Calculations and make drawing", time_estimation=42, status="TO DO")
+
+    tsk_service.delete_task("cdb57a54-b41b-11ec-8deb-001a7dda7113")
