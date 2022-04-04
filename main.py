@@ -10,6 +10,7 @@ from exceptions.entity_not_found_exception import EntityNotFoundException
 from exceptions.username_not_found_exception import UsernameNotFoundException
 from services.login_service import LoginService
 from services.project_service import ProjectService
+from services.task_service import TaskService
 
 if __name__ == '__main__':
     # # Employee CRUD operations:
@@ -173,23 +174,24 @@ if __name__ == '__main__':
 
     emp_repo.load()
     prj_repo.load()
-
-    a = Admin("mkk", "12345qwe", "Martin", "Kokonyan", "mkk@const.com")
-    e1 = Employee("idm", "12345qwe", "Ivan", "Dimitrov", "idm@const.com")
-    e2 = Employee("spt", "12345qwe", "Simona", "Petrova", "spt@const.com")
-    e3 = Employee("giv", "12345qwe", "Georgi", "Ivanov", "giv@const.com")
-    # emp_repo.create(a)
-    # emp_repo.create(e1)
-    # emp_repo.create(e2)
-    # emp_repo.create(e3)
-    # emp_repo.save()
-
-    print(emp_repo.find_all())
-
-    e4 = Employee("NewUser", "12345qwe", "New", "User", "newueser@const.com")
+    tsk_repo.load()
 
     e_service = LoginService(emp_repo)
-    print([obj.username for obj in e_service.employee_repository])
+
+    # e_service.register(username="mkk", password="12345qwe", confirm_password="12345qwe", first_name="Martin",
+    #                    last_name="Kokonyan", email="mkk@const.com")
+    # e_service.register(username="idm", password="12345qwe", confirm_password="12345qwe", first_name="Ivan",
+    #                    last_name="Dimitrov", email="idm@const.com")
+    # e_service.register(username="spt", password="12345qwe", confirm_password="12345qwe", first_name="Simona",
+    #                    last_name="Petrova", email="spt@const.com")
+    # e_service.register(username="giv", password="12345qwe", confirm_password="12345qwe", first_name="Georgi",
+    #                    last_name="Ivanov", email="giv@const.com")
+    # e_service.register(username="NewUser", password="12345678a", confirm_password="12345678a", first_name="New",
+    #                    last_name="User", email="mkk@const.com")
+    # e_service.register(username="AnotherUser", password="12345678a", confirm_password="12345678a", first_name="Another",
+    #                    last_name="User", email="anuser@const.com")
+
+    print(emp_repo.find_all())
 
     print(e_service.login("mkk", "12345qwe"))
 
@@ -198,42 +200,43 @@ if __name__ == '__main__':
     # print(e_service.register("NewUser", "12345678a", "12345678a", "New", "User", "mkk@const.com"))
     print(e_service.login("NewUser", "12345678a"))
     print(e_service.logged_user)
-    # emp_repo.load()
-    # print(e_service.edit_profile(
-    #     username="NewUser",
-    #     password="12345678a",
-    #     confirm_password="12345678a",
-    #     first_name="Real",
-    #     last_name="Name",
-    #     email="mkk@const.com"))
-    # print(e_service.register("AnotherUser", "12345678a", "12345678a", "Another", "User", "anuser@const.com"))
-    print([obj.username for obj in e_service.employee_repository])
 
-    prj1 = Project(None, "Parking", "InjStroy", 200, "2022-05-24")
-    prj2 = Project(None, "House", "IvanovStroy", 400, "2022-04-03")
-    prj3 = Project(None, "Bridge", "Stoyanov", 500, "2023-01-05")
-    # prj_repo.create(prj1)
-    # prj_repo.create(prj2)
-    # prj_repo.create(prj3)
-    # prj_repo.save()
+    print(e_service.edit_profile(username="NewUser", password="12345678a", confirm_password="12345678a",
+                                 first_name="Real", last_name="Name", email="mkk@const.com"))
+
+    print([obj.username for obj in e_service.employee_repository])
 
     prj_service = ProjectService(prj_repo, emp_repo, tsk_repo)
 
+    # prj_service.add_new_project(name="Parking", client="InjStroy", time_estimation=200, due_date="2022-05-24")
+    # prj_service.add_new_project(name="House", client="IvanovStroy", time_estimation=400, due_date="2022-04-08")
+    # prj_service.add_new_project(name="Bridge", client="Stoyanov", time_estimation=500, due_date="2023-01-05")
     # prj_service.add_new_project(name="Skyscraper", client="SofiaStroy", time_estimation=21, due_date="2022-05-20")
-
     # prj_service.add_new_project(name="Warehouse-Varna", client="Techstroy", time_estimation=211, due_date="2023-05-20")
 
-    print(prj_service.set_current_project("Skyscraper"))
+    # print(prj_service.set_current_project("Skyscraper"))
     # prj_service.edit_project(name="Skyscraper-Sofia", client="SofiaStroyInfo", time_estimation=750, due_date="2022-12-20")
     # prj_service.edit_project(name="SkyscraperSofia", client="SofiaStroy", time_estimation=750, due_date="2022-12-20")
     # prj_service.edit_project(name="SkyscraperLast", client="SofiaStroy", time_estimation=750, due_date="2023-12-20")
 
-    print(prj_service.set_current_project("Warehouse-Varna"))
+    print(prj_service.set_current_project("Warehouse"))
     # prj_service.edit_project(name="Warehouse", client="Sofia", time_estimation=750, due_date="2023-12-20")
 
-    print(prj_service.set_current_project("SkyscraperLast"))
-    # prj_service.assign_employee(a.username)
-    # prj_service.assign_employee(e1.username)
-    print(prj_service.set_current_project("Bridge"))
-    # prj_service.assign_employee(e2.username)
-    prj_service.assign_employee(e1.username)
+    # prj_service.assign_employee("mkk")
+    # prj_service.assign_employee("NewUser")
+    # print(prj_service.set_current_project("Bridge"))
+    # prj_service.assign_employee("NewUser")
+    # prj_service.assign_employee("AnotherUser")
+    # print(prj_service.set_current_project("SkyscraperLast"))
+    # prj_service.unassign_employee("mkk")
+
+    tsk_service = TaskService(tsk_repo, prj_repo, emp_repo)
+
+    # tsk_service.add_new_task(name="Lower Rebar", employee="mkk", project="House",
+    #                          description="Calculations and make drawing", time_estimation=6)
+    #
+    # tsk_service.add_new_task(name="Upper Rebar", employee="mkk", project="House",
+    #                          description="Calculations and make drawing", time_estimation=12)
+    #
+    # tsk_service.add_new_task(name="3D Model", employee="NewUser", project="Parking",
+    #                          description="Make model of building", time_estimation=14)

@@ -43,3 +43,9 @@ def check_employee_is_not_assigned(employee: Employee, project: Project) -> bool
     if project.obj_id in employee.projects_id:
         raise ValueError(f"Current user is already assigned to this project")
     return True
+
+
+def check_employee_is_assigned(employee: Employee, project: Project) -> bool:
+    if project.obj_id not in employee.projects_id:
+        raise ValueError(f"Current user is not assigned to this project")
+    return True

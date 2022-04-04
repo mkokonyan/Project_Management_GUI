@@ -74,11 +74,11 @@ class Employee:
         self._projects_id = value
 
     @property
-    def tasks(self):
+    def tasks_id(self):
         return self._tasks_id
 
-    @tasks.setter
-    def tasks(self, value):
+    @tasks_id.setter
+    def tasks_id(self, value):
         self._tasks_id = value
 
     @property
