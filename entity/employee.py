@@ -92,6 +92,18 @@ class Employee:
     def __repr__(self) -> str:
         return f"{self.first_name} {self.last_name}"
 
+    def add_project(self, prj_id: str) -> None:
+        self.projects_id.append(prj_id)
+
+    def remove_project(self, prj_id: str) -> None:
+        self.projects_id.remove(prj_id)
+
+    def add_task(self, tsk_id: str) -> None:
+        self.tasks_id.append(tsk_id)
+
+    def remove_task(self, tsk_id: str) -> None:
+        self.tasks_id.remove(tsk_id)
+
     def get_info(self) -> str:
         return f"Username: {self.username + '(' + self.role + ')':<20.15s} " \
                f"| Name: {self.first_name + ' ' + self.last_name:<20.15s} " \

@@ -219,7 +219,7 @@ if __name__ == '__main__':
     # prj_service.edit_project(name="SkyscraperSofia", client="SofiaStroy", time_estimation=750, due_date="2022-12-20")
     # prj_service.edit_project(name="SkyscraperLast", client="SofiaStroy", time_estimation=750, due_date="2023-12-20")
 
-    print(prj_service.set_current_project("Warehouse"))
+    # print(prj_service.set_current_project("House"))
     # prj_service.edit_project(name="Warehouse", client="Sofia", time_estimation=750, due_date="2023-12-20")
 
     # prj_service.assign_employee("mkk")
@@ -228,15 +228,31 @@ if __name__ == '__main__':
     # prj_service.assign_employee("NewUser")
     # prj_service.assign_employee("AnotherUser")
     # print(prj_service.set_current_project("SkyscraperLast"))
-    # prj_service.unassign_employee("mkk")
+    # prj_service.assign_employee("AnotherUser")
 
     tsk_service = TaskService(tsk_repo, prj_repo, emp_repo)
-
+    #
     # tsk_service.add_new_task(name="Lower Rebar", employee="mkk", project="House",
     #                          description="Calculations and make drawing", time_estimation=6)
     #
     # tsk_service.add_new_task(name="Upper Rebar", employee="mkk", project="House",
     #                          description="Calculations and make drawing", time_estimation=12)
-    #
-    # tsk_service.add_new_task(name="3D Model", employee="NewUser", project="Parking",
+    # #
+    # tsk_service.add_new_task(name="3D Model", employee="mkk", project="Parking",
     #                          description="Make model of building", time_estimation=14)
+
+    print(prj_service.set_current_project("SkyscraperLast"))
+    # prj_service.assign_employee("mkk")
+    # tsk_service.add_new_task(name="Lower Rebar", employee="mkk", project="SkyscraperLast",
+    #                          description="Calculations and make drawing", time_estimation=6)
+    #
+    # tsk_service.add_new_task(name="Upper Rebar", employee="mkk", project="SkyscraperLast",
+    #                          description="Calculations and make drawing", time_estimation=12)
+    # #
+    # tsk_service.add_new_task(name="SomenewTask", employee="idm", project="SkyscraperLast",
+    #                          description="Make model of building", time_estimation=14)
+    # prj_service.unassign_employee("mkk")
+    # tsk_service.set_new_employee("adb5ec0b-b409-11ec-992e-001a7dda7113", "idm")
+    # tsk_service.edit_task("cdb57a54-b41b-11ec-8deb-001a7dda7113",
+    #                       name="Add quantities", employee="mkk", project="SkyscraperLast",
+    #                       description="Calculations and make drawing", time_estimation=142, status="TO DO")

@@ -17,3 +17,4 @@ class EmployeeRepository(JsonRepository):
         self.find_by_id(entity.username)
         self._entities[entity.username] = entity
         return entity
+

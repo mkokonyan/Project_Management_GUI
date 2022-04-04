@@ -33,6 +33,10 @@ class ProjectService:
     def task_repository(self):
         return self._task_repository
 
+    @property
+    def current_project(self):
+        return self._current_project
+
     def set_current_project(self, project_name: str) -> Project:
         current_project = self._project_repository.find_by_full_name(project_name)
         self._current_project = current_project
@@ -44,7 +48,6 @@ class ProjectService:
                         time_estimation: int,
                         due_date: str
                         ) -> Project:
-
         validate_project_name_dublication(name, self._project_repository)
         validate_project_name_length(name)
         validate_project_time_estimation(time_estimation)
@@ -65,16 +68,18 @@ class ProjectService:
         check_current_project_is_set(self._current_project)
         updated_prj = self._current_project
 
-        if not updated_prj.name == kwargs["name"]:
-            validate_project_name_dublication(kwargs["name"], self._project_repository)
-        validate_project_name_length(kwargs["name"])
-        validate_project_time_estimation(kwargs["time_estimation"])
-        validate_due_date(datetime.strptime(kwargs["due_date"], "%Y-%m-%d"))
+        if not updated_prj.name == kwargs.get("name"):
+            validate_project_name_dublication(kwargs.get("name"), self._project_repository)
 
-        updated_prj.name = kwargs["name"]
-        updated_prj.client = kwargs["client"]
-        updated_prj.time_estimation = kwargs["time_estimation"]
-        updated_prj.due_date = kwargs["due_date"]
+        validate_project_name_length(kwargs.get("name"))
+        validate_project_time_estimation(kwargs.get("time_estimation"))
+        validate_due_date(datetime.strptime(kwargs.get("name"), "%Y-%m-%d"))
+
+        setattr(updated_prj, "name", kwargs.get("name") if kwargs.get("name") else updated_prj.name)
+        setattr(updated_prj, "client", kwargs.get("client") if kwargs.get("client") else updated_prj.client)
+        setattr(updated_prj, "time_estimation", kwargs.get("time_estimation") if kwargs.get("time_estimation") else updated_prj.time_estimation)
+        setattr(updated_prj, "due_date", kwargs.get("due_date") if kwargs.get("due_date") else updated_prj.client)
+
 
         self._project_repository.update(updated_prj)
         self._project_repository.save()
@@ -84,18 +89,18 @@ class ProjectService:
     def assign_employee(self, username: str) -> Employee:
         check_current_project_is_set(self._current_project)
 
-        employee_to_add = self._employee_repository.find_by_id(username)
+        new_employee = self._employee_repository.find_by_id(username)
 
-        validate_username_existence(employee_to_add)
-        check_employee_is_not_assigned(employee_to_add, self._current_project)
+        validate_username_existence(new_employee)
+        check_employee_is_not_assigned(new_employee, self._current_project)
 
-        self._current_project.employees.append(username)
-        employee_to_add.projects_id.append(self._current_project.obj_id)
+        self.add_employee(username)
+        new_employee.add_project(self._current_project.obj_id)
 
         self._project_repository.save()
         self._employee_repository.save()
 
-        return employee_to_add
+        return new_employee
 
     def unassign_employee(self, username: str) -> Employee:
         employee_to_remove = self._employee_repository.find_by_id(username)
@@ -103,11 +108,18 @@ class ProjectService:
         validate_username_existence(employee_to_remove)
         check_employee_is_assigned(employee_to_remove, self._current_project)
 
-        self._current_project.employees.remove(username)
-        employee_to_remove.projects_id.remove(self._current_project.obj_id)
+        employee_tasks_id = [t_id for t_id in employee_to_remove.tasks_id if t_id in self._current_project.tasks_id]
+        if employee_tasks_id:
+            for t_id in employee_tasks_id:
+                employee_to_remove.remove_task(t_id)
+                setattr(self._task_repository.find_by_id(t_id), "employee", None)
+
+        self.remove_employee(username)
+        employee_to_remove.remove_project(self._current_project.obj_id)
 
         self._project_repository.save()
         self._employee_repository.save()
+        self._task_repository.save()
 
         return employee_to_remove
 
@@ -119,3 +131,12 @@ class ProjectService:
 
     def load_all_projects(self) -> list[Project]:
         return self._project_repository.load()
+
+    def add_employee(self, username: str) -> str:
+        self.current_project.employees.append(username)
+        return username
+
+    def remove_employee(self, username: str) -> str:
+        self.current_project.employees.remove(username)
+        return username
+

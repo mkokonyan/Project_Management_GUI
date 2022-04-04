@@ -82,6 +82,18 @@ class Project:
     def __repr__(self) -> str:
         return f"{self.name}"
 
+    def add_employee(self, username: str) -> None:
+        self.employees.append(username)
+
+    def remove_employee(self, username: str) -> None:
+        self.employees.remove(username)
+
+    def add_task(self, tsk_id: str) -> None:
+        self.tasks_id.append(tsk_id)
+
+    def remove_task(self, tsk_id: str) -> None:
+        self.tasks_id.remove(tsk_id)
+
     def get_info(self) -> str:
         return f"Project name: {self.name:<10.15s} " \
                f"| Client {self.client:<10.15s} " \

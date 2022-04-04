@@ -2,7 +2,6 @@ from datetime import datetime, timedelta
 
 from dao.json_repository import JsonRepository
 from entity.project import Project
-from exceptions.entity_not_found_exception import EntityNotFoundException
 
 
 class ProjectRepository(JsonRepository):
@@ -29,3 +28,5 @@ class ProjectRepository(JsonRepository):
     def find_by_finished_status(self) -> list[Project]:
         result = [prj for prj in self.find_all() if prj.is_finished]
         return result
+
+
