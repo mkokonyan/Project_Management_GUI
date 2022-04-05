@@ -9,6 +9,7 @@ from entity.task import Task
 from exceptions.entity_not_found_exception import EntityNotFoundException
 from exceptions.username_not_found_exception import UsernameNotFoundException
 from services.login_service import LoginService
+from services.project_message_service import ProjectMessageService
 from services.project_service import ProjectService
 from services.task_service import TaskService
 
@@ -175,10 +176,12 @@ if __name__ == '__main__':
     e_service = LoginService(emp_repo)
     tsk_service = TaskService(tsk_repo, prj_repo, emp_repo)
     prj_service = ProjectService(prj_repo, emp_repo, tsk_repo)
+    prj_msg_service = ProjectMessageService(prj_msg_repo, emp_repo)
 
     emp_repo.load()
     prj_repo.load()
     tsk_repo.load()
+    prj_msg_repo.load()
 
     # e_service.register(username="mkk", password="12345qwe", confirm_password="12345qwe", first_name="Martin",
     #                    last_name="Kokonyan", email="mkk@const.com")
@@ -267,6 +270,15 @@ if __name__ == '__main__':
 
     # tsk_service.set_task_finish_status(tasks_id[2])
 
-    print(prj_service.set_current_project("Bridge"))
-    prj1 = prj_service._project_repository.find_by_id(projects_id[0])
-    prj_service.set_project_finish_status()
+    # print(prj_service.set_current_project("Bridge"))
+    # prj1 = prj_service._project_repository.find_by_id(projects_id[0])
+    # prj_service.set_project_finish_status()
+    #
+    # prj_msg_service.send_message("You should check corrections", "mkk")
+    # prj_msg_service.send_message("You should check corrections", "AnotherUser")
+    # prj_msg_service.send_message("You should check corrections and drawings", "AnotherUser")
+
+    messages_id = list(prj_msg_repo._entities.keys())
+    # prj_msg_service.delete_message(messages_id[-1])
+
+    prj_msg_service.edit_message(messages_id[-1], "Calculations with new drawing")

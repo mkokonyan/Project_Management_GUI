@@ -5,11 +5,11 @@ class ProjectMessage:
     def __init__(self,
                  obj_id: str = None,
                  message: str = None,
-                 username: str = None,
+                 employee: str = None,
                  ) -> None:
         self._obj_id = obj_id
         self._message = message
-        self._username = username
+        self._employee = employee
         self._sent_on = datetime.now()
 
     @property
@@ -29,12 +29,12 @@ class ProjectMessage:
         self._message = value
 
     @property
-    def username(self):
-        return self._username
+    def employee(self):
+        return self._employee
 
-    @username.setter
-    def username(self, value):
-        self._username = value
+    @employee.setter
+    def employee(self, value):
+        self._employee = value
 
     @property
     def sent_on(self):
@@ -45,9 +45,9 @@ class ProjectMessage:
         self._sent_on = value
 
     def __repr__(self) -> str:
-        return f"{self._message} (by {self._username})"
+        return f"{self._message} (by {self._employee})"
 
     def get_info(self) -> str:
         return f"Message: {self._message} " \
-               f"(by {self._username}) " \
+               f"(by {self._employee}) " \
                f"sent on {self._sent_on}"

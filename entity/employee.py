@@ -82,11 +82,11 @@ class Employee:
         self._tasks_id = value
 
     @property
-    def project_messages(self):
+    def project_messages_id(self):
         return self._project_messages_id
 
-    @project_messages.setter
-    def project_messages(self, value):
+    @project_messages_id.setter
+    def project_messages_id(self, value):
         self._project_messages_id = value
 
     def __repr__(self) -> str:
@@ -107,6 +107,14 @@ class Employee:
     def remove_task(self, tsk_id: str) -> None:
         if tsk_id in self.tasks_id:
             self.tasks_id.remove(tsk_id)
+
+    def add_message(self, msg_id: str) -> None:
+        if msg_id not in self.project_messages_id:
+            self.project_messages_id.append(msg_id)
+
+    def remove_message(self, msg_id: str) -> None:
+        if msg_id in self.project_messages_id:
+            self.project_messages_id.remove(msg_id)
 
     def get_info(self) -> str:
         return f"Username: {self.username + '(' + self.role + ')':<20.15s} " \

@@ -11,5 +11,5 @@ class ProjectMessageRepository(JsonRepository):
         return result
 
     def find_all_username_messages(self, username: str) -> list[ProjectMessage]:
-        result = [msg for msg in self.find_all() if username == msg.username]
+        result = [msg for msg in self.find_all() if username == msg.employee]
         return result
