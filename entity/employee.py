@@ -93,16 +93,20 @@ class Employee:
         return f"{self.first_name} {self.last_name}"
 
     def add_project(self, prj_id: str) -> None:
-        self.projects_id.append(prj_id)
+        if prj_id not in self.projects_id:
+            self.projects_id.append(prj_id)
 
     def remove_project(self, prj_id: str) -> None:
-        self.projects_id.remove(prj_id)
+        if prj_id in self.projects_id:
+            self.projects_id.remove(prj_id)
 
     def add_task(self, tsk_id: str) -> None:
-        self.tasks_id.append(tsk_id)
+        if tsk_id not in self.tasks_id:
+            self.tasks_id.append(tsk_id)
 
     def remove_task(self, tsk_id: str) -> None:
-        self.tasks_id.remove(tsk_id)
+        if tsk_id in self.tasks_id:
+            self.tasks_id.remove(tsk_id)
 
     def get_info(self) -> str:
         return f"Username: {self.username + '(' + self.role + ')':<20.15s} " \

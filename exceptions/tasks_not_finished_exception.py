@@ -1,0 +1,2 @@
+class TasksNotFinishedException(Exception):
+    pass

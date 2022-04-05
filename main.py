@@ -172,11 +172,13 @@ if __name__ == '__main__':
     tsk_repo = TaskRepository()
     prj_msg_repo = ProjectMessageRepository()
 
+    e_service = LoginService(emp_repo)
+    tsk_service = TaskService(tsk_repo, prj_repo, emp_repo)
+    prj_service = ProjectService(prj_repo, emp_repo, tsk_repo)
+
     emp_repo.load()
     prj_repo.load()
     tsk_repo.load()
-
-    e_service = LoginService(emp_repo)
 
     # e_service.register(username="mkk", password="12345qwe", confirm_password="12345qwe", first_name="Martin",
     #                    last_name="Kokonyan", email="mkk@const.com")
@@ -191,22 +193,20 @@ if __name__ == '__main__':
     # e_service.register(username="AnotherUser", password="12345678a", confirm_password="12345678a", first_name="Another",
     #                    last_name="User", email="anuser@const.com")
 
-    print(emp_repo.find_all())
+    # print(emp_repo.find_all())
 
-    print(e_service.login("mkk", "12345qwe"))
+    # print(e_service.login("mkk", "12345qwe"))
+    # e_service.logout()
+    # print(e_service.logged_user)
 
-    e_service.logout()
-    print(e_service.logged_user)
     # print(e_service.register("NewUser", "12345678a", "12345678a", "New", "User", "mkk@const.com"))
-    print(e_service.login("NewUser", "12345678a"))
-    print(e_service.logged_user)
+    # print(e_service.login("NewUser", "12345678a"))
+    # print(e_service.logged_user)
 
-    print(e_service.edit_profile(username="NewUser", password="12345678a", confirm_password="12345678a",
-                                 first_name="Real", last_name="Name", email="mkk@const.com"))
+    # print(e_service.edit_profile(username="NewUser", password="12345678a", confirm_password="12345678a",
+    #                              first_name="Real", last_name="Name", email="mkk@const.com"))
 
     print([obj.username for obj in e_service.employee_repository])
-
-    prj_service = ProjectService(prj_repo, emp_repo, tsk_repo)
 
     # prj_service.add_new_project(name="Parking", client="InjStroy", time_estimation=200, due_date="2022-05-24")
     # prj_service.add_new_project(name="House", client="IvanovStroy", time_estimation=400, due_date="2022-04-08")
@@ -214,47 +214,59 @@ if __name__ == '__main__':
     # prj_service.add_new_project(name="Skyscraper", client="SofiaStroy", time_estimation=21, due_date="2022-05-20")
     # prj_service.add_new_project(name="Warehouse-Varna", client="Techstroy", time_estimation=211, due_date="2023-05-20")
 
-    print(prj_service.set_current_project("Warehouse"))
+    # print(prj_service.set_current_project("Warehouse"))
     # prj_service.edit_project(name="Skyscraper-Sofia", client="SofiaStroyInfo", time_estimation=750, due_date="2022-12-20")
     # prj_service.edit_project(name="SkyscraperSofia", client="SofiaStroy", time_estimation=750, due_date="2022-12-20")
     # prj_service.edit_project(name="Warehouse-Varna", client="SofiaStroy", time_estimation=750, due_date="2023-12-20")
 
-    # print(prj_service.set_current_project("House"))
+    print(prj_service.set_current_project("House"))
     # prj_service.edit_project(name="Warehouse", client="Sofia", time_estimation=750, due_date="2023-12-20")
-
+    print(prj_service.set_current_project("Warehouse-Varna"))
     # prj_service.assign_employee("mkk")
     # prj_service.assign_employee("NewUser")
-    # print(prj_service.set_current_project("Bridge"))
+    print(prj_service.set_current_project("Bridge"))
     # prj_service.assign_employee("NewUser")
     # prj_service.assign_employee("AnotherUser")
-    # print(prj_service.set_current_project("SkyscraperLast"))
-    # prj_service.assign_employee("AnotherUser")
 
-    tsk_service = TaskService(tsk_repo, prj_repo, emp_repo)
-    #
-    # tsk_service.add_new_task(name="Lower Rebar", employee="mkk", project="House",
+    projects_id = list(prj_repo._entities.keys())
+    # print(prj_service.delete_project(projects_id[-1]))
+
+
+    # tsk_service.add_new_task(name="Lower Rebar", employee="mkk", project_id=projects_id[1],
     #                          description="Calculations and make drawing", time_estimation=6)
     #
-    # tsk_service.add_new_task(name="Upper Rebar", employee="mkk", project="House",
+    # tsk_service.add_new_task(name="Upper Rebar", employee="mkk", project_id=projects_id[1],
     #                          description="Calculations and make drawing", time_estimation=12)
-    # #
-    # tsk_service.add_new_task(name="3D Model", employee="mkk", project="Parking",
+    #
+    # tsk_service.add_new_task(name="3D Model", employee="mkk", project_id=projects_id[2],
     #                          description="Make model of building", time_estimation=14)
 
-    # print(prj_service.set_current_project("SkyscraperLast"))
-    # prj_service.assign_employee("mkk")
-    # tsk_service.add_new_task(name="Lower Rebar", employee="mkk", project="SkyscraperLast",
+
+
+    print(prj_service.set_current_project("Bridge"))
+    # prj_service.assign_employee("giv")
+    # tsk_service.add_new_task(name="Lower Rebar", employee="giv", project_id=projects_id[0],
     #                          description="Calculations and make drawing", time_estimation=6)
     #
-    # tsk_service.add_new_task(name="Upper Rebar", employee="mkk", project="SkyscraperLast",
+    # tsk_service.add_new_task(name="Upper Rebar", employee="giv", project_id=projects_id[0],
     #                          description="Calculations and make drawing", time_estimation=12)
     # #
-    # tsk_service.add_new_task(name="SomenewTask", employee="idm", project="SkyscraperLast",
+    # tsk_service.add_new_task(name="SomenewTask", employee="idm", project_id=projects_id[1],
     #                          description="Make model of building", time_estimation=14)
+
+    tasks_id = list(tsk_repo._entities.keys())
     # prj_service.unassign_employee("mkk")
-    # tsk_service.set_new_employee("adb5ec0b-b409-11ec-992e-001a7dda7113", "idm")
-    # tsk_service.edit_task("cdb57a54-b41b-11ec-8deb-001a7dda7113",
-    #                       name="NOTES", employee="spt", project="SkyscraperLast",
+    # tsk_service.set_new_employee(tasks_id[2], "idm")
+    # tsk_service.edit_task(tasks_id[5],
+    #                       name="NOTES AND CALCS", employee="spt",
     #                       description="Calculations and make drawing", time_estimation=42, status="TO DO")
+    # tsk_service.set_new_employee(tasks_id[-1], "idm")
+    # tsk_service.delete_task(tasks_id[-1])
 
-    tsk_service.delete_task("cdb57a54-b41b-11ec-8deb-001a7dda7113")
+
+
+    # tsk_service.set_task_finish_status(tasks_id[2])
+
+    print(prj_service.set_current_project("Bridge"))
+    prj1 = prj_service._project_repository.find_by_id(projects_id[0])
+    prj_service.set_project_finish_status()

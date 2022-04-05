@@ -15,6 +15,10 @@ class TaskRepository(JsonRepository):
         result = [tsk for tsk in self.find_all() if name_part.lower() in tsk.name.lower()]
         return result
 
+    def find_by_project_id(self, project_id) -> list[Task]:
+        tasks = [t for t in self.find_all() if project_id in t.project_id]
+        return tasks
+
     def find_by_description(self, descr_part: str) -> list[Task]:
         result = [tsk for tsk in self.find_all() if descr_part.lower() in tsk.description.lower()]
         return result

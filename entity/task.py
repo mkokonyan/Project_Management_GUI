@@ -4,7 +4,7 @@ class Task:
                  obj_id: str = None,
                  name: str = None,
                  employee: str = None,
-                 project: str = None,
+                 project_id: str = None,
                  description: str = None,
                  time_estimation: int = None,
                  status: str = "TO DO"
@@ -12,11 +12,10 @@ class Task:
         self._obj_id = obj_id
         self._name = name
         self._employee = employee
-        self._project = project
+        self._project_id = project_id
         self._description = description
         self._time_estimation = time_estimation
         self._status: str = status
-        self._board_coordinates: tuple[int, int] = (0, 0)
         self._is_finished: bool = False
 
     @property
@@ -44,12 +43,12 @@ class Task:
         self._employee = value
 
     @property
-    def project(self):
-        return self._project
+    def project_id(self):
+        return self._project_id
 
-    @project.setter
-    def project(self, value):
-        self._project = value
+    @project_id.setter
+    def project_id(self, value):
+        self._project_id = value
 
     @property
     def description(self):
@@ -74,14 +73,6 @@ class Task:
     @status.setter
     def status(self, value):
         self._status = value
-
-    @property
-    def board_coordinates(self):
-        return self._board_coordinates
-
-    @board_coordinates.setter
-    def board_coordinates(self, value):
-        self._board_coordinates = value
 
     @property
     def is_finished(self):

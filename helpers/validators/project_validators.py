@@ -3,7 +3,9 @@ from datetime import datetime
 from dao.project_repository import ProjectRepository
 from entity.employee import Employee
 from entity.project import Project
+from entity.task import Task
 from exceptions.entity_not_found_exception import EntityNotFoundException
+from exceptions.tasks_not_finished_exception import TasksNotFinishedException
 from exceptions.username_not_found_exception import UsernameNotFoundException
 
 
@@ -33,7 +35,6 @@ def validate_username_existence(user: Employee) -> None:
         raise UsernameNotFoundException(f"Username not found. Please try again")
 
 
-
 def check_current_project_is_set(project: Project) -> bool:
     if project is None:
         raise EntityNotFoundException(f"Current project is not set")
@@ -50,3 +51,10 @@ def check_employee_is_assigned(employee: Employee, project: Project) -> bool:
     if project.obj_id not in employee.projects_id:
         raise ValueError(f"Current user is not assigned to this project")
     return True
+
+
+def validate_tasks_count(project: Project, project_tasks: list[Task]) -> None:
+    if len(project.tasks_id):
+        for t in project_tasks:
+            if not t.status == "DONE" and not t.is_finished:
+                raise TasksNotFinishedException(f"Project has unfinished tasks.")

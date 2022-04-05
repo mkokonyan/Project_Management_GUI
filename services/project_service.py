@@ -7,7 +7,7 @@ from entity.employee import Employee
 from entity.project import Project
 from helpers.validators.project_validators import validate_project_name_length, validate_project_time_estimation, \
     validate_due_date, validate_username_existence, check_current_project_is_set, check_employee_is_not_assigned, \
-    validate_project_name_dublication, check_employee_is_assigned
+    validate_project_name_dublication, check_employee_is_assigned, validate_tasks_count
 
 
 class ProjectService:
@@ -36,6 +36,11 @@ class ProjectService:
     @property
     def current_project(self):
         return self._current_project
+
+    @staticmethod
+    def repos_save(*args) -> None:
+        for repo in args:
+            repo.save()
 
     def set_current_project(self, project_name: str) -> Project:
         current_project = self._project_repository.find_by_full_name(project_name)
@@ -77,14 +82,31 @@ class ProjectService:
 
         setattr(updated_prj, "name", kwargs.get("name") if kwargs.get("name") else updated_prj.name)
         setattr(updated_prj, "client", kwargs.get("client") if kwargs.get("client") else updated_prj.client)
-        setattr(updated_prj, "time_estimation", kwargs.get("time_estimation") if kwargs.get("time_estimation") else updated_prj.time_estimation)
+        setattr(updated_prj, "time_estimation",
+                kwargs.get("time_estimation") if kwargs.get("time_estimation") else updated_prj.time_estimation)
         setattr(updated_prj, "due_date", kwargs.get("due_date") if kwargs.get("due_date") else updated_prj.client)
-
 
         self._project_repository.update(updated_prj)
         self._project_repository.save()
 
         return updated_prj
+
+    def delete_project(self, project_id: str) -> Project:
+        project_to_delete = self._project_repository.find_by_id(project_id)
+
+        employees_assigned_to_project = self._employee_repository.find_by_projects_id(project_id)
+        task_added_to_project = self._task_repository.find_by_project_id(project_to_delete.name)
+
+        [e.remove_project(project_to_delete.obj_id) for e in employees_assigned_to_project]
+        for t in task_added_to_project:
+            for e in employees_assigned_to_project:
+                e.remove_task(t.obj_id)
+        [self._task_repository.delete_by_id(t.obj_id) for t in task_added_to_project]
+        self._project_repository.delete_by_id(project_to_delete.obj_id)
+
+        self.repos_save(self._project_repository, self._employee_repository, self._task_repository)
+
+        return project_to_delete
 
     def assign_employee(self, username: str) -> Employee:
         check_current_project_is_set(self._current_project)
@@ -117,11 +139,19 @@ class ProjectService:
         self.remove_employee(username)
         employee_to_remove.remove_project(self._current_project.obj_id)
 
-        self._project_repository.save()
-        self._employee_repository.save()
-        self._task_repository.save()
+        self.repos_save(self._project_repository, self._employee_repository, self._task_repository)
 
         return employee_to_remove
+
+    def set_project_finish_status(self) -> None:
+        check_current_project_is_set(self._current_project)
+
+        project_tasks = [self._task_repository.find_by_id(t) for t in self._current_project.tasks_id]
+
+        validate_tasks_count(self._current_project, project_tasks)
+        self._current_project.is_finished = not self._current_project.is_finished
+
+        self._project_repository.save()
 
     def get_all_projects(self) -> list[Project]:
         return self._project_repository.find_all()
@@ -133,10 +163,11 @@ class ProjectService:
         return self._project_repository.load()
 
     def add_employee(self, username: str) -> str:
-        self.current_project.employees.append(username)
-        return username
+        if username not in self.current_project.employees:
+            self.current_project.employees.append(username)
+            return username
 
     def remove_employee(self, username: str) -> str:
-        self.current_project.employees.remove(username)
-        return username
-
+        if username in self.current_project.employees:
+            self.current_project.employees.remove(username)
+            return username
