@@ -149,8 +149,8 @@ class TaskService:
     def get_all_tasks(self) -> list[Task]:
         return self._task_repository.find_all()
 
-    def save_tasks(self) -> None:
-        return self._task_repository.save()
+    def reload_all_tasks(self) -> None:
+        return self._task_repository.load()
 
-    def load_all_tasks(self) -> list[Task]:
-        return self._project_repository.load()
+    def save_all_tasks(self) -> None:
+        return self._task_repository.save()

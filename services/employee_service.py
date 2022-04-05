@@ -5,7 +5,7 @@ from helpers.validators.employee_validators import \
     validate_username_change
 
 
-class LoginService:
+class EmployeeService:
     def __init__(self, employee_repository: EmployeeRepository):
         self._employee_repository = employee_repository
         self._logged_user = None
@@ -70,6 +70,15 @@ class LoginService:
         self._employee_repository.save()
 
         return user
+
+    def get_all_employees(self):
+        return self._employee_repository.find_all()
+
+    def reload_all_employees(self) -> None:
+        self._employee_repository.load()
+
+    def save_all_employees(self):
+        return self._employee_repository.save()
 
 
 

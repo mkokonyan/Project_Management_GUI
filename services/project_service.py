@@ -153,15 +153,6 @@ class ProjectService:
 
         self._project_repository.save()
 
-    def get_all_projects(self) -> list[Project]:
-        return self._project_repository.find_all()
-
-    def save_projects(self) -> None:
-        return self._project_repository.save()
-
-    def load_all_projects(self) -> list[Project]:
-        return self._project_repository.load()
-
     def add_employee(self, username: str) -> str:
         if username not in self.current_project.employees:
             self.current_project.employees.append(username)
@@ -171,3 +162,12 @@ class ProjectService:
         if username in self.current_project.employees:
             self.current_project.employees.remove(username)
             return username
+
+    def get_all_projects(self) -> list[Project]:
+        return self._project_repository.find_all()
+
+    def reload_all_projects(self) -> None:
+        return self._project_repository.load()
+
+    def save_all_projects(self) -> None:
+        return self._project_repository.save()

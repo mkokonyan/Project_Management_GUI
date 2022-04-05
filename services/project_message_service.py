@@ -58,3 +58,12 @@ class ProjectMessageService:
         self.repos_save(self._project_message_repository, self._employee_repository)
 
         return message_to_delete
+
+    def get_all_messages(self) -> list[ProjectMessage]:
+        return self._project_message_repository.find_all()
+
+    def reload_all_messages(self) -> None:
+        return self._project_message_repository.load()
+
+    def save_all_messages(self) -> None:
+        return self._project_message_repository.save()
