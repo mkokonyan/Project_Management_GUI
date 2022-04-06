@@ -16,10 +16,16 @@ class RegisterView(ttk.Frame):
 
         self.img0 = PhotoImage(file=f"view/static/register/img0.png")
         self.img1 = PhotoImage(file=f"view/static/register/img1.png")
+        self.img2 = PhotoImage(file=f"view/static/register/img2.png")
+        self.img3 = PhotoImage(file=f"view/static/register/img3.png")
 
         self.b0 = Button(self, image=self.img0, borderwidth=0, highlightthickness=0, command=self.btn_clicked,
-                         relief="flat")
+                         relief="flat", activebackground="#f9f4f5")
         self.b0.place(x=592, y=905, width=250, height=70)
+
+        self.b1 = Button(self, image=self.img2, borderwidth=0, highlightthickness=0, command=self.btn_clicked,
+                         relief="flat", bg="#f9f4f5", activebackground="#f9f4f5")
+        self.b1.place(x=1157, y=905, width=265, height=70)
 
         self.entry_img = PhotoImage(file=f"view/static/register/img_textBox.png")
         self.entry5_bg = self.canvas.create_image(732, 304, image=self.entry_img)
@@ -51,6 +57,8 @@ class RegisterView(ttk.Frame):
 
         self.b0.bind("<Enter>", self.register_btn_on_enter)
         self.b0.bind("<Leave>", self.register_btn_on_leave)
+        self.b1.bind("<Enter>", self.go_back_btn_on_enter)
+        self.b1.bind("<Leave>", self.go_back_btn_on_leave)
 
         self.pack()
 
@@ -62,3 +70,9 @@ class RegisterView(ttk.Frame):
 
     def register_btn_on_leave(self, e):
         self.b0["image"] = self.img0
+
+    def go_back_btn_on_enter(self, e):
+        self.b1["image"] = self.img3
+
+    def go_back_btn_on_leave(self, e):
+        self.b1["image"] = self.img2
