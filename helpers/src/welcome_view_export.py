@@ -40,8 +40,8 @@ canvas = Canvas(
     relief="ridge")
 canvas.place(x=0, y=0)
 
-img0 = PhotoImage(file=f"static/welcome_view/img0.png")
-img3 = PhotoImage(file=f"static/welcome_view/img3.png")
+img0 = PhotoImage(file=f"../../view/static/welcome_view/img0.png")
+img3 = PhotoImage(file=f"../../view/static/welcome_view/img3.png")
 b0 = Button(
     image=img0,
     borderwidth=0,
@@ -54,13 +54,13 @@ b0.place(
     width=57,
     height=22)
 
-background_img = PhotoImage(file=f"static/welcome_view/background.png")
+background_img = PhotoImage(file=f"../../view/static/welcome_view/background.png")
 background = canvas.create_image(
     263.5, 768.0,
     image=background_img)
 
-img1 = PhotoImage(file=f"static/welcome_view/img1.png")
-img2 = PhotoImage(file=f"static/welcome_view/img2.png")
+img1 = PhotoImage(file=f"../../view/static/welcome_view/img1.png")
+img2 = PhotoImage(file=f"../../view/static/welcome_view/img2.png")
 b1 = Button(
     image=img1,
     borderwidth=0,
@@ -75,7 +75,7 @@ b1.place(
     width=250,
     height=81)
 
-entry0_img = PhotoImage(file=f"static/welcome_view/img_textBox0.png")
+entry0_img = PhotoImage(file=f"../../view/static/welcome_view/img_textBox0.png")
 entry0_bg = canvas.create_image(
     1188.0, 480.0,
     image=entry0_img)
@@ -91,7 +91,7 @@ entry0.place(
     width=298,
     height=32)
 
-entry1_img = PhotoImage(file=f"static/welcome_view/img_textBox1.png")
+entry1_img = PhotoImage(file=f"../../view/static/welcome_view/img_textBox1.png")
 entry1_bg = canvas.create_image(
     1188.0, 610.0,
     image=entry1_img)

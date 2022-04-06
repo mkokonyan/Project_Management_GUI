@@ -24,7 +24,7 @@ class Root(Tk):
         super().__init__(*args, *kwargs)
         self.title("MK Project Management 1.00")
         self.center_resize_window(self.HEIGHT, self.WIDTH)
-        self.configure(bg="#ffffff")
+        self.configure(bg="#f9f4f5")
         self.iconbitmap(self.ICON_PATH)
 
         self.emp_repo = EmployeeRepository()

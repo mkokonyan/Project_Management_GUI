@@ -1,5 +1,4 @@
 from datetime import datetime, timedelta
-
 from dao.json_repository import JsonRepository
 from entity.project import Project
 
