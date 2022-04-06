@@ -30,8 +30,8 @@ class WelcomeView(ttk.Frame):
         self.username_entry = Entry(self, **entry_options)
         self.username_entry.place(x=1039, y=463, width=298, height=32)
 
-        self.password_entry_bg = self.canvas.create_image(1188.0, 610.0, image=self.entry_img)
-        self.password_entry = Entry(self, **entry_options)
+        self.password_entry_bg = self.canvas.create_image(1188, 610, image=self.entry_img)
+        self.password_entry = Entry(self, **entry_options, show="\u2022")
         self.password_entry.place(x=1039, y=593, width=298, height=32)
 
         self.login_btn = Button(self, image=self.login_img0, borderwidth=0, highlightthickness=0, background="#E0E0E0",
@@ -47,7 +47,7 @@ class WelcomeView(ttk.Frame):
         self.create_btn.bind("<Leave>", self.create_btn_on_leave)
 
         self.background_img = PhotoImage(file=f"view/static/welcome_view/background.png")
-        self.background = self.canvas.create_image(263.5, 768.0, image=self.background_img)
+        self.background = self.canvas.create_image(263, 768, image=self.background_img)
 
     def get_login_data(self):
         self.login_data.update(

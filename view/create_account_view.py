@@ -36,11 +36,11 @@ class CreateAccountView(ttk.Frame):
         self.username_entry.place(x=583, y=262, width=298, height=32)
 
         self.password_entry_bg = self.canvas.create_image(732, 406, image=self.entry_img)
-        self.password_entry_bg = Entry(self, **entry_options)
+        self.password_entry_bg = Entry(self, **entry_options, show="\u2022")
         self.password_entry_bg.place(x=583, y=364, width=298, height=32)
 
         self.confirm_password_bg = self.canvas.create_image(732, 508, image=self.entry_img)
-        self.confirm_password = Entry(self, **entry_options)
+        self.confirm_password = Entry(self, **entry_options, show="\u2022")
         self.confirm_password.place(x=583, y=466, width=298, height=32)
 
         self.email_entry_bg = self.canvas.create_image(732, 610, image=self.entry_img)
