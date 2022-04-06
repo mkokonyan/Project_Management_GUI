@@ -3,7 +3,7 @@ from tkinter import messagebox
 from controller.base_controller import BaseController
 from view.create_account_view import CreateAccountView
 from view.projects_view import ProjectsView
-from view.welcome_view import WelcomeView
+from view.main_view import MainView
 
 
 class EmployeeController(BaseController):
@@ -14,21 +14,21 @@ class EmployeeController(BaseController):
 
     def go_back(self):
         self.view.forget()
-        return WelcomeView(self.view.root, self).pack()
+        return MainView(self.view.root, self).pack()
 
     def register(self, registration_data):
         result = self.service.register(**registration_data)
         if isinstance(result, Exception):
             return messagebox.showerror("Error", str(result))
         self.view.forget()
-        return WelcomeView(self.view.root, self).pack()
+        return MainView(self.view.root, self).pack()
 
     def login(self, login_data):
         result = self.service.login(**login_data)
         if isinstance(result, Exception):
             return messagebox.showerror("Error", str(result))
         self.view.forget()
-        return ProjectsView(self.view.root, self).pack()
+        return ProjectsView(self.view.prj_controller, self).pack()
 
     def get_all_entities(self):
         return self._service.get_all_employees()

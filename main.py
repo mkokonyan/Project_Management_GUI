@@ -1,5 +1,5 @@
-from view.main_view import MainView
 from view.root import Root
+from view.main_view import MainView
 
 
 def print_hierarchy(w, depth=0):
@@ -15,9 +15,7 @@ def print_hierarchy(w, depth=0):
 
 if __name__ == '__main__':
     root = Root()
-    main_view = MainView(root)
+    welcome_view = MainView(root, root.emp_controller)
+    welcome_view.pack()
     print_hierarchy(root)
     root.mainloop()
-
-
-

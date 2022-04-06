@@ -7,7 +7,6 @@ from view.command.employee.register_command import RegisterCommand
 class CreateAccountView(ttk.Frame):
 
     def __init__(self, root, employee_controller, *args, **kwargs):
-
         entry_options = {"bd": 0,
                          "bg": "#e0e0e0",
                          "font": ("Helvetica", 14)
@@ -24,12 +23,11 @@ class CreateAccountView(ttk.Frame):
         self.canvas = Canvas(self, bg="#f9f4f5", height=1024, width=1440, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()
 
+        self.entry_img = PhotoImage(file=f"view/static/register/entry_img.png")
         self.register_img0 = PhotoImage(file=f"view/static/register/img0.png")
         self.register_hover_img1 = PhotoImage(file=f"view/static/register/img1.png")
         self.go_back_img2 = PhotoImage(file=f"view/static/register/img2.png")
         self.go_back_hover_img3 = PhotoImage(file=f"view/static/register/img3.png")
-        self.entry_img = PhotoImage(file=f"view/static/register/entry_img.png")
-
 
         self.username_entry_bg = self.canvas.create_image(732, 304, image=self.entry_img)
         self.username_entry = Entry(self, **entry_options)
