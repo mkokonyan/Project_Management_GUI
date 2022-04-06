@@ -1,5 +1,5 @@
 class RegisterCommand:
-    def __init__(self, employee_controller, registration_data=None):
+    def __init__(self, employee_controller, registration_data):
         self.employee_controller = employee_controller
         self.registration_data = registration_data
 

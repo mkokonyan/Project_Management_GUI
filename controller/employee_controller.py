@@ -1,3 +1,5 @@
+from tkinter import messagebox
+
 from controller.base_controller import BaseController
 from view.create_account_view import CreateAccountView
 from view.welcome_view import WelcomeView
@@ -14,8 +16,9 @@ class EmployeeController(BaseController):
         return WelcomeView(self.view.root, self).pack()
 
     def register(self, registration_data):
-        self.service.register(**registration_data)
-
+        result = self.service.register(**registration_data)
+        if isinstance(result, Exception):
+            return messagebox.showerror("Error", str(result))
         self.view.forget()
         return WelcomeView(self.view.root, self).pack()
 

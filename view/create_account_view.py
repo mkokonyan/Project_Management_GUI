@@ -11,7 +11,7 @@ class CreateAccountView(ttk.Frame):
         self.root = root
         self.employee_controller = employee_controller
         self.employee_controller.view = self
-        self.register_data = {}
+        self.registration_data = {}
 
         entry_options = {"bd": 0,
                          "bg": "#e0e0e0",
@@ -71,7 +71,7 @@ class CreateAccountView(ttk.Frame):
         self.background = self.canvas.create_image(790, 477, image=self.background_img)
 
     def get_register_data(self):
-        self.register_data.update(
+        self.registration_data.update(
             {
                 "username": self.username_entry.get(),
                 "password": self.password_entry_bg.get(),
@@ -81,8 +81,7 @@ class CreateAccountView(ttk.Frame):
                 "last_name": self.last_name_entry.get(),
             }
         )
-        print(self.register_data)
-        RegisterCommand(self.employee_controller, self.register_data)()
+        RegisterCommand(self.employee_controller, self.registration_data)()
 
     def register_btn_on_enter(self, e):
         self.register_btn["image"] = self.img1

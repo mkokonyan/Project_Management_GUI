@@ -1,5 +1,7 @@
 from dao.employee_repository import EmployeeRepository
 from entity.employee import Employee
+from exceptions.existing_username_exception import ExistingUsernameException
+from exceptions.username_not_found_exception import UsernameNotFoundException
 from helpers.validators.employee_validators import \
     validate_password, validate_name_length, validate_email, validate_credentials_match, validate_username, \
     validate_username_change
@@ -39,10 +41,13 @@ class EmployeeService:
                  email: str
                  ) -> Employee:
 
-        validate_username(username, self._employee_repository)
-        validate_password(password, confirm_password)
-        validate_name_length(first_name, last_name)
-        validate_email(email)
+        try:
+            validate_username(username, self._employee_repository)
+            validate_password(password, confirm_password)
+            validate_email(email)
+            validate_name_length(first_name, last_name)
+        except (ValueError, UsernameNotFoundException, ExistingUsernameException) as ex:
+            return ex
 
         user = Employee(
             username=username,
@@ -79,6 +84,3 @@ class EmployeeService:
 
     def save_all_employees(self):
         return self._employee_repository.save()
-
-
-
