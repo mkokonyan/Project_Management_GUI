@@ -10,25 +10,25 @@ class EmployeeController(BaseController):
 
     def show_create_account(self):
         self.view.forget()
-        return CreateAccountView(self.view.root, self).pack()
+        return CreateAccountView(self.view.root).pack()
 
     def go_back(self):
         self.view.forget()
-        return MainView(self.view.root, self).pack()
+        return MainView(self.view.root).pack()
 
     def register(self, registration_data):
         result = self.service.register(**registration_data)
         if isinstance(result, Exception):
             return messagebox.showerror("Error", str(result))
         self.view.forget()
-        return MainView(self.view.root, self).pack()
+        return MainView(self.view.root).pack()
 
     def login(self, login_data):
         result = self.service.login(**login_data)
         if isinstance(result, Exception):
             return messagebox.showerror("Error", str(result))
         self.view.forget()
-        return ProjectsView(self.view.prj_controller, self).pack()
+        return ProjectsView(self.view.root).pack()
 
     def get_all_entities(self):
         return self._service.get_all_employees()

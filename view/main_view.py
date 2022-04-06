@@ -5,17 +5,16 @@ from view.command.employee.show_create_account_command import ShowCreateAccountC
 
 
 class MainView(ttk.Frame):
-    def __init__(self, root, employee_controller, *args, **kwargs):
+    def __init__(self, root, *args, **kwargs):
         entry_options = {"bd": 0,
                          "bg": "#e0e0e0",
                          "font": ("Helvetica", 14)
                          }
         super().__init__(root, *args, **kwargs)
         self.root = root
-        self.employee_controller = employee_controller
-        self.employee_controller.view = self
+        self.root.emp_controller.view = self
         self.login_data = {}
-        self.show_create_account_command = ShowCreateAccountCommand(self.employee_controller)
+        self.show_create_account_command = ShowCreateAccountCommand(self.root.emp_controller)
 
         self.canvas = Canvas(self, bg="#f9f4f5", height=1024, width=1440, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()
@@ -57,7 +56,7 @@ class MainView(ttk.Frame):
 
             }
         )
-        LoginCommand(self.employee_controller, self.login_data)()
+        LoginCommand(self.root.emp_controller, self.login_data)()
 
     def login_btn_on_enter(self, e):
         self.login_btn["image"] = self.login_hover_img1

@@ -15,7 +15,7 @@ def print_hierarchy(w, depth=0):
 
 if __name__ == '__main__':
     root = Root()
-    welcome_view = MainView(root, root.emp_controller)
+    welcome_view = MainView(root)
     welcome_view.pack()
     print_hierarchy(root)
     root.mainloop()

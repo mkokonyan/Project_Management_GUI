@@ -6,7 +6,7 @@ from view.command.employee.register_command import RegisterCommand
 
 class CreateAccountView(ttk.Frame):
 
-    def __init__(self, root, employee_controller, *args, **kwargs):
+    def __init__(self, root, *args, **kwargs):
         entry_options = {"bd": 0,
                          "bg": "#e0e0e0",
                          "font": ("Helvetica", 14)
@@ -14,11 +14,10 @@ class CreateAccountView(ttk.Frame):
 
         super().__init__(root, *args, **kwargs)
         self.root = root
-        self.employee_controller = employee_controller
-        self.employee_controller.view = self
+        self.root.emp_controller.view = self
         self.registration_data = {}
 
-        self.go_back_command = GoBackCommand(self.employee_controller)
+        self.go_back_command = GoBackCommand(self.root.emp_controller)
 
         self.canvas = Canvas(self, bg="#f9f4f5", height=1024, width=1440, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()
@@ -81,7 +80,7 @@ class CreateAccountView(ttk.Frame):
                 "last_name": self.last_name_entry.get(),
             }
         )
-        RegisterCommand(self.employee_controller, self.registration_data)()
+        RegisterCommand(self.root.emp_controller, self.registration_data)()
 
     def register_btn_on_enter(self, e):
         self.register_btn["image"] = self.register_hover_img1
