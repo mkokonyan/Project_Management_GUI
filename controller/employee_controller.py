@@ -13,6 +13,12 @@ class EmployeeController(BaseController):
         self.view.forget()
         return WelcomeView(self.view.root, self).pack()
 
+    def register(self, registration_data):
+        self.service.register(**registration_data)
+
+        self.view.forget()
+        return WelcomeView(self.view.root, self).pack()
+
     def get_all_entities(self):
         return self._service.get_all_employees()
 
