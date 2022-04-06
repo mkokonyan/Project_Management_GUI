@@ -18,7 +18,7 @@ from services.task_service import TaskService
 class Root(Tk):
     ICON_PATH = os.path.join(os.path.dirname(__file__), "static/root/mkk_logo.ico")
     HEIGHT = 1440
-    WIDTH = 1040
+    WIDTH = 1000
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, *kwargs)
