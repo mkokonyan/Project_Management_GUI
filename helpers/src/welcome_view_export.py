@@ -40,7 +40,7 @@ canvas = Canvas(
     relief="ridge")
 canvas.place(x=0, y=0)
 
-img0 = PhotoImage(file=f"../../view/static/welcome_view/img0.png")
+img0 = PhotoImage(file=f"../../view/static/welcome_view/img10.png")
 img3 = PhotoImage(file=f"../../view/static/welcome_view/img3.png")
 b0 = Button(
     image=img0,
@@ -59,8 +59,8 @@ background = canvas.create_image(
     263.5, 768.0,
     image=background_img)
 
-img1 = PhotoImage(file=f"../../view/static/welcome_view/img1.png")
-img2 = PhotoImage(file=f"../../view/static/welcome_view/img2.png")
+img1 = PhotoImage(file=f"../../view/static/welcome_view/img0.png")
+img2 = PhotoImage(file=f"../../view/static/welcome_view/img1.png")
 b1 = Button(
     image=img1,
     borderwidth=0,

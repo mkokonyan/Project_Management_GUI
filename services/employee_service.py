@@ -24,7 +24,12 @@ class EmployeeService:
               username: str,
               password: str
               ) -> Employee:
-        validate_credentials_match(username, password, self._employee_repository)
+
+        try:
+            validate_credentials_match(username, password, self._employee_repository)
+        except (UsernameNotFoundException, ValueError) as ex:
+            return ex
+
         user = self._employee_repository.find_by_id(username)
         self._logged_user = user
         return user
