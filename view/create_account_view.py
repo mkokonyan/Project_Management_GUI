@@ -1,15 +1,23 @@
 from tkinter import Canvas, PhotoImage, Button, Entry, ttk
 
+from view.command.employee.go_back_command import GoBackCommand
 
-class RegisterView(ttk.Frame):
 
-    def __init__(self, root, *args, **kwargs):
+class CreateAccountView(ttk.Frame):
+
+    def __init__(self, root, employee_controller, *args, **kwargs):
+        super().__init__(root, *args, **kwargs)
+        self.root = root
+        self.employee_controller = employee_controller
+        self.employee_controller.view = self
+
+
         entry_options = {"bd": 0,
                          "bg": "#e0e0e0",
                          "font": ("Helvetica", 14)
                          }
 
-        super().__init__(root, *args, **kwargs)
+        self.go_back_command = GoBackCommand(self.employee_controller)
 
         self.canvas = Canvas(self, bg="#f9f4f5", height=1024, width=1440, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()
@@ -23,7 +31,7 @@ class RegisterView(ttk.Frame):
                          relief="flat", activebackground="#f9f4f5")
         self.b0.place(x=592, y=905, width=250, height=70)
 
-        self.b1 = Button(self, image=self.img2, borderwidth=0, highlightthickness=0, command=self.btn_clicked,
+        self.b1 = Button(self, image=self.img2, borderwidth=0, highlightthickness=0, command=self.go_back_command,
                          relief="flat", bg="#f9f4f5", activebackground="#f9f4f5")
         self.b1.place(x=1157, y=905, width=265, height=70)
 
@@ -60,7 +68,7 @@ class RegisterView(ttk.Frame):
         self.b1.bind("<Enter>", self.go_back_btn_on_enter)
         self.b1.bind("<Leave>", self.go_back_btn_on_leave)
 
-        self.pack()
+
 
     def btn_clicked(self):
         print("Button Clicked")

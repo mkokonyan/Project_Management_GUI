@@ -1,13 +1,19 @@
 from tkinter import Canvas, PhotoImage, Button, Entry, ttk
 
+from view.command.employee.show_create_account_command import ShowCreateAccountCommand
+
 
 class WelcomeView(ttk.Frame):
-    def __init__(self, root, *args, **kwargs):
+    def __init__(self, root, employee_controller, *args, **kwargs):
         entry_options = {"bd": 0,
                          "bg": "#e0e0e0",
                          "font": ("Helvetica", 14)
                          }
         super().__init__(root, *args, **kwargs)
+        self.root = root
+        self.employee_controller = employee_controller
+        self.employee_controller.view = self
+        self.show_create_account_command = ShowCreateAccountCommand(self.employee_controller)
 
         self.canvas = Canvas(self, bg="#f9f4f5", height=1024, width=1440, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()
@@ -17,7 +23,8 @@ class WelcomeView(ttk.Frame):
         self.img2 = PhotoImage(file=f"view/static/welcome_view/img2.png")
         self.img3 = PhotoImage(file=f"view/static/welcome_view/img3.png")
 
-        self.b0 = Button(self, image=self.img0, borderwidth=0, background="#F9F4F5", command=self.btn_clicked,
+        self.b0 = Button(self, image=self.img0, borderwidth=0, background="#F9F4F5",
+                         command=self.show_create_account_command,
                          relief="flat")
         self.b0.place(x=1231, y=903, width=57, height=22)
 
@@ -41,8 +48,6 @@ class WelcomeView(ttk.Frame):
         self.b0.bind("<Leave>", self.create_btn_on_leave)
         self.b1.bind("<Enter>", self.login_btn_on_enter)
         self.b1.bind("<Leave>", self.login_btn_on_leave)
-
-        self.pack()
 
     def btn_clicked(self):
         print("Button Clicked")
