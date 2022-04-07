@@ -1,5 +1,5 @@
-from view.root import Root
-from view.main_view import MainView
+from view.root_view import RootView
+from view.welcome_view import WelcomeView
 
 
 def print_hierarchy(w, depth=0):
@@ -14,8 +14,8 @@ def print_hierarchy(w, depth=0):
 
 
 if __name__ == '__main__':
-    root = Root()
-    welcome_view = MainView(root)
+    root = RootView()
+    welcome_view = WelcomeView(root)
     welcome_view.pack()
     print_hierarchy(root)
     root.mainloop()

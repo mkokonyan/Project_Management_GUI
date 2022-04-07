@@ -1,11 +1,10 @@
+
 from dao.employee_repository import EmployeeRepository
 from entity.employee import Employee
 from exceptions.existing_username_exception import ExistingUsernameException
 from exceptions.username_not_found_exception import UsernameNotFoundException
 from helpers.validators.employee_validators import \
-    validate_password, validate_name_length, validate_email, validate_credentials_match, validate_username, \
-    validate_username_change
-
+    validate_password, validate_name_length, validate_email, validate_credentials_match, validate_username
 
 class EmployeeService:
     def __init__(self, employee_repository: EmployeeRepository):
@@ -65,11 +64,15 @@ class EmployeeService:
         self._employee_repository.save()
         return user
 
-    def edit_profile(self, **kwargs) -> Employee:
+    def edit_profile(self, **kwargs):
         user = self.logged_user
 
-        validate_username_change(user, kwargs["username"])
-        validate_password(kwargs["password"], kwargs["confirm_password"])
+        try:
+            validate_password(kwargs.get("password"), kwargs.get("confirm_password"))
+            validate_email(kwargs.get("email"))
+            validate_name_length(kwargs.get("first_name"), kwargs.get("last_name"))
+        except ValueError as ex:
+            return ex
 
         user.password = kwargs["password"]
         user.first_name = kwargs["first_name"]
@@ -80,6 +83,14 @@ class EmployeeService:
         self._employee_repository.save()
 
         return user
+
+    def get_logged_user_details(self) -> dict[str]:
+        return {
+            "username": self.logged_user.username,
+            "email": self.logged_user.email,
+            "first_name": self.logged_user.first_name,
+            "last_name": self.logged_user.last_name
+        }
 
     def get_all_employees(self):
         return self._employee_repository.find_all()

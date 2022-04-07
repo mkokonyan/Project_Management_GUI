@@ -15,7 +15,7 @@ from services.project_service import ProjectService
 from services.task_service import TaskService
 
 
-class Root(Tk):
+class RootView(Tk):
     ICON_PATH = os.path.join(os.path.dirname(__file__), "static/root/mkk_logo.ico")
     HEIGHT = 1440
     WIDTH = 1000

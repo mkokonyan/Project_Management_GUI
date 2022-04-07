@@ -43,10 +43,3 @@ def validate_email(email: str) -> None:
     expression = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
     if not re.fullmatch(expression, email):
         raise ValueError("Please enter a valid email address")
-
-
-def validate_username_change(user: Employee, new_username: str):
-    if not user:
-        raise UsernameNotFoundException(f"You have to login")
-    if not user.username == new_username:
-        raise ValueError(f"You can't change your username")
