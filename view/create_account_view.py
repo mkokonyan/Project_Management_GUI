@@ -62,7 +62,7 @@ class CreateAccountView(ttk.Frame):
         self.go_back_btn = Button(self, image=self.go_back_img2, borderwidth=0, highlightthickness=0,
                                   command=self.go_back_command,
                                   relief="flat", bg="#f9f4f5", activebackground="#f9f4f5")
-        self.go_back_btn.place(x=1157, y=905, width=265, height=70)
+        self.go_back_btn.place(x=1175, y=905, width=265, height=70)
         self.go_back_btn.bind("<Enter>", self.go_back_btn_on_enter)
         self.go_back_btn.bind("<Leave>", self.go_back_btn_on_leave)
 
