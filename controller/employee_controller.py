@@ -31,7 +31,7 @@ class EmployeeController(BaseController):
         self.view.forget()
         return ProjectsView(self.view.root).pack()
 
-    def get_logged_user(self) -> Employee:
+    def logout(self) -> None:
         return self.service.logged_user
 
     def get_all_entities(self):
