@@ -27,6 +27,7 @@ class CreateAccountView(ttk.Frame):
         self.register_hover_img1 = PhotoImage(file=f"view/static/register/img1.png")
         self.go_back_img2 = PhotoImage(file=f"view/static/register/img2.png")
         self.go_back_hover_img3 = PhotoImage(file=f"view/static/register/img3.png")
+        self.background_img = PhotoImage(file=f"view/static/register/background.png")
 
         self.username_entry_bg = self.canvas.create_image(732, 304, image=self.entry_img)
         self.username_entry = Entry(self, **entry_options)
@@ -53,20 +54,17 @@ class CreateAccountView(ttk.Frame):
         self.last_name_entry.place(x=583, y=772, width=298, height=32)
 
         self.register_btn = Button(self, image=self.register_img0, borderwidth=0, highlightthickness=0,
-                                   command=self.get_register_data,
-                                   relief="flat", activebackground="#f9f4f5")
+                                   command=self.get_register_data, relief="flat", activebackground="#f9f4f5")
         self.register_btn.place(x=592, y=905, width=250, height=70)
         self.register_btn.bind("<Enter>", self.register_btn_on_enter)
         self.register_btn.bind("<Leave>", self.register_btn_on_leave)
 
         self.go_back_btn = Button(self, image=self.go_back_img2, borderwidth=0, highlightthickness=0,
-                                  command=self.go_back_command,
-                                  relief="flat", bg="#f9f4f5", activebackground="#f9f4f5")
+                                  command=self.go_back_command, relief="flat", bg="#f9f4f5", activebackground="#f9f4f5")
         self.go_back_btn.place(x=1175, y=905, width=265, height=70)
         self.go_back_btn.bind("<Enter>", self.go_back_btn_on_enter)
         self.go_back_btn.bind("<Leave>", self.go_back_btn_on_leave)
 
-        self.background_img = PhotoImage(file=f"view/static/register/background.png")
         self.background = self.canvas.create_image(790, 477, image=self.background_img)
 
     def get_register_data(self):

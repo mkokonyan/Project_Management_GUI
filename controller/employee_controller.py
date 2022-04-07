@@ -1,6 +1,7 @@
 from tkinter import messagebox
 
 from controller.base_controller import BaseController
+from entity.employee import Employee
 from view.create_account_view import CreateAccountView
 from view.projects_view import ProjectsView
 from view.main_view import MainView
@@ -29,6 +30,9 @@ class EmployeeController(BaseController):
             return messagebox.showerror("Error", str(result))
         self.view.forget()
         return ProjectsView(self.view.root).pack()
+
+    def get_logged_user(self) -> Employee:
+        return self.service.logged_user
 
     def get_all_entities(self):
         return self._service.get_all_employees()

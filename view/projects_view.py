@@ -1,4 +1,4 @@
-from tkinter import ttk
+from tkinter import Canvas, PhotoImage, Button, ttk
 
 
 class ProjectsView(ttk.Frame):
@@ -6,7 +6,79 @@ class ProjectsView(ttk.Frame):
         super().__init__(root, *args, **kwargs)
         self.root = root
         self.root.prj_controller.view = self
+        self.emp_controller = self.root.emp_controller
         self.prj_controller = self.root.prj_controller
+        self.tsk_controller = self.root.tsk_controller
+        self.prj_msg_controller = self.root.prj_msg_controller
 
         self._projects = self.prj_controller.get_all_entities()
         print(self._projects)
+
+        self.canvas = Canvas(self, bg="#f9f4f5", height=1024, width=1440, bd=0, highlightthickness=0, relief="ridge")
+        self.canvas.pack()
+
+        self.projects_img0 = PhotoImage(file=f"view/static/navbar/img0.png")
+        self.projects_hover_img1 = PhotoImage(file=f"view/static/navbar/img1.png")
+        self.messages_img2 = PhotoImage(file=f"view/static/navbar/img2.png")
+        self.messages_hover_img3 = PhotoImage(file=f"view/static/navbar/img3.png")
+        self.user_details_img4 = PhotoImage(file=f"view/static/navbar/img4.png")
+        self.user_details_hover_img5 = PhotoImage(file=f"view/static/navbar/img5.png")
+        self.sign_out_img6 = PhotoImage(file=f"view/static/navbar/img6.png")
+        self.sign_out_hover_img7 = PhotoImage(file=f"view/static/navbar/img7.png")
+        self.background_img = PhotoImage(file=f"view/static/navbar/background.png")
+
+        self.projects_btn = Button(self, image=self.projects_img0, borderwidth=0, highlightthickness=0,
+                                   command=self.btn_clicked, relief="flat", activebackground="#5D204A")
+        self.projects_btn.place(x=94, y=0, width=128, height=55)
+        self.projects_btn.bind("<Enter>", self.projects_btn_on_enter)
+        self.projects_btn.bind("<Leave>", self.projects_btn_on_leave)
+
+        self.messages_btn = Button(self, image=self.messages_img2, borderwidth=0, highlightthickness=0,
+                                   command=self.btn_clicked, relief="flat", activebackground="#5D204A")
+        self.messages_btn.place(x=222, y=0, width=122, height=55)
+        self.messages_btn.bind("<Enter>", self.messages_btn_on_enter)
+        self.messages_btn.bind("<Leave>", self.messages_btn_on_leave)
+
+        self.background = self.canvas.create_image(720.0, 24.0, image=self.background_img)
+
+        self.user_details_btn = Button(self, image=self.user_details_img4, borderwidth=0, highlightthickness=0,
+                                       command=self.btn_clicked, relief="flat", activebackground="#5D204A",
+                                       activeforeground='#FFFFFF',
+                                       text=f"Welcome, {self.emp_controller.get_logged_user().first_name:15s}",
+                                       font=("Helvetica", 11, "bold"), fg='#FFFFFF', compound="center")
+        self.user_details_btn.place(x=1067, y=0, width=253, height=55)
+        self.user_details_btn.bind("<Enter>", self.user_details_btn_on_enter)
+        self.user_details_btn.bind("<Leave>", self.user_details_btn_on_leave)
+
+        self.sign_out_btn = Button(self, image=self.sign_out_img6, borderwidth=0, highlightthickness=0,
+                                   command=self.btn_clicked, relief="flat", activebackground="#5D204A")
+        self.sign_out_btn.place(x=1320, y=0, width=120, height=55)
+        self.sign_out_btn.bind("<Enter>", self.sign_out_btn_on_enter)
+        self.sign_out_btn.bind("<Leave>", self.sign_out_btn_on_leave)
+
+    def btn_clicked(self):
+        print("Button Clicked")
+
+    def projects_btn_on_enter(self, e):
+        self.projects_btn["image"] = self.projects_hover_img1
+
+    def projects_btn_on_leave(self, e):
+        self.projects_btn["image"] = self.projects_img0
+
+    def messages_btn_on_enter(self, e):
+        self.messages_btn["image"] = self.messages_hover_img3
+
+    def messages_btn_on_leave(self, e):
+        self.messages_btn["image"] = self.messages_img2
+
+    def user_details_btn_on_enter(self, e):
+        self.user_details_btn["image"] = self.user_details_hover_img5
+
+    def user_details_btn_on_leave(self, e):
+        self.user_details_btn["image"] = self.user_details_img4
+
+    def sign_out_btn_on_enter(self, e):
+        self.sign_out_btn["image"] = self.sign_out_hover_img7
+
+    def sign_out_btn_on_leave(self, e):
+        self.sign_out_btn["image"] = self.sign_out_img6

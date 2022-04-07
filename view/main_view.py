@@ -24,6 +24,7 @@ class MainView(ttk.Frame):
         self.login_hover_img1 = PhotoImage(file=f"view/static/welcome_view/img1.png")
         self.create_img2 = PhotoImage(file=f"view/static/welcome_view/img2.png")
         self.create_hover_img3 = PhotoImage(file=f"view/static/welcome_view/img3.png")
+        self.background_img = PhotoImage(file=f"view/static/welcome_view/background.png")
 
         self.username_entry_bg = self.canvas.create_image(1188, 480, image=self.entry_img)
         self.username_entry = Entry(self, **entry_options)
@@ -45,7 +46,7 @@ class MainView(ttk.Frame):
         self.create_btn.bind("<Enter>", self.create_btn_on_enter)
         self.create_btn.bind("<Leave>", self.create_btn_on_leave)
 
-        self.background_img = PhotoImage(file=f"view/static/welcome_view/background.png")
+
         self.background = self.canvas.create_image(263, 768, image=self.background_img)
 
     def get_login_data(self):
