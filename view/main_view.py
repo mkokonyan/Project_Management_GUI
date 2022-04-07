@@ -1,7 +1,8 @@
-from tkinter import Canvas, PhotoImage, Button, ttk
+from tkinter import Canvas, PhotoImage, Button, ttk, TOP, N
 
 from view.command.employee.logout_command import LogoutCommand
 from view.command.employee.show_user_details_command import ShowUserDetailsCommand
+from view.projects_view import ProjectsView
 
 
 class MainView(ttk.Frame):
@@ -21,11 +22,12 @@ class MainView(ttk.Frame):
 
         self.logout_command = LogoutCommand(self.emp_controller)
         self.user_details_command = ShowUserDetailsCommand(self.emp_controller)
-        # self._projects = self.prj_controller.get_all_entities()
-        # print(self._projects)
 
         self.canvas = Canvas(self, bg="#f9f4f5", height=1024, width=1440, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()
+
+        self.prj_frame = ProjectsView(self, self.prj_controller)
+        self.prj_frame.place(x=0, y=55, width=1440, height=969)
 
         self.projects_img0 = PhotoImage(file=f"view/static/navbar/img0.png")
         self.projects_hover_img1 = PhotoImage(file=f"view/static/navbar/img1.png")
