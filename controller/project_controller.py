@@ -12,7 +12,7 @@ class ProjectController(BaseController):
             "client": project.client,
             "time_estimation": project.time_estimation,
             "due_date": project.due_date,
-            "is_finished": 'Archived' if project.is_finished else 'In progress'
+            "is_finished": 'ARCHIVED' if project.is_finished else 'IN PROGRESS'
         }
 
     def get_all_entities(self):

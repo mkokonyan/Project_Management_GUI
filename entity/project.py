@@ -99,5 +99,5 @@ class Project:
                f"| Client {self.client:<10.15s} " \
                f"| Employees assigned: {', '.join([e for e in self.employees]) if self.employees else 'None':<30.40s} " \
                f"| Number of tasks: {len(self.tasks_id):<3}" \
-               f"| Project status:{'Archived' if self.is_finished else 'In progress':<10.11s}"
+               f"| Project status:{'ARCHIVED' if self.is_finished else 'IN PROGRESS':<10.11s}"
 
