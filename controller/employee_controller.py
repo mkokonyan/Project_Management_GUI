@@ -56,3 +56,6 @@ class EmployeeController(BaseController):
 
     def save_entities(self):
         return self._service.save_all_employees()
+
+    def get_role(self) -> str:
+        return self.service.logged_user.role

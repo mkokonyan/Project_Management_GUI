@@ -26,9 +26,8 @@ class MainView(ttk.Frame):
         self.canvas = Canvas(self, bg="#f9f4f5", height=1024, width=1440, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()
 
-        self.prj_frame = AllProjectsView(self.root, self.prj_controller)
-
-        self.prj_frame.place(x=0, y=55, width=1440, height=760)
+        self.prj_frame = AllProjectsView(self.root, self.prj_controller, self.emp_controller.get_role())
+        self.prj_frame.place(x=0, y=55)
 
         self.projects_img0 = PhotoImage(file=f"view/static/navbar/img0.png")
         self.projects_hover_img1 = PhotoImage(file=f"view/static/navbar/img1.png")
@@ -52,7 +51,7 @@ class MainView(ttk.Frame):
         self.messages_btn.bind("<Enter>", self.messages_btn_on_enter)
         self.messages_btn.bind("<Leave>", self.messages_btn_on_leave)
 
-        self.background = self.canvas.create_image(773, 924, image=self.background_img)
+        self.background = self.canvas.create_image(720, 24, image=self.background_img)
 
         self.user_details_btn = Button(self, image=self.user_details_img4, borderwidth=0, highlightthickness=0,
                                        command=self.user_details_command, relief="flat", activebackground="#5D204A",

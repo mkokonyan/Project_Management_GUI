@@ -1,10 +1,10 @@
-
 from dao.employee_repository import EmployeeRepository
 from entity.employee import Employee
 from exceptions.existing_username_exception import ExistingUsernameException
 from exceptions.username_not_found_exception import UsernameNotFoundException
 from helpers.validators.employee_validators import \
     validate_password, validate_name_length, validate_email, validate_credentials_match, validate_username
+
 
 class EmployeeService:
     def __init__(self, employee_repository: EmployeeRepository):
