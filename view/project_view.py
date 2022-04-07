@@ -1,21 +1,17 @@
-from tkinter import Button, ttk
+from tkinter import Button, ttk, Canvas
 
 
-class ProjectsView(ttk.Frame):
-    def __init__(self, root, prj_controller, *args, **kwargs):
-        entry_options = {"bd": 0,
-                         "bg": "#e0e0e0",
-                         "font": ("Helvetica", 14)
-                         }
+class ProjectView(ttk.Frame):
+    def __init__(self, root, prj_data, *args, **kwargs):
         super().__init__(root, *args, **kwargs)
-        self.root = root
-        self.prj_controller = prj_controller
-        self.prj_controller.view = self
-        self.projects = self.prj_controller.get_all_entities()
 
-        for i in range(len(self.projects)):
-            self.btn = Button(self, text="some text")
-            self.btn.grid(row=i, sticky="nse")
+        self.root = root
+        self.prj_data = prj_data
+        print(self.prj_data)
+        # self.canvas = Canvas(self, bg="#f9f4f5", height=760, width=1440, bd=0, highlightthickness=0, relief="ridge")
+        # self.canvas.grid(row=0, column=0)
+
+
 
     #     self.show_create_account_command = ShowCreateAccountCommand(self.root.emp_controller)
     #

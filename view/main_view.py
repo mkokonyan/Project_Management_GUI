@@ -1,8 +1,8 @@
-from tkinter import Canvas, PhotoImage, Button, ttk, TOP, N
+from tkinter import Canvas, PhotoImage, Button, ttk
 
+from view.all_projects_view import AllProjectsView
 from view.command.employee.logout_command import LogoutCommand
 from view.command.employee.show_user_details_command import ShowUserDetailsCommand
-from view.projects_view import ProjectsView
 
 
 class MainView(ttk.Frame):
@@ -26,8 +26,9 @@ class MainView(ttk.Frame):
         self.canvas = Canvas(self, bg="#f9f4f5", height=1024, width=1440, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()
 
-        self.prj_frame = ProjectsView(self, self.prj_controller)
-        self.prj_frame.place(x=0, y=55, width=1440, height=969)
+        self.prj_frame = AllProjectsView(self.root, self.prj_controller)
+
+        self.prj_frame.place(x=0, y=55, width=1440, height=760)
 
         self.projects_img0 = PhotoImage(file=f"view/static/navbar/img0.png")
         self.projects_hover_img1 = PhotoImage(file=f"view/static/navbar/img1.png")
@@ -51,7 +52,7 @@ class MainView(ttk.Frame):
         self.messages_btn.bind("<Enter>", self.messages_btn_on_enter)
         self.messages_btn.bind("<Leave>", self.messages_btn_on_leave)
 
-        self.background = self.canvas.create_image(720, 24, image=self.background_img)
+        self.background = self.canvas.create_image(773, 924, image=self.background_img)
 
         self.user_details_btn = Button(self, image=self.user_details_img4, borderwidth=0, highlightthickness=0,
                                        command=self.user_details_command, relief="flat", activebackground="#5D204A",
