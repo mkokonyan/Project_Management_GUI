@@ -7,6 +7,7 @@ class ProjectController(BaseController):
     @staticmethod
     def get_project_details(project: Project) -> dict[str]:
         return {
+            "obj_id": project.obj_id,
             "name": project.name,
             "client": project.client,
             "time_estimation": project.time_estimation,
