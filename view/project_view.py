@@ -15,11 +15,14 @@ class ProjectView(ttk.Frame):
         self.delete_img = PhotoImage(file=f"view/static/project/img0.png")
         self.delete_img_hover = PhotoImage(file=f"view/static/project/img1.png")
         self.background_img = PhotoImage(file=f"view/static/project/background.png")
+        self.background_hover_img = PhotoImage(file=f"view/static/project/background1.png")
 
-        self.prj_img_btn = Button(self, image=self.background_img, borderwidth=0, highlightthickness=0,
-                                  background="#e5e4e4", activebackground="#e5e4e4", relief="flat",
-                                  command=self.on_click)
-        self.prj_img_btn.place(x=18, y=0, width=367, height=150)
+        self.prj_btn = Button(self, image=self.background_img, borderwidth=0, highlightthickness=0,
+                              background="#e5e4e4", activebackground="#e5e4e4", relief="flat",
+                              command=self.on_click)
+        self.prj_btn.place(x=18, y=0, width=367, height=150)
+        self.prj_btn.bind("<Enter>", self.prj_btn_on_enter)
+        self.prj_btn.bind("<Leave>", self.prj_btn_on_leave)
         if self.root.employee_role == "Admin":
             self.delete_btn = Button(self, image=self.delete_img, borderwidth=0, background="#771859", relief="flat",
                                      activebackground="#771859", command=self.on_click)
@@ -43,6 +46,26 @@ class ProjectView(ttk.Frame):
         self.is_finished = Label(self, text=f"Project status: {self.prj_data.get('is_finished'):.20s}",
                                  font=("Helvetica", 13, "bold"), fg="#FFFFFF", bg="#771859")
         self.is_finished.place(x=65, y=117)
+
+    def prj_btn_on_enter(self, e):
+        self.prj_btn["image"] = self.background_hover_img
+        self.canvas.itemconfig(self.background, image=self.background_hover_img)
+        self.delete_btn.configure(background="#D945AA", activebackground="#D945AA")
+        self.prj_name["bg"] = "#D945AA"
+        self.client["bg"] = "#D945AA"
+        self.time_estimation["bg"] = "#D945AA"
+        self.due_date["bg"] = "#D945AA"
+        self.is_finished["bg"] = "#D945AA"
+
+    def prj_btn_on_leave(self, e):
+        self.prj_btn["image"] = self.background_img
+        self.canvas.itemconfig(self.background, image=self.background_img)
+        self.delete_btn.configure(background="#771859", activebackground="#771859")
+        self.prj_name["bg"] = "#771859"
+        self.client["bg"] = "#771859"
+        self.time_estimation["bg"] = "#771859"
+        self.due_date["bg"] = "#771859"
+        self.is_finished["bg"] = "#771859"
 
     def delete_btn_on_enter(self, e):
         self.delete_btn["image"] = self.delete_img_hover
