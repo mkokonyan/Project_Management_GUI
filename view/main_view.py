@@ -1,4 +1,4 @@
-from tkinter import Canvas, PhotoImage, Button, ttk
+from tkinter import Canvas, PhotoImage, Button, ttk, LEFT, RIGHT, N
 
 from view.all_projects_view import AllProjectsView
 from view.command.employee.logout_command import LogoutCommand
@@ -56,9 +56,9 @@ class MainView(ttk.Frame):
         self.user_details_btn = Button(self, image=self.user_details_img4, borderwidth=0, highlightthickness=0,
                                        command=self.user_details_command, relief="flat", activebackground="#5D204A",
                                        activeforeground='#FFFFFF',
-                                       text=f" Welcome, {self.emp_controller.service.logged_user.first_name:12s}",
+                                       text=f"{'Welcome, ' + self.emp_controller.service.logged_user.first_name + ' (' + self.emp_controller.service.logged_user.role + ')':<30.30s}",
                                        font=("Helvetica", 13, "bold"), fg='#FFFFFF', compound="center")
-        self.user_details_btn.place(x=1067, y=0, width=253, height=55)
+        self.user_details_btn.place(x=967, y=0, width=353, height=55)
         self.user_details_btn.bind("<Enter>", self.user_details_btn_on_enter)
         self.user_details_btn.bind("<Leave>", self.user_details_btn_on_leave)
 
