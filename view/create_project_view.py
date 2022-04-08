@@ -96,6 +96,9 @@ class CreateProjectView(ttk.Frame):
             view.destroy()
 
         cal_root = Toplevel(self, height=250, width=250)
+        x = self.root.winfo_x()
+        y = self.root.winfo_y()
+        cal_root.geometry("+%d+%d" % (x + 220, y + 400))
 
         cal = Calendar(cal_root, selectmode='day',
                        year=datetime.now().year, month=datetime.now().month,
