@@ -25,7 +25,8 @@ class AllProjectsView(ttk.Frame):
 
         if employee_role == "Admin":
             self.add_project_btn = Button(self, image=self.add_project_img0, borderwidth=0, background="#F9F4F5",
-                                          relief="flat", activebackground="#F9F4F5", command=self.show_create_project_command)
+                                          relief="flat", activebackground="#F9F4F5",
+                                          command=self.show_create_project_command)
             self.add_project_btn.place(x=1300, y=820, width=87, height=87)
             self.add_project_btn.bind("<Enter>", self.add_project_btn_on_enter)
             self.add_project_btn.bind("<Leave>", self.add_project_btn_on_leave)
@@ -48,4 +49,3 @@ class AllProjectsView(ttk.Frame):
 
     def add_project_btn_on_leave(self, e):
         self.add_project_btn["image"] = self.add_project_img0
-

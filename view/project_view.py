@@ -13,7 +13,6 @@ class ProjectView(ttk.Frame):
         self.prj_data = prj_data
         self.prj_controller = self.root.prj_controller
 
-
         self.delete_project_command = DeleteProjectCommand(self.prj_controller, prj_data.get("obj_id"))
         self.edit_project_command = ShowEditProjectCommand(self.prj_controller, prj_data.get("obj_id"))
         self.show_board_command = ShowBoardCommand(self.prj_controller, prj_data.get("obj_id"))
