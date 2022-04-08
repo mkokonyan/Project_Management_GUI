@@ -1,4 +1,6 @@
-from tkinter import Canvas, PhotoImage, Button, Entry, ttk, StringVar
+from tkcalendar import Calendar
+from datetime import datetime
+from tkinter import Canvas, PhotoImage, Button, Entry, ttk, StringVar, Toplevel, Label
 
 from view.command.project.go_main_menu_command import GoMainMenuCommand
 
@@ -26,7 +28,6 @@ class CreateProjectView(ttk.Frame):
         self.create_project_hover_img1 = PhotoImage(file=f"view/static/create_project/img1.png")
         self.go_back_img2 = PhotoImage(file=f"view/static/create_project/img2.png")
         self.go_back_hover_img3 = PhotoImage(file=f"view/static/create_project/img3.png")
-        self.due_date_img4 = PhotoImage(file=f"view/static/create_project/img4.png")
         self.background_img = PhotoImage(file=f"view/static/create_project/background.png")
 
         self.project_name_entry_bg = self.canvas.create_image(732, 304, image=self.entry_img)
@@ -41,14 +42,18 @@ class CreateProjectView(ttk.Frame):
         self.time_estimation = Entry(self, **entry_options)
         self.time_estimation.place(x=583, y=466, width=298, height=32)
 
-        self.due_date_val = StringVar(self, value="Default val")
-        self.due_date_button = Button(self, image=self.due_date_img4, borderwidth=0, highlightthickness=0,
-                                      command=self.btn_clicked, relief="flat", activebackground="#f9f4f5", textvariable=self.due_date_val)
-
-        self.due_date_button.place(x=577, y=565, width=304, height=32)
+        self.due_date_button = Button(self, borderwidth=0, highlightthickness=0, background="#E0E0E0",
+                                      command=lambda: self.show_calendar(self.due_date_val), relief="flat",
+                                      activebackground="#E0E0E0")
+        self.due_date_val = StringVar()
+        self.due_date_label = Entry(self, **entry_options, textvariable=self.due_date_val)
+        self.due_date_button.place(x=577, y=568, width=304, height=32)
+        self.due_date_label.place(x=577, y=568, width=100, height=32)
 
         self.create_project_btn = Button(self, image=self.create_project_img0, borderwidth=0, highlightthickness=0,
-                                         command=self.get_project_data, relief="flat", activebackground="#f9f4f5")
+                                         background="#F9F4F5", anchor="w", justify="left",
+                                         command=self.get_project_data, relief="flat", activebackground="#F9F4F5",
+                                         **entry_options)
         self.create_project_btn.place(x=592, y=905, width=250, height=70)
         self.create_project_btn.bind("<Enter>", self.register_btn_on_enter)
         self.create_project_btn.bind("<Leave>", self.register_btn_on_leave)
@@ -86,5 +91,14 @@ class CreateProjectView(ttk.Frame):
     def go_back_btn_on_leave(self, e):
         self.go_back_btn["image"] = self.go_back_img2
 
-    def btn_clicked(self):
-        print("Button Clicked")
+    def show_calendar(self, date_val):
+        cal_root = Toplevel(self, height=250, width=250)
+        cal = Calendar(cal_root, selectmode='day',
+                       year=datetime.now().year, month=datetime.now().month,
+                       day=datetime.now().day, date_pattern='yyyy-MM-dd')
+        cal.pack()
+
+        def grad_date():
+            date_val.set(cal.get_date())
+
+        Button(cal_root, text="Get Date", command=grad_date).pack(pady=20)
