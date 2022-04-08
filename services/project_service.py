@@ -47,6 +47,10 @@ class ProjectService:
         self._current_project = current_project
         return current_project
 
+    def get_project(self, project_id: str) -> Project:
+        project = self._project_repository.find_by_id(project_id)
+        return project
+
     def add_new_project(self,
                         name: str,
                         client: str,
@@ -72,16 +76,17 @@ class ProjectService:
         self._project_repository.save()
         return project
 
-    def edit_project(self, **kwargs) -> Project:
-        check_current_project_is_set(self._current_project)
-        updated_prj = self._current_project
+    def edit_project(self, project_id: str, **kwargs) -> Project | ValueError:
+        updated_prj = self._project_repository.find_by_id(project_id)
 
-        if not updated_prj.name == kwargs.get("name"):
-            validate_project_name_dublication(kwargs.get("name"), self._project_repository)
-
-        validate_project_name_length(kwargs.get("name"))
-        validate_project_time_estimation(kwargs.get("time_estimation"))
-        validate_due_date(datetime.strptime(kwargs.get("due_date"), "%Y-%m-%d"))
+        try:
+            if not updated_prj.name == kwargs.get("name"):
+                validate_project_name_dublication(kwargs.get("name"), self._project_repository)
+            validate_project_name_length(kwargs.get("name"))
+            validate_project_time_estimation(kwargs.get("time_estimation"))
+            validate_due_date(datetime.strptime(kwargs.get("due_date"), "%Y-%m-%d"))
+        except ValueError as ex:
+            return ex
 
         setattr(updated_prj, "name", kwargs.get("name") if kwargs.get("name") else updated_prj.name)
         setattr(updated_prj, "client", kwargs.get("client") if kwargs.get("client") else updated_prj.client)

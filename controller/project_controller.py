@@ -3,6 +3,7 @@ from tkinter import messagebox
 from controller.base_controller import BaseController
 from entity.project import Project
 from view.create_project_view import CreateProjectView
+from view.edit_project_view import EditProjectView
 from view.main_view import MainView
 
 
@@ -31,6 +32,13 @@ class ProjectController(BaseController):
         self.view.forget()
         return MainView(self.view.root).pack()
 
+    def edit_project(self, project_id, edited_data):
+        result = self.service.edit_project(project_id, **edited_data)
+        if isinstance(result, Exception):
+            return messagebox.showerror("Error", str(result))
+        self.view.forget()
+        return MainView(self.view.root).pack()
+
     def delete_project(self, project_id):
         action_result = messagebox.askquestion("Warning", "Do you really want to delete project?")
         if action_result == "yes":
@@ -41,6 +49,11 @@ class ProjectController(BaseController):
     def show_create_project(self):
         self.view.forget()
         return CreateProjectView(self.view.root).pack()
+
+    def show_edit_project(self, project_id):
+        project_to_edit = self.service.get_project(project_id)
+        self.view.forget()
+        return EditProjectView(self.view.root, project_to_edit).pack()
 
     def get_all_entities(self):
         return self._service.get_all_projects()

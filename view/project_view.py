@@ -1,6 +1,7 @@
 from tkinter import ttk, Canvas, PhotoImage, Button, Label
 
 from view.command.project.delete_project_command import DeleteProjectCommand
+from view.command.project.show_edit_project_command import ShowEditProjectCommand
 
 
 class ProjectView(ttk.Frame):
@@ -11,7 +12,8 @@ class ProjectView(ttk.Frame):
         self.prj_data = prj_data
         self.prj_controller = self.root.prj_controller
 
-        self.delete_create_project_command = DeleteProjectCommand(self.prj_controller, prj_data.get("obj_id"))
+        self.delete_project_command = DeleteProjectCommand(self.prj_controller, prj_data.get("obj_id"))
+        self.edit_project_command = ShowEditProjectCommand(self.prj_controller, prj_data.get("obj_id"))
 
         self.canvas = Canvas(self, bg="#f9f4f5", height=150, width=400, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()
@@ -31,13 +33,13 @@ class ProjectView(ttk.Frame):
 
         if self.root.employee_role == "Admin":
             self.delete_btn = Button(self, image=self.delete_img, borderwidth=0, background="#771859", relief="flat",
-                                     activebackground="#771859", command=self.delete_create_project_command)
+                                     activebackground="#771859", command=self.delete_project_command)
             self.delete_btn.place(x=332, y=15, width=51, height=51)
             self.delete_btn.bind("<Enter>", self.delete_btn_on_enter)
             self.delete_btn.bind("<Leave>", self.delete_btn_on_leave)
 
             self.edit_btn = Button(self, image=self.edit_img, borderwidth=0, background="#771859", relief="flat",
-                                   activebackground="#771859", command=self.on_click)
+                                   activebackground="#771859", command=self.edit_project_command)
             self.edit_btn.place(x=332, y=85, width=51, height=51)
             self.edit_btn.bind("<Enter>", self.edit_btn_on_enter)
             self.edit_btn.bind("<Leave>", self.edit_btn_on_leave)
