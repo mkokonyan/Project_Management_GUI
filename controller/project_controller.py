@@ -2,6 +2,7 @@ from tkinter import messagebox
 
 from controller.base_controller import BaseController
 from entity.project import Project
+from view.board_view import BoardView
 from view.create_project_view import CreateProjectView
 from view.edit_project_view import EditProjectView
 from view.main_view import MainView
@@ -54,6 +55,11 @@ class ProjectController(BaseController):
         project_to_edit = self.service.get_project(project_id)
         self.view.forget()
         return EditProjectView(self.view.root, project_to_edit).pack()
+
+    def show_board(self, project_id):
+        project = self.service.get_project(project_id)
+        self.view.forget()
+        return BoardView(self.view.root, project).pack()
 
     def get_all_entities(self):
         return self._service.get_all_projects()

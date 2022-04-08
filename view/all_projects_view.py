@@ -49,5 +49,3 @@ class AllProjectsView(ttk.Frame):
     def add_project_btn_on_leave(self, e):
         self.add_project_btn["image"] = self.add_project_img0
 
-    def btn_clicked(self):
-        print("Button Clicked")

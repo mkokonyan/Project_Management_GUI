@@ -1,3 +1,4 @@
+from view.main_view import MainView
 from view.root_view import RootView
 from view.welcome_view import WelcomeView
 

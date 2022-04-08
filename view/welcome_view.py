@@ -40,7 +40,6 @@ class WelcomeView(ttk.Frame):
         self.login_btn.bind("<Enter>", self.login_btn_on_enter)
         self.login_btn.bind("<Leave>", self.login_btn_on_leave)
 
-
         self.create_btn = Button(self, image=self.create_img2, borderwidth=0, background="#F9F4F5", relief="flat",
                                  command=self.show_create_account_command)
         self.create_btn.place(x=1231, y=903, width=57, height=22)

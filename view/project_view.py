@@ -1,6 +1,7 @@
 from tkinter import ttk, Canvas, PhotoImage, Button, Label
 
 from view.command.project.delete_project_command import DeleteProjectCommand
+from view.command.project.show_board_command import ShowBoardCommand
 from view.command.project.show_edit_project_command import ShowEditProjectCommand
 
 
@@ -12,8 +13,10 @@ class ProjectView(ttk.Frame):
         self.prj_data = prj_data
         self.prj_controller = self.root.prj_controller
 
+
         self.delete_project_command = DeleteProjectCommand(self.prj_controller, prj_data.get("obj_id"))
         self.edit_project_command = ShowEditProjectCommand(self.prj_controller, prj_data.get("obj_id"))
+        self.show_board_command = ShowBoardCommand(self.prj_controller, prj_data.get("obj_id"))
 
         self.canvas = Canvas(self, bg="#f9f4f5", height=150, width=400, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()
@@ -25,7 +28,7 @@ class ProjectView(ttk.Frame):
 
         self.prj_btn = Button(self, image=self.background_img, borderwidth=0, highlightthickness=0,
                               background="#e5e4e4", activebackground="#e5e4e4", relief="flat",
-                              command=self.on_click)
+                              command=self.show_board_command)
         self.prj_btn.place(x=18, y=0, width=367, height=150)
         self.prj_btn.bind("<Enter>", self.prj_btn_on_enter)
         self.prj_btn.bind("<Leave>", self.prj_btn_on_leave)
