@@ -2,6 +2,7 @@ from tkinter import Canvas, PhotoImage, Button, Entry, ttk, StringVar
 
 from view.command.employee.edit_profile_command import EditProfileCommand
 from view.command.employee.go_back_command import GoBackCommand
+from view.command.project.go_main_menu_command import GoMainMenuCommand
 
 
 class UserDetailsView(ttk.Frame):
@@ -16,10 +17,12 @@ class UserDetailsView(ttk.Frame):
         self.root = root
         self.logged_user_details = logged_user_details
         self.emp_controller = self.root.emp_controller
+        self.prj_controller = self.root.prj_controller
         self.emp_controller.view = self
+        self.prj_controller.view = self
         self.edited_data = {}
 
-        self.go_back_command = GoBackCommand(self.emp_controller)
+        self.go_main_menu_command = GoMainMenuCommand(self.prj_controller)
 
         self.canvas = Canvas(self, bg="#f9f4f5", height=1024, width=1440, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()
@@ -67,7 +70,7 @@ class UserDetailsView(ttk.Frame):
         self.edit_btn.bind("<Leave>", self.edit_btn_on_leave)
 
         self.go_back_btn = Button(self, image=self.go_back_img2, borderwidth=0, highlightthickness=0,
-                                  command=self.go_back_command, relief="flat", bg="#f9f4f5", activebackground="#f9f4f5")
+                                  command=self.go_main_menu_command, relief="flat", bg="#f9f4f5", activebackground="#f9f4f5")
         self.go_back_btn.place(x=1175, y=905, width=265, height=70)
         self.go_back_btn.bind("<Enter>", self.go_back_btn_on_enter)
         self.go_back_btn.bind("<Leave>", self.go_back_btn_on_leave)

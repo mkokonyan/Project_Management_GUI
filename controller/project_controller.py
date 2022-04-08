@@ -1,5 +1,7 @@
 from controller.base_controller import BaseController
 from entity.project import Project
+from view.create_project_view import CreateProjectView
+from view.main_view import MainView
 
 
 class ProjectController(BaseController):
@@ -15,6 +17,15 @@ class ProjectController(BaseController):
             "is_finished": 'ARCHIVED' if project.is_finished else 'IN PROGRESS'
         }
 
+    def go_main_menu(self):
+        self.reload_all_entities()
+        self.view.forget()
+        return MainView(self.view.root).pack()
+
+    def show_create_project(self):
+        self.view.forget()
+        return CreateProjectView(self.view.root).pack()
+
     def get_all_entities(self):
         return self._service.get_all_projects()
 
@@ -23,4 +34,6 @@ class ProjectController(BaseController):
 
     def save_entities(self):
         return self._service.save_all_projects()
+
+
 

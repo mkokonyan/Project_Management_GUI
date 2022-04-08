@@ -1,5 +1,6 @@
 from tkinter import Button, ttk, Canvas, PhotoImage
 
+from view.command.project.show_create_project_command import ShowCreateProjectCommand
 from view.project_view import ProjectView
 
 
@@ -10,8 +11,10 @@ class AllProjectsView(ttk.Frame):
         self.root = root
         self.prj_controller = prj_controller
         self.employee_role = employee_role
-        self.prj_controller.view = self
+        self.prj_controller.view = self.root
         self.projects = self.prj_controller.get_all_entities()
+
+        self.show_create_project_command = ShowCreateProjectCommand(self.prj_controller)
 
         self.canvas = Canvas(self, bg="#f9f4f5", height=1024, width=1440, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.grid(row=0, column=0)
@@ -22,7 +25,7 @@ class AllProjectsView(ttk.Frame):
 
         if employee_role == "Admin":
             self.add_project_btn = Button(self, image=self.add_project_img0, borderwidth=0, background="#F9F4F5",
-                                          relief="flat", activebackground="#F9F4F5", command=self.btn_clicked)
+                                          relief="flat", activebackground="#F9F4F5", command=self.show_create_project_command)
             self.add_project_btn.place(x=1300, y=820, width=87, height=87)
             self.add_project_btn.bind("<Enter>", self.add_project_btn_on_enter)
             self.add_project_btn.bind("<Leave>", self.add_project_btn_on_leave)

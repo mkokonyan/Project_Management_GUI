@@ -3,6 +3,7 @@ from tkinter import Canvas, PhotoImage, Button, ttk, LEFT, RIGHT, N
 from view.all_projects_view import AllProjectsView
 from view.command.employee.logout_command import LogoutCommand
 from view.command.employee.show_user_details_command import ShowUserDetailsCommand
+from view.command.project.go_main_menu_command import GoMainMenuCommand
 
 
 class MainView(ttk.Frame):
@@ -22,11 +23,12 @@ class MainView(ttk.Frame):
 
         self.logout_command = LogoutCommand(self.emp_controller)
         self.user_details_command = ShowUserDetailsCommand(self.emp_controller)
+        self.go_main_menu_command = GoMainMenuCommand(self.prj_controller)
 
         self.canvas = Canvas(self, bg="#f9f4f5", height=1024, width=1440, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()
 
-        self.prj_frame = AllProjectsView(self.root, self.prj_controller, self.emp_controller.get_role())
+        self.prj_frame = AllProjectsView(self, self.prj_controller, self.emp_controller.get_role())
         self.prj_frame.place(x=0, y=55)
 
         self.projects_img0 = PhotoImage(file=f"view/static/navbar/img0.png")
@@ -40,7 +42,7 @@ class MainView(ttk.Frame):
         self.background_img = PhotoImage(file=f"view/static/navbar/background.png")
 
         self.projects_btn = Button(self, image=self.projects_img0, borderwidth=0, highlightthickness=0,
-                                   command=self.btn_clicked, relief="flat", activebackground="#5D204A")
+                                   command=self.go_main_menu_command, relief="flat", activebackground="#5D204A")
         self.projects_btn.place(x=94, y=0, width=128, height=55)
         self.projects_btn.bind("<Enter>", self.projects_btn_on_enter)
         self.projects_btn.bind("<Leave>", self.projects_btn_on_leave)

@@ -34,7 +34,7 @@ class ProjectView(ttk.Frame):
 
             self.edit_btn = Button(self, image=self.edit_img, borderwidth=0, background="#771859", relief="flat",
                                    activebackground="#771859", command=self.on_click)
-            self.edit_btn.place(x=332, y=75, width=51, height=51)
+            self.edit_btn.place(x=332, y=85, width=51, height=51)
             self.edit_btn.bind("<Enter>", self.edit_btn_on_enter)
             self.edit_btn.bind("<Leave>", self.edit_btn_on_leave)
 
