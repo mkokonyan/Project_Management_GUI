@@ -50,13 +50,16 @@ class ProjectService:
     def add_new_project(self,
                         name: str,
                         client: str,
-                        time_estimation: int,
+                        time_estimation: str,
                         due_date: str
-                        ) -> Project:
-        validate_project_name_dublication(name, self._project_repository)
-        validate_project_name_length(name)
-        validate_project_time_estimation(time_estimation)
-        validate_due_date(datetime.strptime(due_date, "%Y-%m-%d"))
+                        ) -> ValueError | Project:
+        try:
+            validate_project_name_dublication(name, self._project_repository)
+            validate_project_name_length(name)
+            validate_project_time_estimation(time_estimation)
+            validate_due_date(datetime.strptime(due_date, "%Y-%m-%d"))
+        except ValueError as ex:
+            return ex
 
         project = Project(
             name=name,

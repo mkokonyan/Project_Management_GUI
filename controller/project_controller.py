@@ -1,3 +1,5 @@
+from tkinter import messagebox
+
 from controller.base_controller import BaseController
 from entity.project import Project
 from view.create_project_view import CreateProjectView
@@ -21,6 +23,20 @@ class ProjectController(BaseController):
         self.reload_all_entities()
         self.view.forget()
         return MainView(self.view.root).pack()
+
+    def create_project(self, registration_data):
+        result = self.service.add_new_project(**registration_data)
+        if isinstance(result, Exception):
+            return messagebox.showerror("Error", str(result))
+        self.view.forget()
+        return MainView(self.view.root).pack()
+
+    def delete_project(self, project_id):
+        action_result = messagebox.askquestion("Warning", "Do you really want to delete project?")
+        if action_result == "yes":
+            self.service.delete_project(project_id)
+            self.view.forget()
+            return MainView(self.view.root).pack()
 
     def show_create_project(self):
         self.view.forget()

@@ -3,7 +3,7 @@ class Project:
                  obj_id: str = None,
                  name: str = None,
                  client: str = None,
-                 time_estimation: int = None,
+                 time_estimation: str = None,
                  due_date: str = None,
                  ) -> None:
         self._obj_id = obj_id

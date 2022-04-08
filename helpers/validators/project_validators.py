@@ -19,8 +19,8 @@ def validate_project_name_dublication(name: str, project_repo: ProjectRepository
         raise ValueError("Project with the same name already exist.")
 
 
-def validate_project_time_estimation(hours: int) -> None:
-    if hours < 10:
+def validate_project_time_estimation(hours: str) -> None:
+    if int(hours) < 10:
         raise ValueError("Please enter valid hours")
 
 

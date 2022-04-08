@@ -2,6 +2,7 @@ from tkcalendar import Calendar
 from datetime import datetime
 from tkinter import Canvas, PhotoImage, Button, Entry, ttk, StringVar, Toplevel, Label
 
+from view.command.project.create_project_command import CreateProjectCommand
 from view.command.project.go_main_menu_command import GoMainMenuCommand
 
 
@@ -52,7 +53,7 @@ class CreateProjectView(ttk.Frame):
 
         self.create_project_btn = Button(self, image=self.create_project_img0, borderwidth=0, highlightthickness=0,
                                          background="#f9f4f5", anchor="w", justify="left",
-                                         command=self.get_project_data, relief="flat", activebackground="#f9f4f5",)
+                                         command=self.get_project_data, relief="flat", activebackground="#f9f4f5", )
         self.create_project_btn.place(x=592, y=905, width=250, height=70)
         self.create_project_btn.bind("<Enter>", self.register_btn_on_enter)
         self.create_project_btn.bind("<Leave>", self.register_btn_on_leave)
@@ -75,8 +76,7 @@ class CreateProjectView(ttk.Frame):
                 "due_date": self.due_date_val.get(),
             }
         )
-        print(self.project_data)
-        # RegisterCommand(self.root.prj_controller, self.project_data)()
+        CreateProjectCommand(self.root.prj_controller, self.project_data)()
 
     def register_btn_on_enter(self, e):
         self.create_project_btn["image"] = self.create_project_hover_img1
@@ -91,8 +91,9 @@ class CreateProjectView(ttk.Frame):
         self.go_back_btn["image"] = self.go_back_img2
 
     def show_calendar(self, date_val):
-        def grad_date():
+        def grad_date(view):
             date_val.set(cal.get_date())
+            view.destroy()
 
         cal_root = Toplevel(self, height=250, width=250)
 
@@ -101,4 +102,4 @@ class CreateProjectView(ttk.Frame):
                        day=datetime.now().day, date_pattern='yyyy-MM-dd')
         cal.pack()
 
-        Button(cal_root, text="Get Date", command=grad_date).pack(pady=20)
+        Button(cal_root, text="Get Date", command= lambda: grad_date(cal_root)).pack(pady=20)

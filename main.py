@@ -17,8 +17,6 @@ if __name__ == '__main__':
     root = RootView()
     welcome_view = WelcomeView(root)
 
-    # welcome_view = CreateProjectView(root)
-
     welcome_view.pack()
     print_hierarchy(root)
     root.mainloop()
