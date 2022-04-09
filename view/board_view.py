@@ -5,6 +5,14 @@ from view.task_view import TaskView
 
 
 class BoardView(ttk.Frame):
+    BOARD_MAPPER = {
+        0: "TO DO",
+        1: "IN PROGRESS",
+        2: "CHECKING",
+        3: "DONE"
+    }
+
+
     def __init__(self, root, prj_controller, current_project, employee_role, *args, **kwargs):
         super().__init__(root, *args, **kwargs)
 
@@ -16,6 +24,8 @@ class BoardView(ttk.Frame):
         self.prj_controller.view = self
         self.tsk_controller.view = self
         self.project_tasks = self.tsk_controller.get_project_tasks(self.current_project.obj_id)
+
+        self.tsk_controller.reload_all_entities()
 
         self.go_main_menu_command = GoMainMenuCommand(self.root.prj_controller)
 
@@ -47,15 +57,16 @@ class BoardView(ttk.Frame):
 
         self.sections = Frame(self, height=920, width=1168, bg="#f9f4f5")
 
-        self.sections.place(x=32, y=123)
+        self.sections.place(x=16, y=123)
         self.sections.columnconfigure(0, minsize=292, weight=1)
         self.sections.columnconfigure(1, minsize=292, weight=1)
         self.sections.columnconfigure(2, minsize=292, weight=1)
         self.sections.columnconfigure(3, minsize=292, weight=1)
 
         for t in self.project_tasks:
-            self.tsk = TaskView(self.sections, self.tsk_controller, t, height=100, width=100)
-            self.tsk.grid(row=t.board_coordinates[0], column=t.board_coordinates[1], sticky="ew", padx=16, pady=5)
+            self.tsk = TaskView(self.sections, self.tsk_controller, t, highlightbackground="#771859",
+                                highlightthickness=4, width=260, height=90)
+            self.tsk.grid(row=t.board_coordinates[0], column=t.board_coordinates[1], sticky="nsew", padx=16, pady=5)
             self.tsk.bind("<Button-1>", self.drag_start)
             self.tsk.bind("<B1-Motion>", self.drag_motion)
             self.tsk.bind("<ButtonRelease>", self.on_release)
@@ -110,9 +121,16 @@ class BoardView(ttk.Frame):
             new_row = 0
 
         widget.grid(row=new_row, column=new_column)
+        widget.tsk.board_coordinates = (new_row, new_column)
 
         number_of_column_widgets = self.sections.grid_size()[0]
         for c in range(number_of_column_widgets):
             column_slaves = self.sections.grid_slaves(column=c)[::-1]
             for i in range(len(column_slaves)):
+                current_task_id = column_slaves[i].tsk.obj_id
+                current_task = self.tsk_controller.service.task_repository.find_by_id(current_task_id)
                 column_slaves[i].grid(row=i)
+                current_task.board_coordinates = [column_slaves[i].grid_info()["row"], column_slaves[i].grid_info()["column"]]
+                current_task.status = self.BOARD_MAPPER[column_slaves[i].grid_info()["column"]]
+
+        self.tsk_controller.save_entities()

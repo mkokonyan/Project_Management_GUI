@@ -1,22 +1,20 @@
-from tkinter import ttk, Canvas, PhotoImage, Button, Label
-
-from view.command.project.delete_project_command import DeleteProjectCommand
-from view.command.project.show_board_command import ShowBoardCommand
-from view.command.project.show_edit_project_command import ShowEditProjectCommand
+from tkinter import Button, Frame
 
 
-class TaskView(ttk.Frame):
+class TaskView(Frame):
     def __init__(self, root, tsk_controller, tsk, *args, **kwargs):
         super().__init__(root, *args, **kwargs)
 
         self.root = root
         self.tsk_controller = tsk_controller
-        self.tsk_data = tsk
+        self.tsk = tsk
 
-        self.canvas = Canvas(self, bg="#f9f4f5", height=75, width=40, bd=0, highlightthickness=0, relief="ridge")
-        self.canvas.pack()
 
-        self.background_img = PhotoImage(file=f"view/static/project/background.png")
+        self.tsk_btn = Button(self, borderwidth=0, highlightthickness=0, background="#771859",
+                              activebackground="#D945AA", relief="flat", text = self.tsk.name,
+                              font=("Helvetica", 13, "bold"), fg="#FFFFFF", bg="#771859",
+                              command=self.btn_clicked)
+        self.tsk_btn.place(x=0, y=0, width=260, height=45)
 
-        self.background = self.canvas.create_image(75, 75, image=self.background_img)
-
+    def btn_clicked(self):
+        print("Button Clicked")

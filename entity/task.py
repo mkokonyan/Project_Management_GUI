@@ -8,7 +8,7 @@ class Task:
                  description: str = None,
                  time_estimation: int = None,
                  status: str = "TO DO",
-                 board_coordinates: tuple[int] = (0, 0),
+                 board_coordinates: list[int] = [0, 0],
                  ) -> None:
         self._obj_id = obj_id
         self._name = name
