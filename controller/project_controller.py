@@ -56,10 +56,10 @@ class ProjectController(BaseController):
         self.view.forget()
         return EditProjectView(self.view.root, project_to_edit).pack()
 
-    def show_board(self, project_id):
+    def show_board(self, project_id, employee_role):
         project = self.service.get_project(project_id)
         self.view.forget()
-        return BoardView(self.view.root, project).pack()
+        return BoardView(self.view.root, self, project, employee_role).pack()
 
     def get_all_entities(self):
         return self._service.get_all_projects()

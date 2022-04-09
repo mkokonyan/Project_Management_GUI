@@ -35,11 +35,6 @@ def validate_username_existence(user: Employee) -> None:
         raise UsernameNotFoundException(f"Username not found. Please try again")
 
 
-def check_current_project_is_set(project: Project) -> bool:
-    if project is None:
-        raise EntityNotFoundException(f"Current project is not set")
-    return True
-
 
 def check_employee_is_not_assigned(employee: Employee, project: Project) -> bool:
     if project.obj_id in employee.projects_id:

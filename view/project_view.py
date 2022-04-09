@@ -15,7 +15,7 @@ class ProjectView(ttk.Frame):
 
         self.delete_project_command = DeleteProjectCommand(self.prj_controller, prj_data.get("obj_id"))
         self.edit_project_command = ShowEditProjectCommand(self.prj_controller, prj_data.get("obj_id"))
-        self.show_board_command = ShowBoardCommand(self.prj_controller, prj_data.get("obj_id"))
+        self.show_board_command = ShowBoardCommand(self.prj_controller, prj_data.get("obj_id"), self.root.employee_role)
 
         self.canvas = Canvas(self, bg="#f9f4f5", height=150, width=400, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()

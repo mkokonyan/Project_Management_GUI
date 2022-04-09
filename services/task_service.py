@@ -149,6 +149,9 @@ class TaskService:
     def get_all_tasks(self) -> list[Task]:
         return self._task_repository.find_all()
 
+    def get_project_tasks(self, prj_id) -> list[Task]:
+        return self._task_repository.find_by_project_id(prj_id)
+
     def reload_all_tasks(self) -> None:
         return self._task_repository.load()
 

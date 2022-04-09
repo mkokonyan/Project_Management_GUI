@@ -1,4 +1,3 @@
-from view.main_view import MainView
 from view.root_view import RootView
 from view.welcome_view import WelcomeView
 
@@ -21,3 +20,4 @@ if __name__ == '__main__':
     welcome_view.pack()
     print_hierarchy(root)
     root.mainloop()
+

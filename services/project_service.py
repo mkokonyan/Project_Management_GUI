@@ -6,7 +6,7 @@ from dao.task_repository import TaskRepository
 from entity.employee import Employee
 from entity.project import Project
 from helpers.validators.project_validators import validate_project_name_length, validate_project_time_estimation, \
-    validate_due_date, validate_username_existence, check_current_project_is_set, check_employee_is_not_assigned, \
+    validate_due_date, validate_username_existence, check_employee_is_not_assigned, \
     validate_project_name_dublication, check_employee_is_assigned, validate_tasks_count
 
 
@@ -117,7 +117,6 @@ class ProjectService:
         return project_to_delete
 
     def assign_employee(self, username: str) -> Employee:
-        check_current_project_is_set(self._current_project)
 
         new_employee = self._employee_repository.find_by_id(username)
 
@@ -152,7 +151,7 @@ class ProjectService:
         return employee_to_remove
 
     def set_project_finish_status(self) -> None:
-        check_current_project_is_set(self._current_project)
+
 
         project_tasks = [self._task_repository.find_by_id(t) for t in self._current_project.tasks_id]
 
@@ -170,6 +169,7 @@ class ProjectService:
         if username in self.current_project.employees:
             self.current_project.employees.remove(username)
             return username
+
 
     def get_all_projects(self) -> list[Project]:
         return self._project_repository.find_all()
