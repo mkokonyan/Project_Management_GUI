@@ -28,7 +28,7 @@ class TaskService:
 
     @property
     def employee_repository(self):
-        return self._project_repository
+        return self._employee_repository
 
     @staticmethod
     def repos_save(*args) -> None:

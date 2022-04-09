@@ -12,7 +12,6 @@ class BoardView(ttk.Frame):
         3: "DONE"
     }
 
-
     def __init__(self, root, prj_controller, current_project, employee_role, *args, **kwargs):
         super().__init__(root, *args, **kwargs)
 
@@ -130,7 +129,8 @@ class BoardView(ttk.Frame):
                 current_task_id = column_slaves[i].tsk.obj_id
                 current_task = self.tsk_controller.service.task_repository.find_by_id(current_task_id)
                 column_slaves[i].grid(row=i)
-                current_task.board_coordinates = [column_slaves[i].grid_info()["row"], column_slaves[i].grid_info()["column"]]
+                current_task.board_coordinates = [column_slaves[i].grid_info()["row"],
+                                                  column_slaves[i].grid_info()["column"]]
                 current_task.status = self.BOARD_MAPPER[column_slaves[i].grid_info()["column"]]
 
         self.tsk_controller.save_entities()
