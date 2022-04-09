@@ -1,6 +1,7 @@
 from tkinter import Canvas, PhotoImage, Button, ttk, Frame, CENTER
 
 from view.command.project.go_main_menu_command import GoMainMenuCommand
+from view.command.task.show_create_project_command import ShowCreateTaskCommand
 from view.task_view import TaskView
 
 
@@ -26,24 +27,25 @@ class BoardView(ttk.Frame):
 
         self.tsk_controller.reload_all_entities()
 
-        self.go_main_menu_command = GoMainMenuCommand(self.root.prj_controller)
+        self.go_main_menu_command = GoMainMenuCommand(self.prj_controller)
+        self.show_create_task_command = ShowCreateTaskCommand(self.tsk_controller, self.current_project, self.employee_role)
 
         self.canvas = Canvas(self, bg="#f9f4f5", height=1024, width=1440, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()
 
-        self.add_task_img0 = PhotoImage(file=f"view/static/board/img0.png")
-        self.add_task_hover_img1 = PhotoImage(file=f"view/static/board/img1.png")
+        self.create_task_img0 = PhotoImage(file=f"view/static/board/img0.png")
+        self.create_task_hover_img1 = PhotoImage(file=f"view/static/board/img1.png")
         self.go_back_img2 = PhotoImage(file=f"view/static/board/img2.png")
         self.go_back_hover_img3 = PhotoImage(file=f"view/static/board/img3.png")
         self.background_img = PhotoImage(file=f"view/static/board/background.png")
         self.sections_background_img = PhotoImage(file=f"view/static/board/sections_background.png")
 
-        self.add_task_btn = Button(self, image=self.add_task_img0, borderwidth=0, highlightthickness=0,
-                                   command=self.btn_clicked, relief="flat", bg="#f9f4f5",
-                                   activebackground="#D945AA")
-        self.add_task_btn.place(x=1275, y=0, width=165, height=55)
-        self.add_task_btn.bind("<Enter>", self.add_task_btn_on_enter)
-        self.add_task_btn.bind("<Leave>", self.add_task_btn_on_leave)
+        self.create_task_btn = Button(self, image=self.create_task_img0, borderwidth=0, highlightthickness=0,
+                                      command=self.show_create_task_command, relief="flat", bg="#f9f4f5",
+                                      activebackground="#D945AA")
+        self.create_task_btn.place(x=1275, y=0, width=165, height=55)
+        self.create_task_btn.bind("<Enter>", self.add_task_btn_on_enter)
+        self.create_task_btn.bind("<Leave>", self.add_task_btn_on_leave)
         self.go_back_btn = Button(self, image=self.go_back_img2, borderwidth=0, highlightthickness=0,
                                   command=self.go_main_menu_command, relief="flat", bg="#f9f4f5",
                                   activebackground="#f9f4f5")
@@ -71,10 +73,10 @@ class BoardView(ttk.Frame):
             self.tsk.bind("<ButtonRelease>", self.on_release)
 
     def add_task_btn_on_enter(self, e):
-        self.add_task_btn["image"] = self.add_task_hover_img1
+        self.create_task_btn["image"] = self.create_task_hover_img1
 
     def add_task_btn_on_leave(self, e):
-        self.add_task_btn["image"] = self.add_task_img0
+        self.create_task_btn["image"] = self.create_task_img0
 
     def go_back_btn_on_enter(self, e):
         self.go_back_btn["image"] = self.go_back_hover_img3
@@ -82,16 +84,12 @@ class BoardView(ttk.Frame):
     def go_back_btn_on_leave(self, e):
         self.go_back_btn["image"] = self.go_back_img2
 
-    def btn_clicked(self):
-        print("Button Clicked")
-
     def drag_start(self, event):
         widget = event.widget
         starting_column = widget.grid_info()["column"]
         widget.startX = event.x
         widget.startY = event.y
         widget.lift()
-        print(f'Drag start ROW: {widget.grid_info()["row"]}\nDrag start COLUMN: {widget.grid_info()["column"]}')
 
     def drag_motion(self, event):
         widget = event.widget
@@ -134,3 +132,6 @@ class BoardView(ttk.Frame):
                 current_task.status = self.BOARD_MAPPER[column_slaves[i].grid_info()["column"]]
 
         self.tsk_controller.save_entities()
+
+    def btn_clicked(self):
+        print("Button Clicked")

@@ -1,7 +1,12 @@
 from controller.base_controller import BaseController
+from view.create_task_view import CreateTaskView
 
 
 class TaskController(BaseController):
+
+    def show_create_task(self, current_project, employee_role):
+        self.view.forget()
+        return CreateTaskView(self.view.root, current_project, employee_role).pack()
 
     def get_project_tasks(self, prj_id):
         return self.service.get_project_tasks(prj_id)
