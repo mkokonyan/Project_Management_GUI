@@ -29,7 +29,7 @@ class MessagesView(ttk.Frame):
         self.bg_canvas = Canvas(self, bg="#f9f4f5", height=820, width=1240, bd=0, highlightthickness=0, relief="ridge")
         self.bg_canvas.grid(row=0, column=0, sticky=NSEW)
         self.bg_background_img = PhotoImage(file=f"view/static/project_message/messages_background.png")
-        self.bg_background = self.bg_canvas.create_image(693, 392, image=self.bg_background_img)
+        self.bg_background = self.bg_canvas.create_image(712, 422, image=self.bg_background_img)
 
         self.messages_canvas = Canvas(self.bg_canvas, bg="#E5E4E4", height=620, width=1040, bd=0, highlightthickness=0, relief="ridge")
         self.messages_canvas.grid(row=0, column=0, sticky=NSEW)
