@@ -80,6 +80,22 @@ class BoardView(ttk.Frame):
             self.tsk.bind("<B1-Motion>", self.drag_motion)
             self.tsk.bind("<ButtonRelease>", self.on_release)
 
+        self.rearrange_tasks()
+
+    def rearrange_tasks(self):
+        number_of_column_widgets = self.sections.grid_size()[0]
+        for c in range(number_of_column_widgets):
+            column_slaves = self.sections.grid_slaves(column=c)[::-1]
+            for i in range(len(column_slaves)):
+                current_task_id = column_slaves[i].tsk.obj_id
+                current_task = self.tsk_controller.service.task_repository.find_by_id(current_task_id)
+                column_slaves[i].grid(row=i)
+                current_task.board_coordinates = [column_slaves[i].grid_info()["row"],
+                                                  column_slaves[i].grid_info()["column"]]
+                current_task.status = self.BOARD_MAPPER[column_slaves[i].grid_info()["column"]]
+
+
+
     def add_task_btn_on_enter(self, e):
         self.create_task_btn["image"] = self.create_task_hover_img1
 
@@ -128,16 +144,6 @@ class BoardView(ttk.Frame):
         widget.grid(row=new_row, column=new_column)
         widget.tsk.board_coordinates = (new_row, new_column)
 
-        number_of_column_widgets = self.sections.grid_size()[0]
-        for c in range(number_of_column_widgets):
-            column_slaves = self.sections.grid_slaves(column=c)[::-1]
-            for i in range(len(column_slaves)):
-                current_task_id = column_slaves[i].tsk.obj_id
-                current_task = self.tsk_controller.service.task_repository.find_by_id(current_task_id)
-                column_slaves[i].grid(row=i)
-                current_task.board_coordinates = [column_slaves[i].grid_info()["row"],
-                                                  column_slaves[i].grid_info()["column"]]
-                current_task.status = self.BOARD_MAPPER[column_slaves[i].grid_info()["column"]]
-
+        self.rearrange_tasks()
         self.tsk_controller.save_entities()
 
