@@ -1,4 +1,4 @@
-from tkinter import Canvas, PhotoImage, Button, ttk, Frame, CENTER
+from tkinter import Canvas, PhotoImage, Button, ttk, Frame, CENTER, Label
 
 from view.command.project.go_main_menu_command import GoMainMenuCommand
 from view.command.task.show_create_project_command import ShowCreateTaskCommand
@@ -53,6 +53,10 @@ class BoardView(ttk.Frame):
         self.go_back_btn.place(x=1175, y=905, width=265, height=70)
         self.go_back_btn.bind("<Enter>", self.go_back_btn_on_enter)
         self.go_back_btn.bind("<Leave>", self.go_back_btn_on_leave)
+
+        self.prj_title = Label(self, text=f"{self.current_project.name} Board",
+                               font=("Helvetica", 21, "bold"), fg="#FFFFFF", bg="#5E214B")
+        self.prj_title.place(x=75, y=7.5)
 
         self.background = self.canvas.create_image(720, 62.8, image=self.background_img)
 

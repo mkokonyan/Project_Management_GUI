@@ -10,10 +10,13 @@ class TaskView(Frame):
         self.tsk = tsk
 
         self.tsk_btn = Button(self, borderwidth=0, highlightthickness=0, background="#771859",
-                              activebackground="#D945AA", relief="flat", text=self.tsk.name,
+                              activebackground="#D945AA", relief="flat", text=f"{self.tsk.name} /{self.tsk.employee}/",
                               font=("Helvetica", 13, "bold"), fg="#FFFFFF", bg="#771859",
                               command=self.btn_clicked)
         self.tsk_btn.place(x=0, y=0, width=260, height=45)
+
+
+
 
     def btn_clicked(self):
         print("Button Clicked")

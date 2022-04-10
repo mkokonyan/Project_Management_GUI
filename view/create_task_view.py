@@ -1,7 +1,5 @@
-from datetime import datetime
-from tkinter import Canvas, PhotoImage, Button, Entry, ttk, StringVar, Toplevel
-
-from tkcalendar import Calendar
+from tkinter import Canvas, PhotoImage, Button, Entry, ttk, END, StringVar
+from tkinter.scrolledtext import ScrolledText
 
 from view.command.project.create_project_command import CreateProjectCommand
 from view.command.project.show_board_command import ShowBoardCommand
@@ -21,43 +19,41 @@ class CreateTaskView(ttk.Frame):
         self.employee_role = employee_role
         self.root.tsk_controller.view = self
         self.root.prj_controller.view = self
-        self.project_data = {}
+        self.task_data = {}
 
-        self.go_back_board_command = ShowBoardCommand(self.root.prj_controller, self.current_project.obj_id, self.employee_role)
+        self.go_back_board_command = ShowBoardCommand(self.root.prj_controller, self.current_project.obj_id,
+                                                      self.employee_role)
 
         self.canvas = Canvas(self, bg="#f9f4f5", height=1024, width=1440, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()
 
-        self.entry_img = PhotoImage(file=f"view/static/create_project/entry_img.png")
+        self.entry_img = PhotoImage(file=f"view/static/create_task/entry_img.png")
         self.create_task_img0 = PhotoImage(file=f"view/static/create_task/img0.png")
         self.create_task_hover_img1 = PhotoImage(file=f"view/static/create_task/img1.png")
         self.go_back_img2 = PhotoImage(file=f"view/static/create_task/img2.png")
         self.go_back_hover_img3 = PhotoImage(file=f"view/static/create_task/img3.png")
-        self.background_img = PhotoImage(file=f"view/static/create_project/background.png")
+        self.background_img = PhotoImage(file=f"view/static/create_task/background.png")
 
-        self.project_name_entry_bg = self.canvas.create_image(732, 304, image=self.entry_img)
-        self.project_name_entry = Entry(self, **entry_options)
-        self.project_name_entry.place(x=583, y=262, width=298, height=32)
+        self.task_name_entry_bg = self.canvas.create_image(732, 304, image=self.entry_img)
+        self.task_name_entry = Entry(self, **entry_options)
+        self.task_name_entry.place(x=583, y=262, width=298, height=32)
 
-        self.client_entry_bg = self.canvas.create_image(732, 406, image=self.entry_img)
-        self.client_entry = Entry(self, **entry_options)
-        self.client_entry.place(x=583, y=364, width=298, height=32)
+        self.assigned_to_bg = self.canvas.create_image(732, 406, image=self.entry_img)
+        self.assigned_to_default_val = StringVar(root, value=self.root.emp_controller.service.logged_user.username)
+        self.assigned_to_entry = Entry(self, **entry_options, state="disabled", disabledbackground="#E0E0E0", textvariable=self.assigned_to_default_val)
+        self.assigned_to_entry.place(x=583, y=364, width=298, height=32)
+
+        self.description_entry_bg = self.canvas.create_image(732, 508, image=self.entry_img)
+        self.description_entry = ScrolledText(self, **entry_options)
+        self.description_entry.place(x=583, y=466, width=298, height=165)
 
         self.time_estimation_entry_bg = self.canvas.create_image(732, 508, image=self.entry_img)
-        self.time_estimation = Entry(self, **entry_options)
-        self.time_estimation.place(x=583, y=466, width=298, height=32)
-
-        self.due_date_button = Button(self, borderwidth=0, highlightthickness=0, background="#E0E0E0",
-                                      command=lambda: self.show_calendar(self.due_date_val), relief="flat",
-                                      activebackground="#E0E0E0")
-        self.due_date_val = StringVar()
-        self.due_date_label = Entry(self, **entry_options, textvariable=self.due_date_val)
-        self.due_date_button.place(x=577, y=568, width=304, height=32)
-        self.due_date_label.place(x=577, y=568, width=100, height=32)
+        self.time_estimation_entry = Entry(self, **entry_options)
+        self.time_estimation_entry.place(x=583, y=705, width=298, height=32)
 
         self.create_project_btn = Button(self, image=self.create_task_img0, borderwidth=0, highlightthickness=0,
                                          background="#f9f4f5", anchor="w", justify="left",
-                                         command=self.get_project_data, relief="flat", activebackground="#f9f4f5", )
+                                         command=self.get_task_data, relief="flat", activebackground="#f9f4f5", )
         self.create_project_btn.place(x=592, y=905, width=250, height=70)
         self.create_project_btn.bind("<Enter>", self.register_btn_on_enter)
         self.create_project_btn.bind("<Leave>", self.register_btn_on_leave)
@@ -71,16 +67,18 @@ class CreateTaskView(ttk.Frame):
 
         self.background = self.canvas.create_image(790, 477, image=self.background_img)
 
-    def get_project_data(self):
-        self.project_data.update(
+    def get_task_data(self):
+        self.task_data.update(
             {
-                "name": self.project_name_entry.get(),
-                "client": self.client_entry.get(),
-                "time_estimation": self.time_estimation.get(),
-                "due_date": self.due_date_val.get(),
+                "name": self.task_name_entry.get(),
+                "employee": self.assigned_to_default_val.get(),
+                "project_id": self.current_project.obj_id,
+                "description": self.description_entry.get('1.0', END).strip(),
+                "time_estimation": self.time_estimation_entry.get()
             }
         )
-        CreateProjectCommand(self.root.prj_controller, self.project_data)()
+        print(self.task_data)
+        # CreateTaskCommand(self.root.tsk_controller, self.task_data)()
 
     def register_btn_on_enter(self, e):
         self.create_project_btn["image"] = self.create_task_hover_img1
@@ -93,20 +91,3 @@ class CreateTaskView(ttk.Frame):
 
     def go_back_btn_on_leave(self, e):
         self.go_back_board_btn["image"] = self.go_back_img2
-
-    def show_calendar(self, date_val):
-        def grad_date(view):
-            date_val.set(cal.get_date())
-            view.destroy()
-
-        cal_root = Toplevel(self, height=250, width=250)
-        x = self.root.winfo_x()
-        y = self.root.winfo_y()
-        cal_root.geometry("+%d+%d" % (x + 220, y + 400))
-
-        cal = Calendar(cal_root, selectmode='day',
-                       year=datetime.now().year, month=datetime.now().month,
-                       day=datetime.now().day, date_pattern='yyyy-MM-dd')
-        cal.pack()
-
-        Button(cal_root, text="Get Date", command= lambda: grad_date(cal_root)).pack(pady=20)
