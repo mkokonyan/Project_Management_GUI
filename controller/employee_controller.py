@@ -59,3 +59,6 @@ class EmployeeController(BaseController):
 
     def get_role(self) -> str:
         return self.service.logged_user.role
+
+    def get_logged_user(self) -> None:
+        return self.service.logged_user

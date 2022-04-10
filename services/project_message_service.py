@@ -62,6 +62,9 @@ class ProjectMessageService:
     def get_all_messages(self) -> list[ProjectMessage]:
         return self._project_message_repository.find_all()
 
+    def get_all_messages_sorted_by_date(self) -> list[ProjectMessage]:
+        return self._project_message_repository.find_all_messages_sorted_by_date()
+
     def reload_all_messages(self) -> None:
         return self._project_message_repository.load()
 

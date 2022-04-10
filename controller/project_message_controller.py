@@ -15,6 +15,9 @@ class ProjectMessageController(BaseController):
     def get_all_entities(self):
         return self._service.get_all_messages()
 
+    def get_all_entities_sorted_by_date(self):
+        return self._service.get_all_messages_sorted_by_date()
+
     def reload_all_entities(self) -> None:
         return self.service.reload_all_messages()
 

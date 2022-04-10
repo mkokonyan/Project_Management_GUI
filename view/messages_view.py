@@ -9,14 +9,23 @@ class MessagesView(ttk.Frame):
                          }
         super().__init__(root, *args, **kwargs)
 
+
+
         self.rowconfigure(0, minsize=820)
         self.rowconfigure(1, minsize=150)
         self.columnconfigure(0, minsize=1440)
 
         self.root = root
         self.prj_msg_controller = prj_msg_controller
+        self.emp_controller = self.root.emp_controller
+        self.logged_user = self.emp_controller.get_logged_user()
+
         self.prj_msg_controller.view = self.root
-        self.messages = self.prj_msg_controller.get_all_entities()
+        self.emp_controller.view = self.root
+
+        self.prj_msg_controller.reload_all_entities()
+        self.messages = self.prj_msg_controller.get_all_entities_sorted_by_date()
+
 
         self.chat_window = Frame(self, background="#f9f4f5")
         self.chat_window.grid(row=0, column=0, sticky=NSEW)
