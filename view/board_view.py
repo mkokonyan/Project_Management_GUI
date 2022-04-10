@@ -28,7 +28,8 @@ class BoardView(ttk.Frame):
         self.tsk_controller.reload_all_entities()
 
         self.go_main_menu_command = GoMainMenuCommand(self.prj_controller)
-        self.show_create_task_command = ShowCreateTaskCommand(self.tsk_controller, self.current_project, self.employee_role)
+        self.show_create_task_command = ShowCreateTaskCommand(self.tsk_controller, self.current_project,
+                                                              self.employee_role)
 
         self.canvas = Canvas(self, bg="#f9f4f5", height=1024, width=1440, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()
@@ -43,7 +44,7 @@ class BoardView(ttk.Frame):
         self.create_task_btn = Button(self, image=self.create_task_img0, borderwidth=0, highlightthickness=0,
                                       command=self.show_create_task_command, relief="flat", bg="#f9f4f5",
                                       activebackground="#D945AA")
-        self.create_task_btn.place(x=1275, y=0, width=165, height=55)
+        self.create_task_btn.place(x=1275, y=1.2, width=165, height=53.8)
         self.create_task_btn.bind("<Enter>", self.add_task_btn_on_enter)
         self.create_task_btn.bind("<Leave>", self.add_task_btn_on_leave)
         self.go_back_btn = Button(self, image=self.go_back_img2, borderwidth=0, highlightthickness=0,
@@ -53,16 +54,19 @@ class BoardView(ttk.Frame):
         self.go_back_btn.bind("<Enter>", self.go_back_btn_on_enter)
         self.go_back_btn.bind("<Leave>", self.go_back_btn_on_leave)
 
-        self.background = self.canvas.create_image(720, 27.5, image=self.background_img)
-        self.sections_background = self.canvas.create_image(600, 541, image=self.sections_background_img)
+        self.background = self.canvas.create_image(720, 62.8, image=self.background_img)
 
         self.sections = Frame(self, height=920, width=1168, bg="#f9f4f5")
+        self.sections_canvas = Canvas(self.sections, bg="#f9f4f5", height=920, width=1168, bd=0, highlightthickness=0,
+                                      relief="ridge")
+        self.sections_canvas.place(x=0, y=0)
+        self.sections_background = self.sections_canvas.create_image(584, 440, image=self.sections_background_img)
 
         self.sections.place(x=16, y=123)
-        self.sections.columnconfigure(0, minsize=292, weight=1)
-        self.sections.columnconfigure(1, minsize=292, weight=1)
-        self.sections.columnconfigure(2, minsize=292, weight=1)
-        self.sections.columnconfigure(3, minsize=292, weight=1)
+        for c_idx in range(0, 4):
+            self.sections.columnconfigure(c_idx, minsize=292, weight=1)
+        for r_idx in range(0, 9):
+            self.sections.rowconfigure(r_idx, minsize=90, weight=1)
 
         for t in self.project_tasks:
             self.tsk = TaskView(self.sections, self.tsk_controller, t, highlightbackground="#771859",
