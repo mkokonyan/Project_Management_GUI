@@ -33,7 +33,7 @@ class MessagesView(ttk.Frame):
         self.bg_background = self.bg_canvas.create_image(712, 422, image=self.bg_background_img)
 
         self.messages_canvas = Canvas(self.bg_canvas, bg="#E5E4E4", height=741, width=1040, bd=0, highlightthickness=0, relief="ridge")
-        self.messages_canvas.place(x=50, y = 50)
+        self.messages_canvas.place(x=50, y=50)
         self.canvas_scrollbar = Scrollbar(self, orient=VERTICAL, command=self.messages_canvas.yview)
         self.canvas_scrollbar.grid(row=0, column=1, sticky=NS)
         self.messages_canvas.bind("<Configure>", lambda v:self.messages_canvas.configure(yscrollcommand=self.canvas_scrollbar.set, scrollregion=self.messages_canvas.bbox("all")))
@@ -43,11 +43,15 @@ class MessagesView(ttk.Frame):
 
         self.canvas_conteiner.columnconfigure(0, minsize=1040)
         for i in range(len(self.messages)):
-            self.canvas_conteiner.rowconfigure(i, minsize=60)
+            self.canvas_conteiner.rowconfigure(i, minsize=90)
             self.message = Frame(self.canvas_conteiner, bd=5, relief="flat", highlightbackground="#771859", highlightthickness=2)
-            self.message_label = Label(self.message, font=("Helvetica", 13, "bold"), text=self.messages[i].get_info())
-            self.message_label.pack()
-            self.message.grid(column=0, row=i, sticky=W)
+            self.message_label = Label(self.message, font=("Helvetica", 13, "bold"), text=f"{self.messages[i].employee}")
+            self.message_label.grid(row=0, column=0, sticky=W)
+            self.message_label = Label(self.message, font=("Helvetica", 11),fg="gray", text=f"{self.messages[i].sent_on}")
+            self.message_label.grid(row=0, column=1, sticky=W)
+            self.message_label = Label(self.message, font=("Helvetica", 13, ), text=f"{self.messages[i].message}")
+            self.message_label.grid(row=1, column=0, sticky=W)
+            self.message.grid(column=0, row=i, sticky=W, pady=10)
 
 
 
