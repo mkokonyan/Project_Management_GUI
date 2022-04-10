@@ -5,7 +5,6 @@ from dao.project_repository import ProjectRepository
 from dao.task_repository import TaskRepository
 from entity.employee import Employee
 from entity.task import Task
-from exceptions.entity_not_found_exception import EntityNotFoundException
 from helpers.validators.task_validators import validate_task_name_length, \
     validate_task_time_estimation, validate_task_name_dublication
 
@@ -97,13 +96,11 @@ class TaskService:
         except ValueError as ex:
             return ex
 
-
         setattr(task_to_edit, "name", kwargs.get("name") if kwargs.get("name") else task_to_edit.name)
         setattr(task_to_edit, "description",
                 kwargs.get("description") if kwargs.get("description") else task_to_edit.description)
         setattr(task_to_edit, "time_estimation",
                 kwargs.get("time_estimation") if kwargs.get("time_estimation") else task_to_edit.time_estimation)
-        setattr(task_to_edit, "status", kwargs.get("status") if kwargs.get("status") else task_to_edit.status)
 
         self._task_repository.update(task_to_edit)
         if employee_to_edit.username not in project_to_edit.employees:
@@ -135,8 +132,6 @@ class TaskService:
         employee_to_remove = self._employee_repository.find_by_id(task_to_set.employee)
         employee_to_set = self._employee_repository.find_by_id(username)
         project_to_set = self._project_repository.find_by_id(task_to_set.project_id)
-
-
 
         if employee_to_remove:
             employee_to_remove.remove_task(task_id)
