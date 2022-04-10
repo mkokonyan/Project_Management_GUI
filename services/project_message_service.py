@@ -3,6 +3,7 @@ from datetime import datetime
 from dao.employee_repository import EmployeeRepository
 from dao.project_message_repository import ProjectMessageRepository
 from entity.project_message import ProjectMessage
+from helpers.validators.project_message_validators import validate_message_content
 
 
 class ProjectMessageService:
@@ -23,20 +24,26 @@ class ProjectMessageService:
         for repo in args:
             repo.save()
 
-    def send_message(self, message, username) -> ProjectMessage:
+    def send_message(self, message, username) -> ValueError | ProjectMessage:
         employee = self._employee_repository.find_by_id(username)
 
-        message = ProjectMessage(
+        project_message = ProjectMessage(
             message=message,
             employee=username
         )
 
-        self._project_message_repository.create(message)
-        employee.add_message(message.obj_id)
+        try:
+            validate_message_content(message)
+        except ValueError as ex:
+            return ex
+
+        self._project_message_repository.create(project_message)
+
+        employee.add_message(project_message.obj_id)
 
         self.repos_save(self._project_message_repository, self._employee_repository)
 
-        return message
+        return project_message
 
     def edit_message(self, message_id, edited_message) -> ProjectMessage:
         message_to_edit = self._project_message_repository.find_by_id(message_id)
