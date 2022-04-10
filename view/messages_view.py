@@ -53,7 +53,8 @@ class MessagesView(ttk.Frame):
             self.message_label.grid(row=1, column=0, sticky=W)
             self.message.grid(column=0, row=i, sticky=W, pady=10)
 
-
+        self.messages_canvas.update_idletasks()
+        self.messages_canvas.yview_moveto('1.0')
 
         self.message_box = Frame(self, background="#f9f4f5")
         self.message_box.grid(row=1, column=0, sticky=NSEW)
