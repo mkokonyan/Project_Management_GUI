@@ -4,6 +4,7 @@ from view.all_projects_view import AllProjectsView
 from view.command.employee.logout_command import LogoutCommand
 from view.command.employee.show_user_details_command import ShowUserDetailsCommand
 from view.command.project.go_main_menu_command import GoMainMenuCommand
+from view.command.project_message.go_to_messages_command import GoToMessagesCommand
 
 
 class MainView(ttk.Frame):
@@ -24,6 +25,8 @@ class MainView(ttk.Frame):
         self.logout_command = LogoutCommand(self.emp_controller)
         self.user_details_command = ShowUserDetailsCommand(self.emp_controller)
         self.go_main_menu_command = GoMainMenuCommand(self.prj_controller)
+        self.go_to_messages_command = GoToMessagesCommand(self.prj_msg_controller)
+
 
         self.canvas = Canvas(self, bg="#f9f4f5", height=1024, width=1440, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()
@@ -48,7 +51,7 @@ class MainView(ttk.Frame):
         self.projects_btn.bind("<Leave>", self.projects_btn_on_leave)
 
         self.messages_btn = Button(self, image=self.messages_img2, borderwidth=0, highlightthickness=0,
-                                   command=self.btn_clicked, relief="flat", activebackground="#5D204A")
+                                   command=self.go_to_messages_command, relief="flat", activebackground="#5D204A")
         self.messages_btn.place(x=222, y=0, width=122, height=55)
         self.messages_btn.bind("<Enter>", self.messages_btn_on_enter)
         self.messages_btn.bind("<Leave>", self.messages_btn_on_leave)
@@ -94,5 +97,3 @@ class MainView(ttk.Frame):
     def logout_btn_on_leave(self, e):
         self.logout_btn["image"] = self.logout_img6
 
-    def btn_clicked(self):
-        print("Button Clicked")
