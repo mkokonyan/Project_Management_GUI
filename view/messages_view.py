@@ -44,7 +44,7 @@ class MessagesView(ttk.Frame):
         self.canvas_conteiner.columnconfigure(0, minsize=1040)
         for i in range(len(self.messages)):
             self.canvas_conteiner.rowconfigure(i, minsize=90)
-            self.message = Frame(self.canvas_conteiner, bd=5, relief="flat", highlightbackground="#771859", highlightthickness=2)
+            self.message = Frame(self.canvas_conteiner, bd=5, relief="flat", highlightbackground="#771859", highlightthickness=1)
             self.message_label = Label(self.message, font=("Helvetica", 13, "bold"), text=f"{self.messages[i].employee}")
             self.message_label.grid(row=0, column=0, sticky=W)
             self.message_label = Label(self.message, font=("Helvetica", 11),fg="gray", text=f"{self.messages[i].sent_on}")
