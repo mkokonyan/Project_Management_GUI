@@ -1,8 +1,8 @@
 from tkinter import Canvas, PhotoImage, Button, Entry, ttk, END, StringVar
 from tkinter.scrolledtext import ScrolledText
 
-from view.command.project.create_project_command import CreateProjectCommand
 from view.command.project.show_board_command import ShowBoardCommand
+from view.command.task.create_task_command import CreateTaskCommand
 
 
 class CreateTaskView(ttk.Frame):
@@ -17,12 +17,15 @@ class CreateTaskView(ttk.Frame):
         self.root = root
         self.current_project = current_project
         self.employee_role = employee_role
+        self.tsk_controller = self.root.tsk_controller
         self.root.tsk_controller.view = self
         self.root.prj_controller.view = self
-        self.task_data = {}
+        self.number_of_tasks_in_todo = len([t for t in self.tsk_controller.get_project_tasks(self.current_project.obj_id) if t.status == "TO DO"])
+        self.task_data = {
+            "board_coordinates": [self.number_of_tasks_in_todo, 0]
+                          }
 
-        self.go_back_board_command = ShowBoardCommand(self.root.prj_controller, self.current_project.obj_id,
-                                                      self.employee_role)
+        self.go_back_board_command = ShowBoardCommand(self.root.prj_controller, self.current_project.obj_id, self.employee_role)
 
         self.canvas = Canvas(self, bg="#f9f4f5", height=1024, width=1440, bd=0, highlightthickness=0, relief="ridge")
         self.canvas.pack()
@@ -77,8 +80,7 @@ class CreateTaskView(ttk.Frame):
                 "time_estimation": self.time_estimation_entry.get()
             }
         )
-        print(self.task_data)
-        # CreateTaskCommand(self.root.tsk_controller, self.task_data)()
+        CreateTaskCommand(self.tsk_controller, self.task_data)()
 
     def register_btn_on_enter(self, e):
         self.create_project_btn["image"] = self.create_task_hover_img1

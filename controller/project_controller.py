@@ -26,8 +26,8 @@ class ProjectController(BaseController):
         self.view.forget()
         return MainView(self.view.root).pack()
 
-    def create_project(self, registration_data):
-        result = self.service.add_new_project(**registration_data)
+    def create_project(self, project_data):
+        result = self.service.add_new_project(**project_data)
         if isinstance(result, Exception):
             return messagebox.showerror("Error", str(result))
         self.view.forget()

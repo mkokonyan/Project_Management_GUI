@@ -3,9 +3,9 @@ from dao.project_repository import ProjectRepository
 from dao.task_repository import TaskRepository
 from entity.employee import Employee
 from entity.task import Task
-from helpers.validators.project_validators import validate_username_existence
+from exceptions.entity_not_found_exception import EntityNotFoundException
 from helpers.validators.task_validators import validate_task_name_length, validate_description_length, \
-    validate_task_time_estimation, validate_project_name_existence, validate_task_name_dublication
+    validate_task_time_estimation, validate_task_name_dublication
 
 
 class TaskService:
@@ -40,18 +40,20 @@ class TaskService:
                      employee: str,
                      project_id: str,
                      description: str,
-                     time_estimation: int,
+                     time_estimation: str,
+                     board_coordinates: list[int],
                      ) -> Task:
 
         employee_to_add = self._employee_repository.find_by_id(employee)
         project_to_add = self._project_repository.find_by_id(project_id)
 
-        validate_task_name_length(name)
-        validate_task_name_dublication(name, self._task_repository, project_to_add)
-        validate_username_existence(employee_to_add)
-        validate_project_name_existence(project_to_add)
-        validate_description_length(description)
-        validate_task_time_estimation(time_estimation)
+        try:
+            validate_task_name_length(name)
+            validate_task_name_dublication(name, self._task_repository, project_to_add)
+            validate_description_length(description)
+            validate_task_time_estimation(time_estimation)
+        except (EntityNotFoundException, ValueError) as ex:
+            return ex
 
         task = Task(
             name=name,
@@ -59,6 +61,7 @@ class TaskService:
             project_id=project_id,
             description=description,
             time_estimation=time_estimation,
+            board_coordinates=board_coordinates,
         )
         self._task_repository.create(task)
 
@@ -85,7 +88,6 @@ class TaskService:
             self.set_new_employee(task_id, kwargs.get("employee"))
 
         validate_task_name_length(kwargs.get("name"))
-        validate_project_name_existence(project_to_edit)
         validate_description_length(kwargs.get("description"))
         validate_task_time_estimation(kwargs.get("time_estimation"))
 
@@ -127,7 +129,7 @@ class TaskService:
         employee_to_set = self._employee_repository.find_by_id(username)
         project_to_set = self._project_repository.find_by_id(task_to_set.project_id)
 
-        validate_username_existence(employee_to_set)
+
 
         if employee_to_remove:
             employee_to_remove.remove_task(task_id)

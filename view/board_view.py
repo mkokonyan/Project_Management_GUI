@@ -141,5 +141,3 @@ class BoardView(ttk.Frame):
 
         self.tsk_controller.save_entities()
 
-    def btn_clicked(self):
-        print("Button Clicked")
