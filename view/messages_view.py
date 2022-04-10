@@ -1,4 +1,4 @@
-from tkinter import ttk, Canvas, PhotoImage, Entry, NSEW, Frame, Button, Label, Scrollbar, VERTICAL, NS
+from tkinter import ttk, Canvas, PhotoImage, Entry, NSEW, Frame, Button, Label, Scrollbar, VERTICAL, NS, BOTH, CENTER
 
 from view.command.project_message.send_message_command import SendMessageCommand
 
@@ -15,7 +15,6 @@ class MessagesView(ttk.Frame):
         self.rowconfigure(1, minsize=150)
         self.columnconfigure(0, minsize=1420)
 
-
         self.root = root
         self.prj_msg_controller = prj_msg_controller
         self.emp_controller = self.root.emp_controller
@@ -26,13 +25,14 @@ class MessagesView(ttk.Frame):
 
         self.messages = self.prj_msg_controller.get_all_entities_sorted_by_date()
 
+
         self.bg_canvas = Canvas(self, bg="#f9f4f5", height=820, width=1240, bd=0, highlightthickness=0, relief="ridge")
         self.bg_canvas.grid(row=0, column=0, sticky=NSEW)
         self.bg_background_img = PhotoImage(file=f"view/static/project_message/messages_background.png")
         self.bg_background = self.bg_canvas.create_image(712, 422, image=self.bg_background_img)
 
-        self.messages_canvas = Canvas(self.bg_canvas, bg="#E5E4E4", height=620, width=1040, bd=0, highlightthickness=0, relief="ridge")
-        self.messages_canvas.grid(row=0, column=0, sticky=NSEW)
+        self.messages_canvas = Canvas(self.bg_canvas, bg="#E5E4E4", height=791, width=1040, bd=0, highlightthickness=0, relief="ridge")
+        self.messages_canvas.place(anchor=CENTER, relx=0.5, rely=0.51)
         self.canvas_scrollbar = Scrollbar(self, orient=VERTICAL, command=self.messages_canvas.yview)
         self.canvas_scrollbar.grid(row=0, column=1, sticky=NS)
         self.messages_canvas.configure(yscrollcommand=self.canvas_scrollbar.set)
@@ -40,7 +40,7 @@ class MessagesView(ttk.Frame):
 
 
 
-        self.frame = Frame(self.messages_canvas)
+        self.frame = Frame(self.messages_canvas, bg="red")
         self.messages_canvas.create_window((0,0), window=self.frame)
 
         # for i in range(len(self.messages)):
@@ -50,7 +50,7 @@ class MessagesView(ttk.Frame):
         #     self.message.grid(column=0, row=i)
 
         for i in range(200):
-            self.message_label = Label(self.frame, text=i)
+            self.message_label = Label(self.frame, text=i, bg="#E5E4E4")
             self.message_label.grid(column= 1, row=i, pady=10, padx=10)
 
         self.message_box = Frame(self, background="#f9f4f5")
