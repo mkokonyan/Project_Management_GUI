@@ -1,4 +1,4 @@
-from tkinter import ttk, Canvas, PhotoImage, Entry, NSEW, Frame, Button, Label, Scrollbar
+from tkinter import ttk, Canvas, PhotoImage, Entry, NSEW, Frame, Button, Label, Scrollbar, VERTICAL, NS
 
 from view.command.project_message.send_message_command import SendMessageCommand
 
@@ -13,7 +13,8 @@ class MessagesView(ttk.Frame):
 
         self.rowconfigure(0, minsize=820)
         self.rowconfigure(1, minsize=150)
-        self.columnconfigure(0, minsize=1440)
+        self.columnconfigure(0, minsize=1420)
+
 
         self.root = root
         self.prj_msg_controller = prj_msg_controller
@@ -25,29 +26,35 @@ class MessagesView(ttk.Frame):
 
         self.messages = self.prj_msg_controller.get_all_entities_sorted_by_date()
 
-        self.chat_window = Frame(self, background="#f9f4f5")
-        self.chat_window.grid(row=0, column=0, sticky=NSEW)
+        self.bg_canvas = Canvas(self, bg="#f9f4f5", height=820, width=1240, bd=0, highlightthickness=0, relief="ridge")
+        self.bg_canvas.grid(row=0, column=0, sticky=NSEW)
+        self.bg_background_img = PhotoImage(file=f"view/static/project_message/messages_background.png")
+        self.bg_background = self.bg_canvas.create_image(693, 392, image=self.bg_background_img)
 
-        self.message_box_canvas = Canvas(self.chat_window, bg="#f9f4f5", height=820, width=1440, bd=0,
-                                         highlightthickness=0, relief="ridge")
-        self.message_box_canvas.place(x=25, y=32)
-        self.messages_background_img = PhotoImage(file=f"view/static/project_message/messages_background.png")
-        self.messages_background = self.message_box_canvas.create_image(693, 392, image=self.messages_background_img)
+        self.messages_canvas = Canvas(self.bg_canvas, bg="#E5E4E4", height=620, width=1040, bd=0, highlightthickness=0, relief="ridge")
+        self.messages_canvas.grid(row=0, column=0, sticky=NSEW)
+        self.canvas_scrollbar = Scrollbar(self, orient=VERTICAL, command=self.messages_canvas.yview)
+        self.canvas_scrollbar.grid(row=0, column=1, sticky=NS)
+        self.messages_canvas.configure(yscrollcommand=self.canvas_scrollbar.set)
+        self.messages_canvas.bind("<Configure>", lambda v:self.messages_canvas.configure(scrollregion=self.messages_canvas.bbox("all")))
 
-        self.message_box = Scrollbar(self, background="#f9f4f5")
+
+
+        self.frame = Frame(self.messages_canvas)
+        self.messages_canvas.create_window((0,0), window=self.frame)
+
+        # for i in range(len(self.messages)):
+        #     self.message = Frame(self.frame)
+        #     self.message_label = Label(self.message, text=self.messages[i].get_info())
+        #     self.message_label.pack()
+        #     self.message.grid(column=0, row=i)
+
+        for i in range(200):
+            self.message_label = Label(self.frame, text=i)
+            self.message_label.grid(column= 1, row=i, pady=10, padx=10)
+
+        self.message_box = Frame(self, background="#f9f4f5")
         self.message_box.grid(row=1, column=0, sticky=NSEW)
-
-        for c_idx in range(0, 1):
-            self.chat_window.columnconfigure(c_idx, minsize=292, weight=1)
-        for r_idx in range(0, 9):
-            self.chat_window.rowconfigure(r_idx, minsize=90, weight=1)
-
-        for i in range(len(self.messages)):
-            self.message = Frame(self.chat_window)
-            self.message_label = Label(self.message, text=self.messages[i].get_info())
-            self.message_label.pack()
-            self.message.grid(column=0, row=i)
-
         self.message_box_canvas = Canvas(self.message_box, bg="#f9f4f5", height=150, width=1175, bd=0,
                                          highlightthickness=0, relief="ridge")
         self.message_box_canvas.place(x=20, y=14)

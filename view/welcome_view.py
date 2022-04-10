@@ -28,6 +28,7 @@ class WelcomeView(ttk.Frame):
 
         self.username_entry_bg = self.canvas.create_image(1188, 480, image=self.entry_img)
         self.username_entry = Entry(self, **entry_options)
+        self.username_entry.focus()
         self.username_entry.place(x=1039, y=463, width=298, height=32)
 
         self.password_entry_bg = self.canvas.create_image(1188, 610, image=self.entry_img)
