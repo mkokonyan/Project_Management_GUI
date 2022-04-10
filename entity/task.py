@@ -6,7 +6,7 @@ class Task:
                  employee: str = None,
                  project_id: str = None,
                  description: str = None,
-                 time_estimation: int = None,
+                 time_estimation: str = None,
                  status: str = "TO DO",
                  board_coordinates: list[int] = [0, 0],
                  ) -> None:

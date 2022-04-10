@@ -1,10 +1,12 @@
+from typing import Any
+
 from dao.employee_repository import EmployeeRepository
 from dao.project_repository import ProjectRepository
 from dao.task_repository import TaskRepository
 from entity.employee import Employee
 from entity.task import Task
 from exceptions.entity_not_found_exception import EntityNotFoundException
-from helpers.validators.task_validators import validate_task_name_length, validate_description_length, \
+from helpers.validators.task_validators import validate_task_name_length, \
     validate_task_time_estimation, validate_task_name_dublication
 
 
@@ -42,7 +44,7 @@ class TaskService:
                      description: str,
                      time_estimation: str,
                      board_coordinates: list[int],
-                     ) -> Task:
+                     ) -> ValueError | Task:
 
         employee_to_add = self._employee_repository.find_by_id(employee)
         project_to_add = self._project_repository.find_by_id(project_id)
@@ -50,9 +52,8 @@ class TaskService:
         try:
             validate_task_name_length(name)
             validate_task_name_dublication(name, self._task_repository, project_to_add)
-            validate_description_length(description)
             validate_task_time_estimation(time_estimation)
-        except (EntityNotFoundException, ValueError) as ex:
+        except ValueError as ex:
             return ex
 
         task = Task(
@@ -75,21 +76,27 @@ class TaskService:
 
         return task
 
-    def edit_task(self, task_id, **kwargs) -> Task:
+    def edit_task(self, task_id, **kwargs) -> ValueError | Any:
 
         task_to_edit = self._task_repository.find_by_id(task_id)
         project_to_edit = self._project_repository.find_by_id(task_to_edit.project_id)
         employee_to_edit = self._employee_repository.find_by_id(task_to_edit.employee)
 
         if kwargs.get("name") and not task_to_edit.name == kwargs.get("name"):
-            validate_task_name_dublication(kwargs.get("name"), self._task_repository, project_to_edit)
+            try:
+                validate_task_name_dublication(kwargs.get("name"), self._task_repository, project_to_edit)
+            except ValueError as ex:
+                return ex
 
         if kwargs.get("employee") and not kwargs.get("employee") == employee_to_edit.username:
             self.set_new_employee(task_id, kwargs.get("employee"))
 
-        validate_task_name_length(kwargs.get("name"))
-        validate_description_length(kwargs.get("description"))
-        validate_task_time_estimation(kwargs.get("time_estimation"))
+        try:
+            validate_task_name_length(kwargs.get("name"))
+            validate_task_time_estimation(kwargs.get("time_estimation"))
+        except ValueError as ex:
+            return ex
+
 
         setattr(task_to_edit, "name", kwargs.get("name") if kwargs.get("name") else task_to_edit.name)
         setattr(task_to_edit, "description",

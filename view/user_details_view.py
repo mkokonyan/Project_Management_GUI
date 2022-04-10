@@ -1,7 +1,6 @@
 from tkinter import Canvas, PhotoImage, Button, Entry, ttk, StringVar
 
 from view.command.employee.edit_profile_command import EditProfileCommand
-from view.command.employee.go_back_command import GoBackCommand
 from view.command.project.go_main_menu_command import GoMainMenuCommand
 
 
