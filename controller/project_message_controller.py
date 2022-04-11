@@ -14,8 +14,11 @@ class ProjectMessageController(BaseController):
         self.msg_frame = MessagesView(self.view, self)
         self.msg_frame.place(x=0, y=55)
 
-    def send_message(self, message, username):
-        result = self.service.send_message(message, username)
+    def send_message(self, message, username, message_id=None):
+        if message_id:
+            result = self.service.edit_message(message_id, message)
+        else:
+            result = self.service.send_message(message, username)
         if isinstance(result, Exception):
             return messagebox.showerror("Error", str(result))
         self.go_to_messages()

@@ -21,6 +21,7 @@ class MessagesView(ttk.Frame):
         self.prj_msg_controller = prj_msg_controller
         self.emp_controller = self.root.emp_controller
         self.logged_user = self.emp_controller.get_logged_user()
+        self.edit_message_id = None
 
         self.prj_msg_controller.view = self.root
         self.emp_controller.view = self.root
@@ -31,8 +32,7 @@ class MessagesView(ttk.Frame):
         self.send_img0 = PhotoImage(file=f"view/static/project_message/img0.png")
         self.send_hover_img1 = PhotoImage(file=f"view/static/project_message/img0.png")
         self.delete_img2 = PhotoImage(file=f"view/static/project_message/img2.png")
-
-
+        self.edit_img3 = PhotoImage(file=f"view/static/project_message/img3.png")
 
         self.bg_canvas = Canvas(self,
                                 bg="#f9f4f5",
@@ -43,8 +43,6 @@ class MessagesView(ttk.Frame):
                                 relief="ridge",
                                 )
         self.bg_canvas.grid(row=0, column=0, sticky=NSEW)
-
-
 
         self.bg_background = self.bg_canvas.create_image(712, 422, image=self.bg_background_img)
         self.messages_canvas = Canvas(self.bg_canvas,
@@ -83,7 +81,7 @@ class MessagesView(ttk.Frame):
 
             self.username_label = Label(self.message,
                                         font=("Helvetica", 14, "bold"),
-                                        foreground= "#771859",
+                                        foreground="#771859",
                                         text=f"{self.messages[i].employee}",
                                         anchor="e",
                                         justify=LEFT,
@@ -93,7 +91,7 @@ class MessagesView(ttk.Frame):
             self.sent_on_label = Label(self.message,
                                        font=("Helvetica", 11),
                                        fg="gray",
-                                       text=f"{self.messages[i].sent_on}",
+                                       text=f"{self.messages[i].sent_on if not hasattr(self.messages[i], 'edited_on') else 'Edited ' + self.messages[i].edited_on}",
                                        anchor="e",
                                        justify=LEFT,
                                        background="#f9f4f5",
@@ -120,9 +118,19 @@ class MessagesView(ttk.Frame):
                                          )
                 self.delete_btn.place(x=1270, y=5, width=30, height=30)
 
+                self.edit_message_command = lambda: self.edit_message(self.messages[i].message, self.messages[i].obj_id)
+                self.edit_btn = Button(self.message,
+                                       image=self.edit_img3,
+                                       borderwidth=0,
+                                       highlightthickness=0,
+                                       command=self.edit_message_command,
+                                       relief="flat", bg="#FFF4FC",
+                                       activebackground="#FFF4FC"
+                                       )
+                self.edit_btn.place(x=1240, y=5, width=30, height=30)
 
             if i % 2 == 0:
-                self.message.config(background="#FFF4FC", highlightbackground="#771859",)
+                self.message.config(background="#FFF4FC", highlightbackground="#771859", )
                 self.username_label.config(background="#FFF4FC")
                 self.sent_on_label.config(background="#FFF4FC")
                 self.message_label.config(background="#FFF4FC")
@@ -156,10 +164,6 @@ class MessagesView(ttk.Frame):
         self.send_message_command = SendMessageCommand(self.prj_msg_controller, self.message_entry.get(),
                                                        self.logged_user.username)
 
-
-
-
-
         self.send_btn = Button(self.message_box,
                                image=self.send_img0,
                                borderwidth=0,
@@ -171,8 +175,6 @@ class MessagesView(ttk.Frame):
                                )
         self.send_btn.place(x=1175, y=30, width=265, height=70)
 
-
-
         self.send_btn.bind("<Enter>", self.send_btn_on_enter)
         self.send_btn.bind("<Leave>", self.send_btn_on_leave)
 
@@ -181,7 +183,6 @@ class MessagesView(ttk.Frame):
 
     def send_btn_on_leave(self, e):
         self.send_btn["image"] = self.send_img0
-
 
     def entry_on_click(self, e):
         if self.message_entry.get() == 'Type your message...':
@@ -193,4 +194,13 @@ class MessagesView(ttk.Frame):
         message = self.message_entry.get()
         if message == "Type your message...":
             message = ""
-        SendMessageCommand(self.prj_msg_controller, message, self.logged_user.username)()
+        if self.edit_message_id:
+            SendMessageCommand(self.prj_msg_controller, message, self.logged_user.username, self.edit_message_id)()
+        else:
+            SendMessageCommand(self.prj_msg_controller, message, self.logged_user.username)()
+
+    def edit_message(self, old_msg, msg_id):
+        self.message_entry.delete(0, "end")
+        self.message_entry.insert(0, old_msg)
+        self.message_entry.config(fg='black')
+        self.edit_message_id = msg_id

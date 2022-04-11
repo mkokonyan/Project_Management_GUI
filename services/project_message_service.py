@@ -34,7 +34,6 @@ class ProjectMessageService:
             formatted_message += letter
         formatted_message = formatted_message[1:]
 
-
         project_message = ProjectMessage(
             message=formatted_message,
             employee=username
