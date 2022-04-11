@@ -29,7 +29,7 @@ class ProjectMessageService:
 
         formatted_message = ""
         for i, letter in enumerate(message):
-            if i % 174 == 0:
+            if i % 170 == 0:
                 formatted_message += "\n"
             formatted_message += letter
         formatted_message = formatted_message[1:]

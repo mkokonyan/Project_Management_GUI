@@ -20,6 +20,12 @@ class ProjectMessageController(BaseController):
             return messagebox.showerror("Error", str(result))
         self.go_to_messages()
 
+    def delete_message(self, message_id):
+        action_result = messagebox.askquestion("Warning", "Do you really want to delete message?")
+        if action_result == "yes":
+            self.service.delete_message(message_id)
+            self.go_to_messages()
+
     def get_all_entities(self):
         return self._service.get_all_messages()
 

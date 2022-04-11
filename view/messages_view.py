@@ -1,6 +1,7 @@
 from tkinter import ttk, Canvas, PhotoImage, Entry, NSEW, Frame, Button, Label, Scrollbar, VERTICAL, NS, W, CENTER, EW, \
     LEFT, RIGHT, E
 
+from view.command.project_message.delete_message_command import DeleteMessageCommand
 from view.command.project_message.send_message_command import SendMessageCommand
 
 
@@ -26,6 +27,13 @@ class MessagesView(ttk.Frame):
 
         self.messages = self.prj_msg_controller.get_all_entities_sorted_by_date()
 
+        self.bg_background_img = PhotoImage(file=f"view/static/project_message/messages_background.png")
+        self.send_img0 = PhotoImage(file=f"view/static/project_message/img0.png")
+        self.send_hover_img1 = PhotoImage(file=f"view/static/project_message/img0.png")
+        self.delete_img2 = PhotoImage(file=f"view/static/project_message/img2.png")
+
+
+
         self.bg_canvas = Canvas(self,
                                 bg="#f9f4f5",
                                 height=820,
@@ -35,9 +43,10 @@ class MessagesView(ttk.Frame):
                                 relief="ridge",
                                 )
         self.bg_canvas.grid(row=0, column=0, sticky=NSEW)
-        self.bg_background_img = PhotoImage(file=f"view/static/project_message/messages_background.png")
-        self.bg_background = self.bg_canvas.create_image(712, 422, image=self.bg_background_img)
 
+
+
+        self.bg_background = self.bg_canvas.create_image(712, 422, image=self.bg_background_img)
         self.messages_canvas = Canvas(self.bg_canvas,
                                       bg="#E5E4E4",
                                       height=741,
@@ -99,6 +108,19 @@ class MessagesView(ttk.Frame):
                                        )
             self.message_label.grid(row=2, column=0, sticky=W)
 
+            if self.logged_user.role == "Admin" or self.logged_user.username == self.messages[i].employee:
+                self.delete_message_command = DeleteMessageCommand(self.prj_msg_controller, self.messages[i].obj_id)
+                self.delete_btn = Button(self.message,
+                                         image=self.delete_img2,
+                                         borderwidth=0,
+                                         highlightthickness=0,
+                                         command=self.delete_message_command,
+                                         relief="flat", bg="#FFF4FC",
+                                         activebackground="#FFF4FC"
+                                         )
+                self.delete_btn.place(x=1270, y=5, width=30, height=30)
+
+
             if i % 2 == 0:
                 self.message.config(background="#FFF4FC", highlightbackground="#771859",)
                 self.username_label.config(background="#FFF4FC")
@@ -134,10 +156,12 @@ class MessagesView(ttk.Frame):
         self.send_message_command = SendMessageCommand(self.prj_msg_controller, self.message_entry.get(),
                                                        self.logged_user.username)
 
-        self.send_img2 = PhotoImage(file=f"view/static/project_message/img2.png")
-        self.send_hover_img3 = PhotoImage(file=f"view/static/project_message/img3.png")
+
+
+
+
         self.send_btn = Button(self.message_box,
-                               image=self.send_img2,
+                               image=self.send_img0,
                                borderwidth=0,
                                highlightthickness=0,
                                command=self.get_message_data,
@@ -146,14 +170,18 @@ class MessagesView(ttk.Frame):
                                activebackground="#f9f4f5",
                                )
         self.send_btn.place(x=1175, y=30, width=265, height=70)
+
+
+
         self.send_btn.bind("<Enter>", self.send_btn_on_enter)
         self.send_btn.bind("<Leave>", self.send_btn_on_leave)
 
     def send_btn_on_enter(self, e):
-        self.send_btn["image"] = self.send_hover_img3
+        self.send_btn["image"] = self.send_hover_img1
 
     def send_btn_on_leave(self, e):
-        self.send_btn["image"] = self.send_img2
+        self.send_btn["image"] = self.send_img0
+
 
     def entry_on_click(self, e):
         if self.message_entry.get() == 'Type your message...':
