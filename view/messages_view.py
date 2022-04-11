@@ -2,6 +2,7 @@ from tkinter import ttk, Canvas, PhotoImage, Entry, NSEW, Frame, Button, Label, 
     LEFT, RIGHT, E
 
 from view.command.project_message.delete_message_command import DeleteMessageCommand
+from view.command.project_message.edit_message_command import EditMessageCommand
 from view.command.project_message.send_message_command import SendMessageCommand
 
 
@@ -90,7 +91,7 @@ class MessagesView(ttk.Frame):
             self.username_label.grid(row=0, column=0, sticky=W)
             self.sent_on_label = Label(self.message,
                                        font=("Helvetica", 11),
-                                       fg="gray",
+                                       fg="grey",
                                        text=f"{self.messages[i].sent_on if not hasattr(self.messages[i], 'edited_on') else 'Edited ' + self.messages[i].edited_on}",
                                        anchor="e",
                                        justify=LEFT,
@@ -118,7 +119,7 @@ class MessagesView(ttk.Frame):
                                          )
                 self.delete_btn.place(x=1270, y=5, width=30, height=30)
 
-                self.edit_message_command = lambda: self.edit_message(self.messages[i].message, self.messages[i].obj_id)
+                self.edit_message_command = EditMessageCommand(self.messages[i].message, self.messages[i].obj_id, self.show_message_to_edit)
                 self.edit_btn = Button(self.message,
                                        image=self.edit_img3,
                                        borderwidth=0,
@@ -199,7 +200,7 @@ class MessagesView(ttk.Frame):
         else:
             SendMessageCommand(self.prj_msg_controller, message, self.logged_user.username)()
 
-    def edit_message(self, old_msg, msg_id):
+    def show_message_to_edit(self, old_msg, msg_id):
         self.message_entry.delete(0, "end")
         self.message_entry.insert(0, old_msg)
         self.message_entry.config(fg='black')
