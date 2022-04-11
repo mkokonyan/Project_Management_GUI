@@ -1,4 +1,5 @@
-from tkinter import ttk, Canvas, PhotoImage, Entry, NSEW, Frame, Button, Label, Scrollbar, VERTICAL, NS, W, CENTER
+from tkinter import ttk, Canvas, PhotoImage, Entry, NSEW, Frame, Button, Label, Scrollbar, VERTICAL, NS, W, CENTER, EW, \
+    LEFT, RIGHT, E
 
 from view.command.project_message.send_message_command import SendMessageCommand
 
@@ -58,29 +59,51 @@ class MessagesView(ttk.Frame):
         self.canvas_container.columnconfigure(0, minsize=1320)
         self.messages_canvas.create_window((0, 0), window=self.canvas_container, width=1320)
 
-
         for i in range(len(self.messages)):
-            self.canvas_container.rowconfigure(i, minsize=90)
+            minsize_row = 120 + 20 * self.messages[i].message.count("\n")
+            self.canvas_container.rowconfigure(i, minsize=minsize_row)
             self.message = Frame(self.canvas_container,
                                  bd=5,
                                  relief="flat",
-                                 highlightbackground="#771859",
+                                 highlightbackground="grey",
                                  highlightthickness=1,
+                                 background="#f9f4f5",
                                  )
-            self.message_label = Label(self.message,
-                                       font=("Helvetica", 13, "bold"),
-                                       text=f"{self.messages[i].employee}",
-                                       )
-            self.message_label.grid(row=0, column=0, sticky=W)
-            self.message_label = Label(self.message,
+
+            self.message.grid(column=0, row=i, sticky=EW)
+
+            self.username_label = Label(self.message,
+                                        font=("Helvetica", 14, "bold"),
+                                        foreground= "#771859",
+                                        text=f"{self.messages[i].employee}",
+                                        anchor="e",
+                                        justify=LEFT,
+                                        background="#f9f4f5",
+                                        )
+            self.username_label.grid(row=0, column=0, sticky=W)
+            self.sent_on_label = Label(self.message,
                                        font=("Helvetica", 11),
                                        fg="gray",
                                        text=f"{self.messages[i].sent_on}",
+                                       anchor="e",
+                                       justify=LEFT,
+                                       background="#f9f4f5",
                                        )
-            self.message_label.grid(row=0, column=2, sticky=W)
-            self.message_label = Label(self.message, font=("Helvetica", 13,), text=f"{self.messages[i].message}")
-            self.message_label.grid(row=1, column=0, sticky=W)
-            self.message.grid(column=0, row=i, sticky=W, pady=10)
+            self.sent_on_label.grid(row=1, column=0, sticky=W)
+            self.message_label = Label(self.message,
+                                       font=("Helvetica", 13),
+                                       text=f"{self.messages[i].message}",
+                                       anchor="e",
+                                       justify=LEFT,
+                                       background="#f9f4f5",
+                                       )
+            self.message_label.grid(row=2, column=0, sticky=W)
+
+            if i % 2 == 0:
+                self.message.config(background="#FFF4FC", highlightbackground="#771859",)
+                self.username_label.config(background="#FFF4FC")
+                self.sent_on_label.config(background="#FFF4FC")
+                self.message_label.config(background="#FFF4FC")
 
         self.messages_canvas.update_idletasks()
         self.messages_canvas.yview_moveto('1.0')

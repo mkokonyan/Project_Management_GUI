@@ -27,8 +27,16 @@ class ProjectMessageService:
     def send_message(self, message, username) -> ValueError | ProjectMessage:
         employee = self._employee_repository.find_by_id(username)
 
+        formatted_message = ""
+        for i, letter in enumerate(message):
+            if i % 174 == 0:
+                formatted_message += "\n"
+            formatted_message += letter
+        formatted_message = formatted_message[1:]
+
+
         project_message = ProjectMessage(
-            message=message,
+            message=formatted_message,
             employee=username
         )
 
