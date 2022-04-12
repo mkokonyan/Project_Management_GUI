@@ -9,8 +9,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/mkokonyan/GUI_PM">
+    <img src="https://drive.google.com/file/d/1zwgFNB_4Zv0_SsEa_4id08BM0oKq7vTM/view?usp=sharing" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">project_title</h3>
@@ -196,10 +196,10 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 
 
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/mkokonyan/GUI_PM?style=for-the-badge
 [stars-url]: https://github.com/github_username/repo_name/stargazers
-[license-shield]: https://img.shields.io/github/license/mkokonyan/GUI_PM?style=flat-square
+[license-shield]: https://img.shields.io/github/license/mkokonyan/GUI_PM?style=for-the-badge
 [license-url]: https://github.com/mkokonyan/GUI_PM/blob/main/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/martin-kokonyan-29b7239b/
-[product-screenshot]: images/screenshot.png
+[mkk-logo]: https://drive.google.com/file/d/1zwgFNB_4Zv0_SsEa_4id08BM0oKq7vTM/view?usp=sharing
