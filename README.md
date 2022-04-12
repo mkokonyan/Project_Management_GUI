@@ -61,7 +61,7 @@
 
 * [Python](https://www.python.org/)
 * [tkinter](https://docs.python.org/3/library/tkinter.html)
-* [Figma](www.figma.com)
+* [Figma](https://www.figma.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
