@@ -93,27 +93,33 @@
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-<!-- ROADMAP -->
+
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+- [ ] Login/Logout
+    - [ ] Admin role
+    - [ ] Employee role
+- [ ] User registration / Edit profile
+- [ ] Project messages view
+- [ ] Projects view
+    - [ ] Project CRUD operations (only for Admin)
+    - [ ] Project read operations (for everyone)
+ - [ ] Tasks KANBAN like view
+    - [ ] Task drag and drop
+    - [ ] Task CRUD operations 
+ 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-<!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License. See `LICENSE.md` for more information.
