@@ -10,7 +10,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/mkokonyan/GUI_PM">
-    <img src="https://scontent.fsof8-1.fna.fbcdn.net/v/t1.6435-9/104184551_10217607149794151_6908254652908697610_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=R6OBy2JDzAsAX_u3jWH&_nc_ht=scontent.fsof8-1.fna&oh=00_AT8BNttZs9eVtf3RRj_iiH6EV06A0_sgNFf5e4JtJZhMBQ&oe=6279F7E9" alt="Logo" width="85" height="60">
+    <img src="https://drive.google.com/uc?export=view&id=1zwgFNB_4Zv0_SsEa_4id08BM0oKq7vTM" alt="Logo" width="85" height="60">
   </a>
 
 <h3 align="center">KoProject</h3>
