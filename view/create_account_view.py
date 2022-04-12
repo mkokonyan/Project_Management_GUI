@@ -31,11 +31,12 @@ class CreateAccountView(ttk.Frame):
 
         self.username_entry_bg = self.canvas.create_image(732, 304, image=self.entry_img)
         self.username_entry = Entry(self, **entry_options)
+        self.username_entry.focus()
         self.username_entry.place(x=583, y=262, width=298, height=32)
 
         self.password_entry_bg = self.canvas.create_image(732, 406, image=self.entry_img)
-        self.password_entry_bg = Entry(self, **entry_options, show="\u2022")
-        self.password_entry_bg.place(x=583, y=364, width=298, height=32)
+        self.password_entry = Entry(self, **entry_options, show="\u2022")
+        self.password_entry.place(x=583, y=364, width=298, height=32)
 
         self.confirm_password_bg = self.canvas.create_image(732, 508, image=self.entry_img)
         self.confirm_password = Entry(self, **entry_options, show="\u2022")
@@ -71,7 +72,7 @@ class CreateAccountView(ttk.Frame):
         self.registration_data.update(
             {
                 "username": self.username_entry.get(),
-                "password": self.password_entry_bg.get(),
+                "password": self.password_entry.get(),
                 "confirm_password": self.confirm_password.get(),
                 "email": self.email_entry.get(),
                 "first_name": self.first_name_entry.get(),

@@ -39,6 +39,7 @@ class CreateTaskView(ttk.Frame):
 
         self.task_name_entry_bg = self.canvas.create_image(732, 304, image=self.entry_img)
         self.task_name_entry = Entry(self, **entry_options)
+        self.task_name_entry.focus()
         self.task_name_entry.place(x=583, y=262, width=298, height=32)
 
         self.assigned_to_bg = self.canvas.create_image(732, 406, image=self.entry_img)

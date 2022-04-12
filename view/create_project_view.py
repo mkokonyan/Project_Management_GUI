@@ -33,6 +33,7 @@ class CreateProjectView(ttk.Frame):
 
         self.project_name_entry_bg = self.canvas.create_image(732, 304, image=self.entry_img)
         self.project_name_entry = Entry(self, **entry_options)
+        self.project_name_entry.focus()
         self.project_name_entry.place(x=583, y=262, width=298, height=32)
 
         self.client_entry_bg = self.canvas.create_image(732, 406, image=self.entry_img)

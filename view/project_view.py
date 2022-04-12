@@ -46,7 +46,7 @@ class ProjectView(ttk.Frame):
             self.edit_btn.bind("<Enter>", self.edit_btn_on_enter)
             self.edit_btn.bind("<Leave>", self.edit_btn_on_leave)
 
-        self.prj_name = Label(self, text=f"Project name: {self.prj_data.get('name'):.20s}",
+        self.prj_name = Label(self, text=f"Name: {self.prj_data.get('name'):.20s}",
                               font=("Helvetica", 13, "bold"), fg="#FFFFFF", bg="#771859")
         self.prj_name.place(x=65, y=15)
         self.prj_name.bind("<Enter>", self.prj_btn_on_enter)

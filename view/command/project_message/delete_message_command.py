@@ -5,6 +5,5 @@ class DeleteMessageCommand:
 
 
     def __call__(self):
-        print(self.message_id)
         self.project_message_controller.delete_message(self.message_id)
 
