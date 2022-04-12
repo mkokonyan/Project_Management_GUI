@@ -94,7 +94,7 @@
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 
-<img src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/login_view.png" data-canonical-src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/login_view.png" width="500" height="720" />
+<img src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/login_view.png" data-canonical-src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/login_view.png" width="720" height="500" />
 
 ![Login view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/login_view.png =500x720) 
 ![Registration view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/registration_form.png)
