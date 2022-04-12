@@ -93,7 +93,7 @@
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-![Login view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/login_view.png) 
+![Login view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/login_view.png =500x720) 
 ![Registration view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/registration_form.png)
 ![Main view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/main_view.png)
 ![Messages view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/project_messages_view.png)
