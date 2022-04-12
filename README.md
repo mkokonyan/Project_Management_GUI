@@ -21,17 +21,13 @@
     <a href="https://github.com/mkokonyan/GUI_PM/tree/main/docs"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/mkokonyan/GUI_PM/tree/main/docs">View Demo</a>
   </p>
 </div>
 
 
 
-<!-- TABLE OF CONTENTS -->
+
 <details>
   <summary>Table of Contents</summary>
   <ol>
