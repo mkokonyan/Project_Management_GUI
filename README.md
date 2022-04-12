@@ -100,8 +100,6 @@
 
 <img src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/tasks_view.png" data-canonical-src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/tasks_view.png" width="720" height="500" />
 
-<img src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/tasks_details.png" data-canonical-src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/tasks_details.png" width="720" height="500" />
-
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
