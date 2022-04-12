@@ -10,7 +10,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/mkokonyan/GUI_PM">
-    <img src="" alt="Logo" width="80" height="80">
+    <img src="https://drive.google.com/uc?export=view&id=1zwgFNB_4Zv0_SsEa_4id08BM0oKq7vTM" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">project_title</h3>
