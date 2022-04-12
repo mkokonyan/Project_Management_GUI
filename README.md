@@ -96,13 +96,15 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 <img src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/login_view.png" data-canonical-src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/login_view.png" width="720" height="500" />
 
-![Login view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/login_view.png =500x720) 
-![Registration view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/registration_form.png)
-![Main view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/main_view.png)
-![Messages view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/project_messages_view.png)
-![Tasks view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/tasks_view.png)
-![Tasks details view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/tasks_details.png)
+<img src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/registration_form.png" data-canonical-src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/registration_form.png" width="720" height="500" />
 
+<img src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/main_view.png" data-canonical-src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/main_view.png" width="720" height="500" />
+
+<img src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/project_messages_view.png" data-canonical-src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/project_messages_view.png" width="720" height="500" />
+
+<img src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/tasks_view.png" data-canonical-src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/tasks_view.png" width="720" height="500" />
+
+<img src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/tasks_details.png" data-canonical-src="https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/tasks_details.png" width="720" height="500" />
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
