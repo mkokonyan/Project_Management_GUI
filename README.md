@@ -10,7 +10,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/mkokonyan/GUI_PM">
-    <img src="![image](https://drive.google.com/uc?export=view&id=1zwgFNB_4Zv0_SsEa_4id08BM0oKq7vTM)" alt="Logo" width="85" height="60">
+    <img src=![image](https://drive.google.com/uc?export=view&id=1zwgFNB_4Zv0_SsEa_4id08BM0oKq7vTM) alt="Logo" width="85" height="60">
   </a>
 
 <h3 align="center">KoProject</h3>
