@@ -198,8 +198,8 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 [stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
 [stars-url]: https://github.com/github_username/repo_name/stargazers
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/mkokonyan/GUI_PM?style=flat-square
 [license-url]: https://github.com/mkokonyan/GUI_PM/blob/main/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url]: https://www.linkedin.com/in/martin-kokonyan-29b7239b/
 [product-screenshot]: images/screenshot.png
