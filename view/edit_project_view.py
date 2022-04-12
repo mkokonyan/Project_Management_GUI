@@ -98,9 +98,11 @@ class EditProjectView(ttk.Frame):
     def show_calendar(self, date_val):
         def grad_date(view):
             date_val.set(cal.get_date())
+            view.grab_release()
             view.destroy()
 
         cal_root = Toplevel(self, height=250, width=250)
+        cal_root.grab_set()
         x = self.root.winfo_x()
         y = self.root.winfo_y()
         cal_root.geometry("+%d+%d" % (x + 220, y + 400))
