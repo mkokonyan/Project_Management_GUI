@@ -10,7 +10,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/mkokonyan/GUI_PM">
-    <img src="https://doc-0k-84-docs.googleusercontent.com/docs/securesc/ds99vh59g0l9n376p413oukops9ererg/tc35j2sqkpg11oau0a7vm06d304496io/1649753850000/02085302342155537538/02085302342155537538/1zwgFNB_4Zv0_SsEa_4id08BM0oKq7vTM?e=view&ax=ACxEAsaoSf9GjAGCYPAKwCeAzzYTEdsyyF1N52JoMYIPF7v2uy14vMnA5QpU0bCtbOTPqR1ZCci9XGVLfziZW-vzKxneB_yrFj9LY812qosm3g0WbdTiNo0YhkV9ud5SPf-WsN0k7gJo5osNQwhst8MJmSHnxylOJmc1LgpG43IbrqdNROn3Yqe_txxfXFyx6ndwbJ8QKAhSZBsResqdhkqlodRp_gdZgA19ztT1-KDveQZPDNl1eWIWSyit6cGwUGJCTYg23-iOiptcKClZe3Kvy6gBN2qHJoCvMsHkDWYqZCkACtdNFLH2BjC0ZG_Iemub30pEwCssGtVFvOJ3lhX6LP292SFwxQGkzgNJ05FHWGa2E1NIge35bmLBRRzltrhHemvRSFHJwWJ1HRnME_I2XuGedSB65EoBDt_8T_d9jD5rFf8C68-NwSHv8WseXHAN8Un-sVXo_AspLgiaBaqD6Rawg6oekVueUgPSd9rfa0k0BkXi7fYhryXRzQI6Y30EXZbg1Mcj3k7tcr_guN-NJB07X_cdM3uXUwK6jC83ZgP2voZCxKe3Y186Q67c-oY7sO2O8AqGoQDGWYl-uKUuXwqLQ66sJHvKBh1_SqHalD61mzYA8bJqc87Nq79IW2X0oylx_h0oMzvtWcit2okhGSQu38A95UPMVsalGkAhEpBl5UGt3TeAGJPRyCSiDFnoN-thJ_xmPq815Tr6SLIMM51qm33ovcux9THfj_GfIB85Nqfi&authuser=0&nonce=vssvhn10h1ctm&user=02085302342155537538&hash=s2d15rqiilgbjdpff5db02p968brimn8" alt="Logo" width="85" height="60">
+    <img src="![image](https://drive.google.com/uc?export=view&id=1zwgFNB_4Zv0_SsEa_4id08BM0oKq7vTM)" alt="Logo" width="85" height="60">
   </a>
 
 <h3 align="center">KoProject</h3>
