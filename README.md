@@ -58,7 +58,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[mainview-url]
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
 
@@ -198,4 +198,5 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [license-url]: https://github.com/mkokonyan/GUI_PM/blob/main/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/martin-kokonyan-29b7239b/
+[mainview-url]: https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/project_main_view.png
 
