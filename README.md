@@ -52,7 +52,7 @@
 
 
 ## About The Project
-![Product Name Screen Shot][mainview-url]
+![Welcome view][welcomeview-url]
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -92,6 +92,13 @@
 ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+
+![Login view][loginview-url]
+![Registration view][registrationview-url]
+![Main view][mainview-url]
+![Messages view][messagesview-url]
+![Tasks view][tasksview-url]
+![Tasks details view][taskdetailsview-url]
 
 
 
@@ -144,5 +151,14 @@ Project Link: [https://github.com/mkokonyan/GUI_PM](https://github.com/mkokonyan
 [license-url]: https://github.com/mkokonyan/GUI_PM/blob/main/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/martin-kokonyan-29b7239b/
-[mainview-url]: https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/project_main_view.png
+
+[welcomeview-url]: https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/welcome_view.png
+[loginview-url]: https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/login_view.png
+[registrationview-url]: https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/registration_form.png
+[mainview-url]: https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/main_view.png
+[messagesview-url]: https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/project_messages_view.png
+[tasksview-url]: https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/tasks_view.png
+[taskdetailsview-url]: https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/tasks_details.png
+
+
 
