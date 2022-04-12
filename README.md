@@ -93,12 +93,12 @@
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-![Login view]([loginview-url] =250x250) 
-![Registration view][registrationview-url]
-![Main view][mainview-url]
-![Messages view][messagesview-url]
-![Tasks view][tasksview-url]
-![Tasks details view][taskdetailsview-url]
+![Login view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/login_view.png) 
+![Registration view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/registration_form.png)
+![Main view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/main_view.png)
+![Messages view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/project_messages_view.png)
+![Tasks view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/tasks_view.png)
+![Tasks details view](https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/tasks_details.png)
 
 
 
@@ -151,14 +151,7 @@ Project Link: [https://github.com/mkokonyan/GUI_PM](https://github.com/mkokonyan
 [license-url]: https://github.com/mkokonyan/GUI_PM/blob/main/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/martin-kokonyan-29b7239b/
-
 [welcomeview-url]: https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/welcome_view.png
-[loginview-url]: https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/login_view.png
-[registrationview-url]: https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/registration_form.png
-[mainview-url]: https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/main_view.png
-[messagesview-url]: https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/project_messages_view.png
-[tasksview-url]: https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/tasks_view.png
-[taskdetailsview-url]: https://github.com/mkokonyan/GUI_PM/blob/main/docs/demo/tasks_details.png
 
 
 
