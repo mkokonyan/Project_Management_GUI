@@ -10,7 +10,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/mkokonyan/GUI_PM">
-    <img src="https://drive.google.com/file/d/1zwgFNB_4Zv0_SsEa_4id08BM0oKq7vTM/view?usp=sharing" alt="Logo" width="80" height="80">
+    <img src="[mkk-logo]" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">project_title</h3>
@@ -202,4 +202,4 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [license-url]: https://github.com/mkokonyan/GUI_PM/blob/main/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/martin-kokonyan-29b7239b/
-[mkk-logo]: https://drive.google.com/file/d/1zwgFNB_4Zv0_SsEa_4id08BM0oKq7vTM/view?usp=sharing
+[mkk-logo]: https://scontent.fsof8-1.fna.fbcdn.net/v/t1.6435-9/104119244_10217607163514494_8039413680506278953_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=e3f864&_nc_ohc=jQxS_IN_Q-kAX9P9kDs&_nc_ht=scontent.fsof8-1.fna&oh=00_AT-XVdBTnm0FSRfonCzOSUl3lQyBPbH3J1jh7hdhzia3AA&oe=627A1E5C
