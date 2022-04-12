@@ -16,7 +16,7 @@
 <h3 align="center">KoProject</h3>
 
   <p align="center">
-    project_description
+   The application provides to company‘s employees possibility to check details of all projects and tasks they assigned. This will helping them to manage their time properly and be able finish the project within the time specified by the client.
     <br />
     <a href="https://github.com/mkokonyan/GUI_PM/tree/main/docs"><strong>Explore the docs »</strong></a>
     <br />
