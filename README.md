@@ -20,8 +20,6 @@
     <br />
     <a href="https://github.com/mkokonyan/GUI_PM/tree/main/docs"><strong>Explore the docs »</strong></a>
     <br />
-    <br />
-    <a href="https://github.com/mkokonyan/GUI_PM/tree/main/docs">View Demo</a>
   </p>
 </div>
 
