@@ -1,0 +1,105 @@
+[
+    {
+        "_obj_id": "1e8a6318-b4b3-11ec-93c6-001a7dda7113",
+        "_name": "2204-SOFIA-PARKING",
+        "_client": "Stroypark",
+        "_time_estimation": "200",
+        "_due_date": "2022-05-24",
+        "_employees": [
+            "giv",
+            "user2",
+            "mkk",
+            "borisp",
+            "spt"
+        ],
+        "_tasks_id": [
+            "495e5d48-b4bc-11ec-992c-001a7dda7113",
+            "6a7eaa30-b4bc-11ec-9f85-001a7dda7113",
+            "796af07f-b99e-11ec-aafa-001a7dda7113",
+            "435b7a72-ba2c-11ec-8274-001a7dda7113",
+            "51890534-ba2c-11ec-b1b3-001a7dda7113",
+            "5740634a-ba2c-11ec-aa6a-001a7dda7113",
+            "6a5508f0-ba2c-11ec-bbd6-001a7dda7113",
+            "76c8bce5-ba2c-11ec-8e95-001a7dda7113"
+        ],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "1e8ab158-b4b3-11ec-a305-001a7dda7113",
+        "_name": "1923-DATA-CENTER",
+        "_client": "Reunix",
+        "_time_estimation": "750",
+        "_due_date": "2023-12-20",
+        "_employees": [
+            "mkk",
+            "idm",
+            "spt",
+            "idm",
+            "borisp",
+            "employee",
+            "mkk",
+            "someuser"
+        ],
+        "_tasks_id": [
+            "76a66417-b8a9-11ec-bee3-001a7dda7113",
+            "8e982622-b8a9-11ec-913c-001a7dda7113",
+            "0415e201-b8bc-11ec-884b-001a7dda7113",
+            "06c0e1e7-b8bc-11ec-9b98-001a7dda7113",
+            "1edf5419-b8bc-11ec-b78d-001a7dda7113",
+            "5608632f-b8bc-11ec-9611-001a7dda7113",
+            "0b7ef595-b8be-11ec-a93e-001a7dda7113",
+            "7218a2c3-b9b3-11ec-ad18-001a7dda7113"
+        ],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "bd24fca5-b739-11ec-b385-001a7dda7113",
+        "_name": "House2",
+        "_client": "Ivanov",
+        "_time_estimation": "432",
+        "_due_date": "2023-04-27",
+        "_employees": [],
+        "_tasks_id": [],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "c923d9ce-b739-11ec-88af-001a7dda7113",
+        "_name": "1712-BOOK-STORE",
+        "_client": "Dobrillo",
+        "_time_estimation": "123",
+        "_due_date": "2022-04-29",
+        "_employees": [],
+        "_tasks_id": [],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "339598fb-b767-11ec-a09a-001a7dda7113",
+        "_name": "1632-HOUSE",
+        "_client": "Sofmult",
+        "_time_estimation": "23",
+        "_due_date": "2022-04-27",
+        "_employees": [],
+        "_tasks_id": [],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "5e8a4c30-b825-11ec-8114-001a7dda7113",
+        "_name": "1624-SUPERMARKET",
+        "_client": "TechStroy",
+        "_time_estimation": "234",
+        "_due_date": "2022-05-11",
+        "_employees": [],
+        "_tasks_id": [],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "be588884-b9b3-11ec-856d-001a7dda7113",
+        "_name": "1511-INTERNAL-OFFICE",
+        "_client": "TechStroy",
+        "_time_estimation": "320",
+        "_due_date": "2022-04-28",
+        "_employees": [],
+        "_tasks_id": [],
+        "_is_finished": false
+    }
+]

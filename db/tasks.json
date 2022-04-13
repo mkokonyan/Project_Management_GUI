@@ -1,0 +1,240 @@
+[
+    {
+        "_obj_id": "b9a9c6aa-b4bb-11ec-9b09-001a7dda7113",
+        "_name": "3D Model",
+        "_employee": "idm",
+        "_project_id": "1e8ab159-b4b3-11ec-9b02-001a7dda7113",
+        "_description": "Make model of building",
+        "_time_estimation": 14,
+        "_status": "TO DO",
+        "_board_coordinates": [
+            2,
+            0
+        ],
+        "_is_finished": true
+    },
+    {
+        "_obj_id": "495e5d48-b4bc-11ec-992c-001a7dda7113",
+        "_name": "Reinforcement +3.40",
+        "_employee": "giv",
+        "_project_id": "1e8a6318-b4b3-11ec-93c6-001a7dda7113",
+        "_description": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequat venenatis at lacinia sapieno.",
+        "_time_estimation": "6",
+        "_status": "TO DO",
+        "_board_coordinates": [
+            0,
+            0
+        ],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "6a7eaa30-b4bc-11ec-9f85-001a7dda7113",
+        "_name": "Reinforcement +6.80",
+        "_employee": "giv",
+        "_project_id": "1e8a6318-b4b3-11ec-93c6-001a7dda7113",
+        "_description": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequat venenatis at lacinia sapieno.",
+        "_time_estimation": "12",
+        "_status": "CHECKING",
+        "_board_coordinates": [
+            0,
+            2
+        ],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "76a66417-b8a9-11ec-bee3-001a7dda7113",
+        "_name": "3D Model",
+        "_employee": "mkk",
+        "_project_id": "1e8ab158-b4b3-11ec-a305-001a7dda7113",
+        "_description": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequat venenatis at lacinia sapieno.",
+        "_time_estimation": "23",
+        "_status": "IN PROGRESS",
+        "_board_coordinates": [
+            0,
+            1
+        ],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "8e982622-b8a9-11ec-913c-001a7dda7113",
+        "_name": "Framework +3.40",
+        "_employee": "borisp",
+        "_project_id": "1e8ab158-b4b3-11ec-a305-001a7dda7113",
+        "_description": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequat venenatis at lacinia sapieno.",
+        "_time_estimation": "15",
+        "_status": "TO DO",
+        "_board_coordinates": [
+            0,
+            0
+        ],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "0415e201-b8bc-11ec-884b-001a7dda7113",
+        "_name": "Framework +6.80",
+        "_employee": "mkk",
+        "_project_id": "1e8ab158-b4b3-11ec-a305-001a7dda7113",
+        "_description": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequat venenatis at lacinia sapieno.",
+        "_time_estimation": "12",
+        "_status": "TO DO",
+        "_board_coordinates": [
+            1,
+            0
+        ],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "06c0e1e7-b8bc-11ec-9b98-001a7dda7113",
+        "_name": "Calculation Model",
+        "_employee": "mkk",
+        "_project_id": "1e8ab158-b4b3-11ec-a305-001a7dda7113",
+        "_description": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequat venenatis at lacinia sapieno.",
+        "_time_estimation": "23",
+        "_status": "IN PROGRESS",
+        "_board_coordinates": [
+            1,
+            1
+        ],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "1edf5419-b8bc-11ec-b78d-001a7dda7113",
+        "_name": "Bill of Quantities",
+        "_employee": "mkk",
+        "_project_id": "1e8ab158-b4b3-11ec-a305-001a7dda7113",
+        "_description": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequat venenatis at lacinia sapieno.",
+        "_time_estimation": "4",
+        "_status": "CHECKING",
+        "_board_coordinates": [
+            0,
+            2
+        ],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "5608632f-b8bc-11ec-9611-001a7dda7113",
+        "_name": "Framework +10.20",
+        "_employee": "borisp",
+        "_project_id": "1e8ab158-b4b3-11ec-a305-001a7dda7113",
+        "_description": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequat venenatis at lacinia sapieno.",
+        "_time_estimation": "12",
+        "_status": "IN PROGRESS",
+        "_board_coordinates": [
+            2,
+            1
+        ],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "0b7ef595-b8be-11ec-a93e-001a7dda7113",
+        "_name": "Beam Rebar",
+        "_employee": "mkk",
+        "_project_id": "1e8ab158-b4b3-11ec-a305-001a7dda7113",
+        "_description": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequat venenatis at lacinia sapieno.",
+        "_time_estimation": "12",
+        "_status": "IN PROGRESS",
+        "_board_coordinates": [
+            3,
+            1
+        ],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "796af07f-b99e-11ec-aafa-001a7dda7113",
+        "_name": "3D Model",
+        "_employee": "user2",
+        "_project_id": "1e8a6318-b4b3-11ec-93c6-001a7dda7113",
+        "_description": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequat venenatis at lacinia sapieno.",
+        "_time_estimation": "24",
+        "_status": "CHECKING",
+        "_board_coordinates": [
+            1,
+            2
+        ],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "7218a2c3-b9b3-11ec-ad18-001a7dda7113",
+        "_name": "Column Rebar",
+        "_employee": "someuser",
+        "_project_id": "1e8ab158-b4b3-11ec-a305-001a7dda7113",
+        "_description": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequat venenatis at lacinia sapieno.",
+        "_time_estimation": "8",
+        "_status": "DONE",
+        "_board_coordinates": [
+            0,
+            3
+        ],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "435b7a72-ba2c-11ec-8274-001a7dda7113",
+        "_name": "Foundation Plan",
+        "_employee": "mkk",
+        "_project_id": "1e8a6318-b4b3-11ec-93c6-001a7dda7113",
+        "_description": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequat venenatis at lacinia sapieno.",
+        "_time_estimation": "24",
+        "_status": "TO DO",
+        "_board_coordinates": [
+            1,
+            0
+        ],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "51890534-ba2c-11ec-b1b3-001a7dda7113",
+        "_name": "Pavement Plan",
+        "_employee": "borisp",
+        "_project_id": "1e8a6318-b4b3-11ec-93c6-001a7dda7113",
+        "_description": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequat venenatis at lacinia sapieno.",
+        "_time_estimation": "4",
+        "_status": "IN PROGRESS",
+        "_board_coordinates": [
+            0,
+            1
+        ],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "5740634a-ba2c-11ec-aa6a-001a7dda7113",
+        "_name": "Excavation Plan",
+        "_employee": "borisp",
+        "_project_id": "1e8a6318-b4b3-11ec-93c6-001a7dda7113",
+        "_description": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequat venenatis at lacinia sapieno.",
+        "_time_estimation": "4",
+        "_status": "DONE",
+        "_board_coordinates": [
+            0,
+            3
+        ],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "6a5508f0-ba2c-11ec-bbd6-001a7dda7113",
+        "_name": "Beam Reinforcement",
+        "_employee": "borisp",
+        "_project_id": "1e8a6318-b4b3-11ec-93c6-001a7dda7113",
+        "_description": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequat venenatis at lacinia sapieno.",
+        "_time_estimation": "12",
+        "_status": "IN PROGRESS",
+        "_board_coordinates": [
+            1,
+            1
+        ],
+        "_is_finished": false
+    },
+    {
+        "_obj_id": "76c8bce5-ba2c-11ec-8e95-001a7dda7113",
+        "_name": "Columns Reinforcement",
+        "_employee": "spt",
+        "_project_id": "1e8a6318-b4b3-11ec-93c6-001a7dda7113",
+        "_description": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequat venenatis at lacinia sapieno.",
+        "_time_estimation": "12",
+        "_status": "TO DO",
+        "_board_coordinates": [
+            2,
+            0
+        ],
+        "_is_finished": false
+    }
+]

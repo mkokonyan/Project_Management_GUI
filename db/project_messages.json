@@ -1,0 +1,80 @@
+[
+    {
+        "_obj_id": "2558f8d1-ba29-11ec-9894-001a7dda7113",
+        "_message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita\ntion ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excep\nteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "_employee": "mkk",
+        "_sent_on": "09:24:02, 2022-04-12"
+    },
+    {
+        "_obj_id": "2b84bc83-ba29-11ec-bac2-001a7dda7113",
+        "_message": "Section 1.10.32 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC",
+        "_employee": "mkk",
+        "_sent_on": "09:24:12, 2022-04-12"
+    },
+    {
+        "_obj_id": "cceb77ca-ba29-11ec-81f3-001a7dda7113",
+        "_message": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound \nthe actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasur\ne, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues o\nr desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a\n trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who cho\noses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
+        "_employee": "mkk",
+        "_sent_on": "09:28:43, 2022-04-12"
+    },
+    {
+        "_obj_id": "d51b51af-ba29-11ec-94a5-001a7dda7113",
+        "_message": "Section 1.10.33 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC",
+        "_employee": "spt",
+        "_sent_on": "09:28:57, 2022-04-12"
+    },
+    {
+        "_obj_id": "d95bb07a-ba29-11ec-86a9-001a7dda7113",
+        "_message": "1914 translation by H. Rackham",
+        "_employee": "spt",
+        "_sent_on": "09:29:04, 2022-04-12"
+    },
+    {
+        "_obj_id": "dc61b269-ba29-11ec-9621-001a7dda7113",
+        "_message": "\"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desi\nre, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the \nsame as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled an\nd when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the cla\nims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in t\nhese matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.\"",
+        "_employee": "spt",
+        "_sent_on": "09:29:09, 2022-04-12"
+    },
+    {
+        "_obj_id": "eddf52a8-ba29-11ec-b8be-001a7dda7113",
+        "_message": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richar\nd McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going t\nhrough the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Mal\norum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of\n Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.",
+        "_employee": "borisp",
+        "_sent_on": "09:29:38, 2022-04-12"
+    },
+    {
+        "_obj_id": "f2308c1e-ba29-11ec-a81d-001a7dda7113",
+        "_message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pharetra enim ut lacus venenatis ultrices. Phasellus in mollis magna, id pulvinar lacus. Sed in maximus dui.\n Nam hendrerit, erat dictum dictum feugiat, metus eros tincidunt mauris, eget scelerisque dui sapien at mauris. Morbi interdum placerat consequat. Vivamus congue vel est \nquis elementum. Aenean mattis velit in libero pulvinar porta. Curabitur feugiat nec nunc ut iaculis. In hac habitasse platea dictumst. Etiam sit amet lorem metus. Aliquam\n erat volutpat. Donec maximus ante a turpis suscipit, ut posuere tortor fermentum. Nunc odio mi, semper a lectus nec, convallis iaculis nisl",
+        "_employee": "borisp",
+        "_sent_on": "09:29:46, 2022-04-12"
+    },
+    {
+        "_obj_id": "fb92f93b-ba29-11ec-bdde-001a7dda7113",
+        "_message": "Vivamus eget pellentesque nisl. Ut non ex varius, viverra massa ac, tempor quam. Ut risus justo, faucibus sed elementum sit amet, tempor in massa. Interdum et malesuada f\names ac ante ipsum primis in faucibus. Pellentesque id sollicitudin ex, eget iaculis tellus. Praesent elit lectus, efficitur eget eros at, porta molestie diam. Proin phar\netra, libero nec molestie pulvinar, augue sem sagittis eros, vel euismod urna enim et enim. Cras laoreet porta mauris, eleifend dapibus libero lobortis eget. Duis convall\nis lacus non euismod auctor. Donec purus arcu, efficitur elementum tellus at, tempus dignissim nibh. Vestibulum in laoreet quam. Nulla faucibus ante mollis, viverra ligul\na at, dapibus lorem. Ut dui purus, aliquam sed leo ut, imperdiet condimentum felis.",
+        "_employee": "idm",
+        "_sent_on": "09:30:01, 2022-04-12"
+    },
+    {
+        "_obj_id": "fe97dd85-ba29-11ec-8fc6-001a7dda7113",
+        "_message": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequa\nt venenatis at lacinia sapien. Morbi vulputate augue ac tellus euismod, non vestibulum ex varius. Aenean posuere luctus lorem, eu semper lorem hendrerit id. Quisque fauci\nbus nulla eget augue egestas maximus. Mauris dapibus tincidunt ante, quis faucibus ante elementum ut. Nam in felis lectus. Nulla facilisi. Proin est ex, elementum in libe\nro tempor, convallis pellentesque quam.",
+        "_employee": "idm",
+        "_sent_on": "09:30:06, 2022-04-12"
+    },
+    {
+        "_obj_id": "04b1f585-ba2a-11ec-9101-001a7dda7113",
+        "_message": "Praesent ligula magna, laoreet at luctus finibus, facilisis vel arcu. Proin condimentum, tortor eu egestas placerat, velit tortor feugiat augue, ac molestie elit leo nec \nsem. Integer pharetra nisi nisi, id tempus orci condimentum euismod. Phasellus eu pellentesque diam. Mauris vel tortor nec nunc consectetur sagittis quis nec magna. Proin\n id consequat ex. Sed quam lectus, elementum nec lacus vitae, egestas faucibus massa. Aliquam erat volutpat. Morbi viverra neque vitae tellus congue facilisis. Nam ac ex \nquis enim convallis viverra.",
+        "_employee": "mkk",
+        "_sent_on": "09:30:17, 2022-04-12"
+    },
+    {
+        "_obj_id": "16da86df-ba2a-11ec-aed6-001a7dda7113",
+        "_message": "\"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...\"",
+        "_employee": "NewUser",
+        "_sent_on": "09:30:47, 2022-04-12"
+    },
+    {
+        "_obj_id": "24909cf5-ba2a-11ec-9150-001a7dda7113",
+        "_message": "Vestibulum quis neque interdum turpis tincidunt dignissim ut nec nisl. Nulla facilisis massa eget neque iaculis, eu efficitur ante auctor. Ut nec turpis ac lacus consequa\nt venenatis at lacinia sapien. Morbi vulputate augue ac tellus euismod, non vestibulum ex varius. Aenean posuere luctus lorem, eu semper lorem hendrerit id. Quisque fauci\nbus nulla eget augue egestas maximus. Mauris dapibus tincidunt ante, quis faucibus ante elementum ut. Nam in felis lectus. Nulla facilisi. Proin est ex, elementum in libe\nro tempor, convallis pellentesque quam.",
+        "_employee": "borisp",
+        "_sent_on": "09:31:10, 2022-04-12"
+    }
+]

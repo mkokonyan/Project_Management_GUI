@@ -1,0 +1,227 @@
+[
+    {
+        "_username": "mkk",
+        "_password": "12345qwe",
+        "_first_name": "Martin",
+        "_last_name": "Kokonyan",
+        "_email": "mkk.struct@const.com",
+        "_role": "Admin",
+        "_projects_id": [
+            "1e8ab158-b4b3-11ec-a305-001a7dda7113",
+            "1e8a6318-b4b3-11ec-93c6-001a7dda7113"
+        ],
+        "_tasks_id": [
+            "76a66417-b8a9-11ec-bee3-001a7dda7113",
+            "0415e201-b8bc-11ec-884b-001a7dda7113",
+            "06c0e1e7-b8bc-11ec-9b98-001a7dda7113",
+            "1edf5419-b8bc-11ec-b78d-001a7dda7113",
+            "0b7ef595-b8be-11ec-a93e-001a7dda7113",
+            "435b7a72-ba2c-11ec-8274-001a7dda7113"
+        ],
+        "_project_messages_id": [
+            "2558f8d1-ba29-11ec-9894-001a7dda7113",
+            "2b84bc83-ba29-11ec-bac2-001a7dda7113",
+            "cceb77ca-ba29-11ec-81f3-001a7dda7113",
+            "04b1f585-ba2a-11ec-9101-001a7dda7113"
+        ]
+    },
+    {
+        "_username": "idm",
+        "_password": "12345qwe",
+        "_first_name": "Ivan",
+        "_last_name": "Dimitrov",
+        "_email": "idm@const.com",
+        "_role": "Employee",
+        "_projects_id": [
+            "1e8ab158-b4b3-11ec-a305-001a7dda7113"
+        ],
+        "_tasks_id": [
+            "b9a9c6aa-b4bb-11ec-9b09-001a7dda7113"
+        ],
+        "_project_messages_id": [
+            "fb92f93b-ba29-11ec-bdde-001a7dda7113",
+            "fe97dd85-ba29-11ec-8fc6-001a7dda7113"
+        ]
+    },
+    {
+        "_username": "spt",
+        "_password": "12345qwe",
+        "_first_name": "Simona",
+        "_last_name": "Petrova",
+        "_email": "spt@const.com",
+        "_role": "Employee",
+        "_projects_id": [
+            "1e8a6318-b4b3-11ec-93c6-001a7dda7113"
+        ],
+        "_tasks_id": [
+            "76c8bce5-ba2c-11ec-8e95-001a7dda7113"
+        ],
+        "_project_messages_id": [
+            "d51b51af-ba29-11ec-94a5-001a7dda7113",
+            "d95bb07a-ba29-11ec-86a9-001a7dda7113",
+            "dc61b269-ba29-11ec-9621-001a7dda7113"
+        ]
+    },
+    {
+        "_username": "giv",
+        "_password": "12345qwe",
+        "_first_name": "Georgi",
+        "_last_name": "Ivanov",
+        "_email": "giv@const.com",
+        "_role": "Employee",
+        "_projects_id": [
+            "1e8a6318-b4b3-11ec-93c6-001a7dda7113"
+        ],
+        "_tasks_id": [
+            "495e5d48-b4bc-11ec-992c-001a7dda7113",
+            "6a7eaa30-b4bc-11ec-9f85-001a7dda7113"
+        ],
+        "_project_messages_id": []
+    },
+    {
+        "_username": "NewUser",
+        "_password": "12345678a",
+        "_first_name": "Real",
+        "_last_name": "Name",
+        "_email": "mkk@const.com",
+        "_role": "Employee",
+        "_projects_id": [],
+        "_tasks_id": [],
+        "_project_messages_id": [
+            "16da86df-ba2a-11ec-aed6-001a7dda7113"
+        ]
+    },
+    {
+        "_username": "AnotherUser",
+        "_password": "12345678a",
+        "_first_name": "Another",
+        "_last_name": "User",
+        "_email": "anuser@const.com",
+        "_role": "Employee",
+        "_projects_id": [],
+        "_tasks_id": [],
+        "_project_messages_id": []
+    },
+    {
+        "_username": "vkk",
+        "_password": "12345qwe",
+        "_first_name": "Viktor",
+        "_last_name": "Kostadinov",
+        "_email": "vkk@stroy.info",
+        "_role": "Employee",
+        "_projects_id": [],
+        "_tasks_id": [],
+        "_project_messages_id": []
+    },
+    {
+        "_username": "trkk",
+        "_password": "12345qwer",
+        "_first_name": "Tihomir",
+        "_last_name": "Kirov",
+        "_email": "trkk@stroy.com",
+        "_role": "Employee",
+        "_projects_id": [],
+        "_tasks_id": [],
+        "_project_messages_id": []
+    },
+    {
+        "_username": "iv.ivanov",
+        "_password": "123456qwe",
+        "_first_name": "Ivan",
+        "_last_name": "Ivanov",
+        "_email": "iv.ivanov@stroy.info",
+        "_role": "Employee",
+        "_projects_id": [],
+        "_tasks_id": [],
+        "_project_messages_id": []
+    },
+    {
+        "_username": "gpt",
+        "_password": "12345qwe",
+        "_first_name": "Georgi",
+        "_last_name": "Petrov",
+        "_email": "gpt@stroyinfo.com",
+        "_role": "Employee",
+        "_projects_id": [],
+        "_tasks_id": [],
+        "_project_messages_id": []
+    },
+    {
+        "_username": "borisp",
+        "_password": "12345qwe",
+        "_first_name": "Boris",
+        "_last_name": "Petrov",
+        "_email": "boris@struct.info",
+        "_role": "Employee",
+        "_projects_id": [
+            "1e8ab158-b4b3-11ec-a305-001a7dda7113",
+            "1e8a6318-b4b3-11ec-93c6-001a7dda7113"
+        ],
+        "_tasks_id": [
+            "8e982622-b8a9-11ec-913c-001a7dda7113",
+            "5608632f-b8bc-11ec-9611-001a7dda7113",
+            "51890534-ba2c-11ec-b1b3-001a7dda7113",
+            "5740634a-ba2c-11ec-aa6a-001a7dda7113",
+            "6a5508f0-ba2c-11ec-bbd6-001a7dda7113"
+        ],
+        "_project_messages_id": [
+            "eddf52a8-ba29-11ec-b8be-001a7dda7113",
+            "f2308c1e-ba29-11ec-a81d-001a7dda7113",
+            "24909cf5-ba2a-11ec-9150-001a7dda7113"
+        ]
+    },
+    {
+        "_username": "employee",
+        "_password": "12345qwe",
+        "_first_name": "Regular",
+        "_last_name": "Employee",
+        "_email": "employee@stroy.info",
+        "_role": "Employee",
+        "_projects_id": [
+            "1e8ab158-b4b3-11ec-a305-001a7dda7113"
+        ],
+        "_tasks_id": [],
+        "_project_messages_id": []
+    },
+    {
+        "_username": "user2",
+        "_password": "12345qwe",
+        "_first_name": "Some",
+        "_last_name": "User",
+        "_email": "user2@stroy.info",
+        "_role": "Employee",
+        "_projects_id": [
+            "1e8a6318-b4b3-11ec-93c6-001a7dda7113"
+        ],
+        "_tasks_id": [
+            "796af07f-b99e-11ec-aafa-001a7dda7113"
+        ],
+        "_project_messages_id": []
+    },
+    {
+        "_username": "asd",
+        "_password": "12345qwe",
+        "_first_name": "Ivan",
+        "_last_name": "Ivanov",
+        "_email": "asd@sttroy.info",
+        "_role": "Employee",
+        "_projects_id": [],
+        "_tasks_id": [],
+        "_project_messages_id": []
+    },
+    {
+        "_username": "someuser",
+        "_password": "12345qwe",
+        "_first_name": "Martin",
+        "_last_name": "Kokonyan",
+        "_email": "someuser@stroy.info",
+        "_role": "Employee",
+        "_projects_id": [
+            "1e8ab158-b4b3-11ec-a305-001a7dda7113"
+        ],
+        "_tasks_id": [
+            "7218a2c3-b9b3-11ec-ad18-001a7dda7113"
+        ],
+        "_project_messages_id": []
+    }
+]
